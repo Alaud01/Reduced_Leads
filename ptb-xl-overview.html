@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTB-XL Dataset Overview</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1f2430; --text:#e6e6e6;
+    --muted:#9aa0a8; --accent:#7fd1b9; --accent2:#6aa7ff; --warn:#ffb86b;
+    --border:#2a3140; --code:#a6e22e; --row1:#1a1f2b; --row2:#1f2533;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;font-size:15px}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;color:var(--code);
+    background:rgba(118,226,46,.08);padding:1px 5px;border-radius:4px;font-size:.88em}
+  pre{background:var(--panel2);border:1px solid var(--border);border-radius:8px;
+    padding:14px 16px;overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:.82em;line-height:1.5;color:#cfd8e3}
+  header{background:linear-gradient(135deg,#10131a,#1a2233);padding:34px 36px;
+    border-bottom:1px solid var(--border)}
+  header h1{margin:0 0 6px;font-size:1.7em;font-weight:700}
+  header p{margin:0;color:var(--muted);max-width:760px}
+  header .meta{margin-top:12px;font-size:.85em;color:var(--muted)}
+  header .meta span{margin-right:14px}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 36px 80px}
+  nav.toc{position:sticky;top:0;background:var(--panel);border:1px solid var(--border);
+    border-radius:8px;padding:10px 14px;margin-bottom:22px;font-size:.88em;z-index:5}
+  nav.toc b{color:var(--accent);margin-right:8px}
+  nav.toc a{margin-right:13px;color:var(--muted)}
+  nav.toc a:hover{color:var(--text)}
+  section{margin-bottom:30px}
+  h2{font-size:1.3em;border-bottom:1px solid var(--border);padding-bottom:7px;
+    margin:0 0 14px;color:var(--accent);scroll-margin-top:60px}
+  h3{font-size:1.05em;color:var(--accent2);margin:20px 0 9px;scroll-margin-top:60px}
+  p{margin:8px 0}
+  ul{margin:6px 0;padding-left:22px}
+  li{margin:3px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;margin:14px 0}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:8px;
+    padding:14px 16px}
+  .card .big{font-size:1.9em;font-weight:700;color:var(--accent)}
+  .card .lbl{color:var(--muted);font-size:.82em;margin-top:3px;text-transform:uppercase;
+    letter-spacing:.04em}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.9em;
+    border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--accent);font-weight:600;font-size:.85em}
+  tr:nth-child(odd) td{background:var(--row1)}
+  tr:nth-child(even) td{background:var(--row2)}
+  .col-name{color:var(--code);font-weight:600;white-space:nowrap}
+  .col-type{color:var(--warn);font-size:.85em;white-space:nowrap}
+  .cov{color:var(--muted);font-size:.82em}
+  .pill{display:inline-block;padding:2px 8px;border-radius:11px;font-size:.74em;
+    background:rgba(127,209,185,.13);color:var(--accent);margin-left:5px}
+  .pill.warn{background:rgba(255,184,107,.13);color:var(--warn)}
+  .pill.blue{background:rgba(106,167,255,.13);color:var(--accent2)}
+  .note{background:rgba(106,167,255,.06);border-left:3px solid var(--accent2);
+    padding:11px 15px;border-radius:0 6px 6px 0;margin:13px 0}
+  .note.warn{background:rgba(255,184,107,.06);border-left-color:var(--warn)}
+  .lead-order{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin:14px 0}
+  .lead-box{background:var(--panel2);border:1px solid var(--border);border-radius:6px;
+    padding:9px 4px;text-align:center;font-family:monospace;font-size:.9em}
+  .lead-box.limb{border-color:var(--accent)}
+  .lead-box.prec{border-color:var(--accent2)}
+  .subsets{margin:14px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .subsets table{margin:0;border:none}
+  footer{border-top:1px solid var(--border);padding:18px 36px;color:var(--muted);
+    font-size:.82em;text-align:center;max-width:1040px;margin:0 auto}
+  .scroll-x{overflow-x:auto}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PTB-XL &mdash; A Large Publicly Available Electrocardiography Dataset</h1>
+  <p>A reference document for the research project <em>Diagnosis-Specific Selective Prediction for Safe Reduced-Lead ECG AI</em>. This page describes the dataset, every column and parameter in the metadata files, and how each element maps to the proposed study.</p>
+  <div class="meta">
+    <span>Version 1.0.3</span>
+    <span>21,799 ECGs &middot; 18,869 patients</span>
+    <span>10-second, 12-lead recordings</span>
+    <span>100 Hz &amp; 500 Hz</span>
+    <span>WFDB format</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<nav class="toc">
+  <b>Contents</b>
+  <a href="#overview">Overview</a>
+  <a href="#files">File structure</a>
+  <a href="#signals">Signals &amp; leads</a>
+  <a href="#reduced">Reduced-lead subsets</a>
+  <a href="#db">ptbxl_database.csv</a>
+  <a href="#scp">scp_statements.csv</a>
+  <a href="#quality">Signal-quality metadata</a>
+  <a href="#folds">Folds &amp; splits</a>
+  <a href="#distributions">Distributions</a>
+  <a href="#mapping">Mapping to the study</a>
+  <a href="#notes">Usage notes</a>
+</nav>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section id="overview">
+  <h2>1. Dataset overview</h2>
+  <p>PTB-XL is the largest publicly available 12-lead clinical ECG dataset. It was released by Wagner et al. (2020) and is hosted on PhysioNet under a Creative Commons Attribution 4.0 licence. Each record is a conventional 10-second, 12-lead resting ECG acquired with commercial devices, accompanied by human- and machine-generated reports and SCP-ECG-coded labels. It is the standard benchmark for deep-learning ECG research.</p>
+
+  <div class="grid">
+    <div class="card"><div class="big">21,799</div><div class="lbl">ECG recordings</div></div>
+    <div class="card"><div class="big">18,869</div><div class="lbl">Unique patients</div></div>
+    <div class="card"><div class="big">12</div><div class="lbl">Leads per record</div></div>
+    <div class="card"><div class="big">10 s</div><div class="lbl">Recording length</div></div>
+    <div class="card"><div class="big">100 / 500 Hz</div><div class="lbl">Sampling rates</div></div>
+    <div class="card"><div class="big">71</div><div class="lbl">SCP-ECG codes</div></div>
+    <div class="card"><div class="big">10</div><div class="lbl">Stratified folds</div></div>
+    <div class="card"><div class="big">1984&ndash;2001</div><div class="lbl">Collection period</div></div>
+  </div>
+
+  <h3>What makes it suitable for the proposed research</h3>
+  <ul>
+    <li>True 12-lead simultaneous recordings &rarr; reduced-lead subsets can be created by simple lead masking without re-acquisition.</li>
+    <li>SCP-ECG labels map cleanly to the diagnostic superclasses used in the paper: <b>MI</b> (myocardial infarction), <b>STTC</b> (ST/T changes), <b>CD</b> (conduction disturbance), <b>HYP</b> (hypertrophy), <b>NORM</b>. <b>AFIB</b> and <b>AFLT</b> codes support the atrial-fibrillation/flutter target.</li>
+    <li>Pre-built <code>strat_fold</code> column provides patient-level folds 1&ndash;10, matching the train(1&ndash;8)/val(9)/test(10) protocol in the abstract.</li>
+    <li>Rich signal-quality columns (<code>baseline_drift</code>, <code>static_noise</code>, <code>burst_noise</code>, <code>electrodes_problems</code>, <code>extra_beats</code>, <code>pacemaker</code>) enable the abstract's noise/artifact stress-test of abstention.</li>
+    <li><code>age</code> and <code>sex</code> are present for subgroup reliability analysis.</li>
+    <li>Open licence and broad adoption &rarr; reproducible, comparable results.</li>
+  </ul>
+</section>
+
+<!-- ===================== FILES ===================== -->
+<section id="files">
+  <h2>2. Repository file structure</h2>
+  <table>
+    <tr><th>Path</th><th>Type</th><th>Description</th></tr>
+    <tr><td><code>ptbxl_database.csv</code></td><td>CSV</td><td>Master metadata table; one row per ECG (21,799 rows, 26 columns). Index of every recording and all labels/quality flags.</td></tr>
+    <tr><td><code>scp_statements.csv</code></td><td>CSV</td><td>Lookup of the 71 SCP-ECG statement codes &rarr; diagnostic class / subclass / category. Used to aggregate labels into superclasses.</td></tr>
+    <tr><td><code>records100/</code></td><td>Directory</td><td>21,799 records at 100 Hz. Organised in 22 subfolders <code>00000/&hellip;/21000/</code>, each holding ~2,000 records. Each record = a <code>.dat</code> (binary waveform) + <code>.hea</code> (WFDB header).</td></tr>
+    <tr><td><code>records500/</code></td><td>Directory</td><td>Same 21,799 records at 500 Hz. Identical folder structure; <code>.dat</code> files contain 5&times; the samples.</td></tr>
+    <tr><td><code>RECORDS</code></td><td>Text</td><td>Plain list of all 21,799 record paths (100 Hz form) &mdash; used by WFDB tooling to enumerate recordings.</td></tr>
+    <tr><td><code>example_physionet.py</code></td><td>Python</td><td>Official reference loader. Demonstrates parsing <code>scp_codes</code>, aggregating to superclasses, and splitting on <code>strat_fold == 10</code>. Requires <code>wfdb</code>, <code>pandas</code>, <code>numpy</code>.</td></tr>
+    <tr><td><code>LICENSE.txt</code></td><td>Text</td><td>CC-BY 4.0 licence.</td></tr>
+    <tr><td><code>SHA256SUMS.txt</code></td><td>Text</td><td>Checksums for verifying file integrity.</td></tr>
+    <tr><td><code>ptbxl_v102_changelog.txt</code></td><td>Text</td><td>v1.0.2 release notes (duplicate removal, label fixes).</td></tr>
+    <tr><td><code>ptbxl_v103_changelog.txt</code></td><td>Text</td><td>v1.0.3 release notes (further duplicate cleanup, consensus label derivation).</td></tr>
+  </table>
+
+  <h3>WFDB signal files</h3>
+  <p>Each ECG is stored as a pair under <code>records100/00000/00001_lr.dat</code> + <code>00001_lr.hea</code> (and the <code>_hr</code> equivalent at 500 Hz). The <code>.hea</code> header declares 12 signals, the sampling rate, gain, and per-lead baseline/ADC info. Example header:</p>
+  <pre>00001_lr 12 100 1000
+00001_lr.dat 16 1000.0(0)/mV 16 0 -119 1508 0 I
+00001_lr.dat 16 1000.0(0)/mV 16 0 -55  723  0 II
+... (III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6)</pre>
+  <p>Signals are 16-bit signed integers, gain 1000.0 (nV per bit), in mV. Each <code>.dat</code> holds 12 channels &times; 1000 samples (100 Hz &times; 10 s) or 5000 samples at 500 Hz.</p>
+</section>
+
+<!-- ===================== SIGNALS & LEADS ===================== -->
+<section id="signals">
+  <h2>3. Signals &amp; leads</h2>
+  <p>Every recording contains the full standard 12-lead ECG in this canonical order (as listed in the <code>.hea</code> file):</p>
+
+  <div class="lead-order">
+    <div class="lead-box limb">I</div>
+    <div class="lead-box limb">II</div>
+    <div class="lead-box limb">III</div>
+    <div class="lead-box limb">aVR</div>
+    <div class="lead-box limb">aVL</div>
+    <div class="lead-box limb">aVF</div>
+    <div class="lead-box prec">V1</div>
+    <div class="lead-box prec">V2</div>
+    <div class="lead-box prec">V3</div>
+    <div class="lead-box prec">V4</div>
+    <div class="lead-box prec">V5</div>
+    <div class="lead-box prec">V6</div>
+  </div>
+  <p style="font-size:.82em;color:var(--muted)">Green = limb leads (I&ndash;aVF); blue = precordial leads (V1&ndash;V6). Lead indices are 0-based in the <code>.dat</code> array.</p>
+
+  <ul>
+    <li><b>Limb leads</b> (indices 0&ndash;5): I, II, III, aVR, aVL, aVF. aVR/aVL/aVF are derived from I and II by the device.</li>
+    <li><b>Precordial leads</b> (indices 6&ndash;11): V1&ndash;V6. Require chest electrodes; typically the most informative for MI/ST-T and the first to be dropped in portable configs.</li>
+    <li>All leads are simultaneous (no multiplexing), so masking preserves temporal alignment &mdash; essential for the lead-masking experiments.</li>
+  </ul>
+</section>
+
+<!-- ===================== REDUCED-LEAD SUBSETS ===================== -->
+<section id="reduced">
+  <h2>4. Reduced-lead subsets (for the proposed study)</h2>
+  <p>The abstract specifies retaining standard subsets. The table lists each subset, the leads retained, and the indices to keep in the 12-lead array when masking.</p>
+
+  <div class="subsets scroll-x">
+  <table>
+    <tr><th>Subset</th><th>Leads retained</th><th>0-based indices</th><th># leads</th><th>Notes</th></tr>
+    <tr><td>12-lead (full)</td><td>I, II, III, aVR, aVL, aVF, V1&ndash;V6</td><td>0&ndash;11</td><td>12</td><td>Reference / gold standard.</td></tr>
+    <tr><td>6-lead (limb)</td><td>I, II, III, aVR, aVL, aVF</td><td>0,1,2,3,4,5</td><td>6</td><td>All limb leads; precordials dropped.</td></tr>
+    <tr><td>4-lead</td><td>I, II, III, V2</td><td>0,1,2,7</td><td>4</td><td>As specified in the abstract.</td></tr>
+    <tr><td>3-lead</td><td>I, II, V2</td><td>0,1,7</td><td>3</td><td>As specified in the abstract.</td></tr>
+    <tr><td>2-lead</td><td>I, II</td><td>0,1</td><td>2</td><td>Minimal limb pair (Einthoven).</td></tr>
+    <tr><td>1-lead (I)</td><td>I</td><td>0</td><td>1</td><td>Single-lead mode I.</td></tr>
+    <tr><td>1-lead (II)</td><td>II</td><td>1</td><td>1</td><td>Single-lead mode II.</td></tr>
+  </table>
+  </div>
+  <div class="note">
+    <b>Important:</b> aVR, aVL, aVF are linear combinations of I and II (aVR = &minus;(I+II)/2, aVL = I&minus;II/2, aVF = I/2+II). When retaining only I and II, the augmented leads carry no independent information; experiments should decide whether to recompute them or drop them.
+  </div>
+</section>
+
+<!-- ===================== PTBXL_DATABASE ===================== -->
+<section id="db">
+  <h2>5. <code>ptbxl_database.csv</code> &mdash; every column explained</h2>
+  <p>26 columns, one row per ECG (21,799 rows). Below each column is described with its type, coverage (non-empty rate where relevant), and example values.</p>
+
+  <div class="scroll-x">
+  <table>
+    <tr><th>Column</th><th>Type</th><th>Coverage</th><th>Meaning / values</th></tr>
+
+    <tr><td class="col-name">ecg_id</td><td class="col-type">int</td><td class="cov">100%</td>
+        <td>Unique record identifier; the CSV row index. Also the root of the <code>.dat/.hea</code> filename (zero-padded to 5 digits, e.g. <code>00001</code>).</td></tr>
+
+    <tr><td class="col-name">patient_id</td><td class="col-type">float</td><td class="cov">100%</td>
+        <td>Anonymised patient identifier. 18,869 unique patients; some patients have multiple ECGs. <b>Crucial for patient-level splitting</b> &mdash; the official folds are patient-disjoint.</td></tr>
+
+    <tr><td class="col-name">age</td><td class="col-type">float (years)</td><td class="cov">100%</td>
+        <td>Patient age in years. Range 2&ndash;300. <span class="pill warn">Note: 300 is a anonymisation cap</span> &mdash; all ages &ge;90 are clamped to 300. Use for age-stratified subgroup reliability analysis. Mean 62.8.</td></tr>
+
+    <tr><td class="col-name">sex</td><td class="col-type">int (0/1)</td><td class="cov">100%</td>
+        <td>0 = male, 1 = female. 11,354 male / 10,445 female. Use for sex-stratified subgroup analysis.</td></tr>
+
+    <tr><td class="col-name">height</td><td class="col-type">float (cm)</td><td class="cov">32%</td>
+        <td>Patient height in cm. Only ~6,974 records have it. Range 6&ndash;209 (extremes are data-entry noise). Sparse &mdash; mostly ignore unless analysing LVH/HYP correlates.</td></tr>
+
+    <tr><td class="col-name">weight</td><td class="col-type">float (kg)</td><td class="cov">43%</td>
+        <td>Patient weight in kg. ~9,421 records populated. Range 5&ndash;250. Same caveat as height.</td></tr>
+
+    <tr><td class="col-name">nurse</td><td class="col-type">float (code)</td><td class="cov">100%</td>
+        <td>Identifier of the nurse/technician who acquired the ECG. Values 0&ndash;5. Not clinically meaningful; a sourcing provenance code.</td></tr>
+
+    <tr><td class="col-name">site</td><td class="col-type">float (code)</td><td class="cov">100%</td>
+        <td>Recording site / hospital code. 0&ndash;50; the four main sites are 0 (8,940), 1 (6,294), 2 (5,075), 3 (576). <b>Important confound for device/site-shift analysis</b> &mdash; report site-stratified results.</td></tr>
+
+    <tr><td class="col-name">device</td><td class="col-type">string</td><td class="cov">100%</td>
+        <td>Acquisition device model. 10 device families; top: <code>CS100    3</code> (6,140), <code>CS-12</code> (4,048), <code>AT-6 C 5.5</code> (3,950), <code>CS-12   E</code> (2,878). Device-shift confound &mdash; report.</td></tr>
+
+    <tr><td class="col-name">recording_date</td><td class="col-type">datetime</td><td class="cov">100%</td>
+        <td>Timestamp of acquisition. Range 1984-11-09 &rarr; 2001-06-11. Useful only for era-stratified analysis; not a label.</td></tr>
+
+    <tr><td class="col-name">report</td><td class="col-type">string (German)</td><td class="cov">100%</td>
+        <td>Free-text clinical ECG report (mostly German). Source from which SCP codes were derived. Not used directly for modelling but useful for error analysis / sanity checks.</td></tr>
+
+    <tr><td class="col-name">scp_codes</td><td class="col-type">dict (string)</td><td class="cov">100%</td>
+        <td><b>The labels.</b> Python dict literal: <code>{'NORM': 100.0, 'SR': 0.0}</code>. Keys are SCP-ECG codes (see <code>scp_statements.csv</code>); values are likelihood/probability 0&ndash;100. <span class="pill">Multi-label</span> &mdash; a record can carry several codes. Parse with <code>ast.literal_eval</code>.</td></tr>
+
+    <tr><td class="col-name">heart_axis</td><td class="col-type">string (code)</td><td class="cov">61%</td>
+        <td>Electrical axis classification. Values: <code>MID</code> (7,687), <code>LAD</code> (3,764), <code>ALAD</code> (1,382), <code>RAD</code>, <code>ARAD</code>, <code>AXL</code>, <code>AXR</code>. Empty when not reported.</td></tr>
+
+    <tr><td class="col-name">infarction_stadium1</td><td class="col-type">string</td><td class="cov">26%</td>
+        <td>Staging of myocardial infarction (if present). Values: <code>Stadium I&ndash;III</code>, <code>Stadium II-III</code>, <code>unknown</code>. Useful for MI subgroup analysis. Mostly empty (no MI).</td></tr>
+
+    <tr><td class="col-name">infarction_stadium2</td><td class="col-type">string</td><td class="cov">&lt;1%</td>
+        <td>Secondary infarction staging field. Almost entirely empty; rarely used.</td></tr>
+
+    <tr><td class="col-name">validated_by</td><td class="col-type">float (code)</td><td class="cov">55%</td>
+        <td>Identifier of the human expert who validated the report. Empty when not human-validated.</td></tr>
+
+    <tr><td class="col-name">second_opinion</td><td class="col-type">bool</td><td class="cov">100%</td>
+        <td>Whether a second expert opinion was sought. True for 555 records. Indicator of ambiguous cases &mdash; can flag harder cases for selective-prediction evaluation.</td></tr>
+
+    <tr><td class="col-name">initial_autogenerated_report</td><td class="col-type">bool</td><td class="cov">100%</td>
+        <td>Whether the report was initially auto-generated (and possibly later edited). True for 6,813. Provenance flag.</td></tr>
+
+    <tr><td class="col-name">validated_by_human</td><td class="col-type">bool</td><td class="cov">100%</td>
+        <td><b>Key quality flag.</b> True for 16,056 records (labels human-verified), False for 5,743 (machine-only). Strongly recommended to filter to <code>validated_by_human == True</code> for the primary analysis.</td></tr>
+
+    <tr><td class="col-name">baseline_drift</td><td class="col-type">string</td><td class="cov">7.3%</td>
+        <td><b>Signal-quality flag.</b> Non-empty when baseline drift was noted, listing affected leads (e.g. <code>' , V6'</code>). 1,598 flagged. Use for noise stress-test of abstention.</td></tr>
+
+    <tr><td class="col-name">static_noise</td><td class="col-type">string</td><td class="cov">14.9%</td>
+        <td>Static/continuous noise flag, with affected leads. 3,260 flagged. Example: <code>' , I-AVR,  '</code>.</td></tr>
+
+    <tr><td class="col-name">burst_noise</td><td class="col-type">string</td><td class="cov">2.8%</td>
+        <td>Burst/transient noise flag. 613 flagged. Example: <code>'alles'</code> (all leads), <code>'V1'</code>.</td></tr>
+
+    <tr><td class="col-name">electrodes_problems</td><td class="col-type">string</td><td class="cov">0.14%</td>
+        <td>Electrode placement / contact problem flag. Only 30 records; very sparse.</td></tr>
+
+    <tr><td class="col-name">extra_beats</td><td class="col-type">string</td><td class="cov">8.7%</td>
+        <td>Extra/supernumerary beats noted. Values: <code>1ES</code> (405), <code>SVES</code> (381), <code>2ES</code> (179), <code>VES</code> (159). 1,949 flagged total. Relevant to rhythm-target analysis.</td></tr>
+
+    <tr><td class="col-name">pacemaker</td><td class="col-type">string</td><td class="cov">1.3%</td>
+        <td>Pacemaker present. 291 records (<code>'ja, pacemaker'</code>). Important exclusion/stratification &mdash; paced rhythms can confuse AI.</td></tr>
+
+    <tr><td class="col-name">strat_fold</td><td class="col-type">int (1&ndash;10)</td><td class="cov">100%</td>
+        <td><b>The official patient-level stratified fold.</b> ~2.18k records per fold, folds are patient-disjoint. <span class="pill blue">Use folds 1&ndash;8 = train, 9 = validation, 10 = test</span> (the standard PTB-XL convention).</td></tr>
+
+    <tr><td class="col-name">filename_lr</td><td class="col-type">string (path)</td><td class="cov">100%</td>
+        <td>Relative path to the 100 Hz WFDB record (without extension). Pass to <code>wfdb.rdsamp(path + filename_lr)</code>. Example: <code>records100/00000/00001_lr</code>.</td></tr>
+
+    <tr><td class="col-name">filename_hr</td><td class="col-type">string (path)</td><td class="cov">100%</td>
+        <td>Relative path to the 500 Hz WFDB record. Same record, higher sampling rate. Use this for higher-fidelity models.</td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== SCP ===================== -->
+<section id="scp">
+  <h2>6. <code>scp_statements.csv</code> &mdash; label codebook</h2>
+  <p>72 rows (71 SCP-ECG codes + header). Each code is mapped to a diagnostic class and subclass. Used to aggregate the multi-label <code>scp_codes</code> in the database into coarser superclasses for modelling.</p>
+
+  <div class="scroll-x">
+  <table>
+    <tr><th>Column</th><th>Type</th><th>Meaning</th></tr>
+    <tr><td class="col-name">(index, unnamed)</td><td class="col-type">string</td><td>The SCP-ECG code itself (e.g. <code>NORM</code>, <code>IMI</code>, <code>AFIB</code>). This is the key joining to <code>scp_codes</code>.</td></tr>
+    <tr><td class="col-name">description</td><td class="col-type">string</td><td>Human-readable description, e.g. &ldquo;inferior myocardial infarction&rdquo;.</td></tr>
+    <tr><td class="col-name">diagnostic</td><td class="col-type">float (0/1)</td><td><b>Filter flag.</b> 1.0 = this code is a diagnostic statement (used for training); 0.0 = rhythm/form modifier or non-diagnostic. Filter to <code>diagnostic == 1</code> before aggregating.</td></tr>
+    <tr><td class="col-name">form</td><td class="col-type">float (0/1)</td><td>Whether the code is a morphological form abnormality.</td></tr>
+    <tr><td class="col-name">rhythm</td><td class="col-type">float (0/1)</td><td>Whether the code is a rhythm abnormality (e.g. <code>AFIB</code>, <code>SBRAD</code>, <code>STACH</code>).</td></tr>
+    <tr><td class="col-name">diagnostic_class</td><td class="col-type">string</td><td><b>Coarse superclass</b> used in most papers: <code>NORM</code>, <code>MI</code>, <code>STTC</code>, <code>CD</code>, <code>HYP</code>. <span class="pill">Primary modelling target</span>.</td></tr>
+    <tr><td class="col-name">diagnostic_subclass</td><td class="col-type">string</td><td>Finer subclass, e.g. <code>IMI</code>, <code>AMI</code>, <code>STTC</code>, <code>CRBBB</code>, <code>LVH</code>. Use for diagnosis-stratified analysis.</td></tr>
+    <tr><td class="col-name">Statement Category</td><td class="col-type">string</td><td>Free-text category label.</td></tr>
+    <tr><td class="col-name">SCP-ECG Statement Description</td><td class="col-type">string</td><td>Official SCP-ECG wording.</td></tr>
+    <tr><td class="col-name">AHA code</td><td class="col-type">string</td><td>American Heart Association equivalent code (where available).</td></tr>
+    <tr><td class="col-name">aECG REFID</td><td class="col-type">string</td><td>aECG reference identifier.</td></tr>
+    <tr><td class="col-name">CDISC Code</td><td class="col-type">string</td><td>Clinical Data Interchange Standards Consortium code.</td></tr>
+    <tr><td class="col-name">DICOM Code</td><td class="col-type">string</td><td>DICOM mapping for the statement.</td></tr>
+  </table>
+  </div>
+
+  <h3>The five diagnostic superclasses (the modelling targets)</h3>
+  <table>
+    <tr><th>Class</th><th>Name</th><th>Count (records)</th><th>Example SCP codes</th><th>Relevance to the abstract</th></tr>
+    <tr><td><code>NORM</code></td><td>Normal ECG</td><td>9,514</td><td>NORM</td><td>Reference class; abstain-and-refer if confidence low.</td></tr>
+    <tr><td><code>MI</code></td><td>Myocardial infarction</td><td>6,863</td><td>IMI, ASMI, AMI, ILMI</td><td><b>Primary target</b> &mdash; MI/ST-T classes emphasised in the paper.</td></tr>
+    <tr><td><code>STTC</code></td><td>ST/T changes</td><td>5,771</td><td>NDT, NST_, ISC_, STD_, LNGQT, DIG</td><td><b>Primary target</b> &mdash; ST-T abnormalities.</td></tr>
+    <tr><td><code>CD</code></td><td>Conduction disturbance</td><td>5,761</td><td>CRBBB, CLBBB, LAFB, 1AVB, IVCD, IRBBB</td><td><b>Primary target</b> &mdash; conduction block.</td></tr>
+    <tr><td><code>HYP</code></td><td>Hypertrophy</td><td>2,812</td><td>LVH, LAO/LAE, VCLVH</td><td>Secondary target.</td></tr>
+  </table>
+
+  <h3>Rhythm codes (for AF/AFL target)</h3>
+  <p>Atrial fibrillation/flutter are SCP codes (not a separate superclass) and must be extracted directly from <code>scp_codes</code>:</p>
+  <ul>
+    <li><code>AFIB</code> &mdash; atrial fibrillation: <b>1,514 records</b></li>
+    <li><code>AFLT</code> &mdash; atrial flutter: ~150 records</li>
+    <li>Also relevant: <code>SBRAD</code> (sinus bradycardia), <code>STACH</code> (sinus tachycardia), <code>SARRH</code> (sinus arrhythmia), <code>PVC</code> (1,143), <code>SR</code> (sinus rhythm, 16,748 &mdash; near-ubiquitous, usually dropped as a trivial label).</li>
+  </ul>
+  <div class="note warn">
+    <b>AFib/AFL is sparse.</b> AFLT especially (&lt;1% prevalence). Selective prediction here should account for class imbalance &mdash; consider per-class conformal thresholds and report per-class coverage, not just macro-averaged metrics.
+  </div>
+</section>
+
+<!-- ===================== QUALITY ===================== -->
+<section id="quality">
+  <h2>7. Signal-quality metadata (for abstention stress-tests)</h2>
+  <p>Six columns in <code>ptbxl_database.csv</code> describe recording artefacts. The abstract proposes to &ldquo;stress-test abstention under noise and artifact&rdquo; &mdash; these columns are the mechanism.</p>
+
+  <table>
+    <tr><th>Column</th><th>Flagged records</th><th>Format</th><th>Interpretation</th></tr>
+    <tr><td><code>baseline_drift</code></td><td>1,598 (7.3%)</td><td>Lead list, e.g. <code>' , V6'</code></td><td>Low-frequency wander; affects amplitude/ST measurements.</td></tr>
+    <tr><td><code>static_noise</code></td><td>3,260 (14.9%)</td><td>Lead list</td><td>Continuous noise; degrades waveform morphology.</td></tr>
+    <tr><td><code>burst_noise</code></td><td>613 (2.8%)</td><td>Lead list or <code>'alles'</code></td><td>Transient spikes; segment-level corruption.</td></tr>
+    <tr><td><code>electrodes_problems</code></td><td>30 (0.14%)</td><td>Lead name</td><td>Electrode misplacement/contact; very sparse.</td></tr>
+    <tr><td><code>extra_beats</code></td><td>1,949 (8.7%)</td><td>Code: <code>1ES/2ES/SVES/VES</code></td><td>Ectopic beats; affects rhythm labels.</td></tr>
+    <tr><td><code>pacemaker</code></td><td>291 (1.3%)</td><td>Free text</td><td>Paced rhythm; typically exclude or analyse separately.</td></tr>
+  </table>
+  <p><b>Suggested protocol:</b> train on all validated records; at evaluation, partition the test fold into clean vs. noisy subsets (any of the flags non-empty) and compare accuracy&ndash;coverage curves. A well-calibrated selective model should abstain more often on noisy recordings.</p>
+</section>
+
+<!-- ===================== FOLDS ===================== -->
+<section id="folds">
+  <h2>8. Folds &amp; train/validation/test split</h2>
+  <p>The <code>strat_fold</code> column is a patient-level stratified fold assignment (1&ndash;10), balancing class distribution across folds. Folds are <b>patient-disjoint</b> &mdash; no patient appears in two folds &mdash; preventing leakage.</p>
+
+  <table>
+    <tr><th>Fold</th><th>Count</th><th>Role (paper convention)</th></tr>
+    <tr><td>1</td><td>2,175</td><td>Train</td></tr>
+    <tr><td>2</td><td>2,181</td><td>Train</td></tr>
+    <tr><td>3</td><td>2,192</td><td>Train</td></tr>
+    <tr><td>4</td><td>2,174</td><td>Train</td></tr>
+    <tr><td>5</td><td>2,174</td><td>Train</td></tr>
+    <tr><td>6</td><td>2,173</td><td>Train</td></tr>
+    <tr><td>7</td><td>2,176</td><td>Train</td></tr>
+    <tr><td>8</td><td>2,173</td><td>Train</td></tr>
+    <tr><td>9</td><td>2,183</td><td><b>Validation</b> (calibration / conformal threshold fitting)</td></tr>
+    <tr><td>10</td><td>2,198</td><td><b>Test</b> (held-out evaluation)</td></tr>
+  </table>
+  <div class="note">
+    <b>For selective prediction specifically:</b> fit conformal risk control / calibration thresholds on fold 9 (as the abstract states), then report accuracy&ndash;coverage curves on fold 10. Fold 9 is the right place to set the per-diagnosis abstention threshold &mdash; using the test fold would be leakage.
+  </div>
+</section>
+
+<!-- ===================== DISTRIBUTIONS ===================== -->
+<section id="distributions">
+  <h2>9. Key distributions</h2>
+
+  <h3>Sex</h3>
+  <table>
+    <tr><th>Sex</th><th>Records</th><th>Share</th></tr>
+    <tr><td>0 (male)</td><td>11,354</td><td>52.1%</td></tr>
+    <tr><td>1 (female)</td><td>10,445</td><td>47.9%</td></tr>
+  </table>
+
+  <h3>Age</h3>
+  <p>Min 2, max 300 (anonymisation cap), mean 62.8 yrs. Ages &ge;90 are clamped to 300 &mdash; <b>treat as a censored category</b> in subgroup analysis, not as a continuous value.</p>
+
+  <h3>Devices (top 5)</h3>
+  <table>
+    <tr><th>Device</th><th>Records</th></tr>
+    <tr><td>CS100    3</td><td>6,140</td></tr>
+    <tr><td>CS-12</td><td>4,048</td></tr>
+    <tr><td>AT-6 C 5.5</td><td>3,950</td></tr>
+    <tr><td>CS-12   E</td><td>2,878</td></tr>
+    <tr><td>AT-6     6</td><td>2,273</td></tr>
+  </table>
+
+  <h3>Sites (main 4)</h3>
+  <table>
+    <tr><th>Site</th><th>Records</th></tr>
+    <tr><td>0</td><td>8,940</td></tr>
+    <tr><td>1</td><td>6,294</td></tr>
+    <tr><td>2</td><td>5,075</td></tr>
+    <tr><td>3</td><td>576</td></tr>
+  </table>
+
+  <h3>Validation provenance</h3>
+  <table>
+    <tr><th>Flag</th><th>True</th><th>False</th></tr>
+    <tr><td><code>validated_by_human</code></td><td>16,056</td><td>5,743</td></tr>
+    <tr><td><code>second_opinion</code></td><td>555</td><td>21,244</td></tr>
+    <tr><td><code>initial_autogenerated_report</code></td><td>6,813</td><td>14,986</td></tr>
+  </table>
+
+  <h3>Top SCP codes (raw, before superclass aggregation)</h3>
+  <table>
+    <tr><th>Code</th><th>Description</th><th>Count</th></tr>
+    <tr><td>SR</td><td>Sinus rhythm (near-ubiquitous)</td><td>16,748</td></tr>
+    <tr><td>NORM</td><td>Normal ECG</td><td>9,514</td></tr>
+    <tr><td>ABQRS</td><td>Abnormal QRS</td><td>3,327</td></tr>
+    <tr><td>IMI</td><td>Inferior MI</td><td>2,676</td></tr>
+    <tr><td>ASMI</td><td>Anteroseptal MI</td><td>2,357</td></tr>
+    <tr><td>LVH</td><td>Left ventricular hypertrophy</td><td>2,132</td></tr>
+    <tr><td>NDT</td><td>Non-diagnostic T abnormalities</td><td>1,825</td></tr>
+    <tr><td>LAFB</td><td>Left anterior fascicular block</td><td>1,623</td></tr>
+    <tr><td>AFIB</td><td>Atrial fibrillation</td><td>1,514</td></tr>
+    <tr><td>ISC_</td><td>Non-specific ischemic</td><td>1,272</td></tr>
+    <tr><td>PVC</td><td>Premature ventricular contraction</td><td>1,143</td></tr>
+    <tr><td>IRBBB</td><td>Incomplete RBBB</td><td>1,118</td></tr>
+    <tr><td>STD_</td><td>ST depression</td><td>1,009</td></tr>
+  </table>
+  <p style="color:var(--muted);font-size:.85em">A complete list of all 71 codes with counts is available via <code>scp_statements.csv</code> + the <code>scp_codes</code> column.</p>
+</section>
+
+<!-- ===================== MAPPING ===================== -->
+<section id="mapping">
+  <h2>10. How the data maps to the proposed study</h2>
+  <table>
+    <tr><th>Abstract element</th><th>Dataset source</th></tr>
+    <tr><td>21,799 12-lead 10-s ECGs</td><td><code>ptbxl_database.csv</code> rows + <code>records100/</code> or <code>records500/</code> waveforms (lead order I, II, III, aVR, aVL, aVF, V1&ndash;V6).</td></tr>
+    <tr><td>18,869 patients</td><td><code>patient_id</code> column.</td></tr>
+    <tr><td>SCP-ECG labels</td><td><code>scp_codes</code> dict column, joined to <code>scp_statements.csv</code>.</td></tr>
+    <tr><td>Folds 1&ndash;8 / 9 / 10 (train/val/test)</td><td><code>strat_fold</code> column.</td></tr>
+    <tr><td>6/4/3/2/1-lead reduced subsets</td><td>Lead masking on the 12-lead array &mdash; see <a href="#reduced">&sect;4</a> for indices.</td></tr>
+    <tr><td>MI / ST-T classes</td><td><code>diagnostic_class</code> = MI, STTC (and subclasses IMI, ASMI, AMI&hellip;).</td></tr>
+    <tr><td>Conduction block</td><td><code>diagnostic_class</code> = CD (CRBBB, CLBBB, LAFB, 1AVB, IVCD&hellip;).</td></tr>
+    <tr><td>Atrial fibrillation / flutter</td><td>SCP codes <code>AFIB</code> / <code>AFLT</code> in <code>scp_codes</code>.</td></tr>
+    <tr><td>Calibration / conformal risk control</td><td>Fit on fold 9 (validation); evaluate on fold 10.</td></tr>
+    <tr><td>Accuracy&ndash;coverage curves</td><td>Per-diagnosis, per-lead-subset, on the test fold.</td></tr>
+    <tr><td>Noise / artifact stress-test</td><td><code>baseline_drift</code>, <code>static_noise</code>, <code>burst_noise</code>, <code>electrodes_problems</code>, <code>extra_beats</code>, <code>pacemaker</code>.</td></tr>
+    <tr><td>Age subgroup reliability</td><td><code>age</code> (note 300-cap censoring).</td></tr>
+    <tr><td>Sex subgroup reliability</td><td><code>sex</code>.</td></tr>
+    <tr><td>Trust / obtain-12-lead / refer-expert triage</td><td>Three-action policy derived from calibrated uncertainty thresholds (per-diagnosis).</td></tr>
+    <tr><td>External validation (CPSC, G12EC, Chapman&hellip;)</td><td><span class="pill warn">NOT in this repo</span> &mdash; must be downloaded separately from PhysioNet Challenge 2021.</td></tr>
+  </table>
+</section>
+
+<!-- ===================== NOTES ===================== -->
+<section id="notes">
+  <h2>11. Usage notes &amp; gotchas</h2>
+  <ul>
+    <li><b>Parse <code>scp_codes</code> safely:</b> it is a Python dict literal stored as a string. Use <code>ast.literal_eval(row['scp_codes'])</code>, never <code>eval</code>.</li>
+    <li><b>Multi-label:</b> a record can carry several SCP codes; superclass aggregation via <code>scp_statements.csv</code> yields a <i>set</i> of classes per record (one-hot multi-label, not softmax).</li>
+    <li><b><code>SR</code> (sinus rhythm) is near-ubiquitous</b> (16,748 records) and is a rhythm modifier, not a diagnostic superclass &mdash; typically dropped before training.</li>
+    <li><b>Age 300 is a censoring cap,</b> not a real age. Treat ages &ge;90 as a censored bucket in subgroup analysis. A common heuristic: clip to 90 or use age bands.</li>
+    <li><b>Lead order is fixed</b> in every <code>.hea</code>: I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6. Do not assume alphabetical order.</li>
+    <li><b>Sampling rate:</b> use 100 Hz (<code>filename_lr</code>) for faster experimentation, 500 Hz (<code>filename_hr</code>) for final/higher-fidelity models. Both refer to the same physical recording.</li>
+    <li><b>Filter by <code>validated_by_human == True</code></b> (16,056 records) for the primary analysis; the 5,743 machine-only records are noisier labels.</li>
+    <li><b>Pacemaker records (291)</b> should generally be excluded or analysed separately &mdash; paced confounds morphology-based labels.</li>
+    <li><b>Height/weight are sparse</b> (32%/43%) &mdash; not reliable for BMI-based stratification across the full cohort.</li>
+    <li><b>v1.0.3 changelog</b> lists duplicate removal and consensus-label fixes from earlier versions; always use 1.0.3 (this version).</li>
+    <li><b>Loading requires</b> <code>wfdb</code>, <code>pandas</code>, <code>numpy</code>. The bundled <code>example_physionet.py</code> shows the canonical loading and split pattern.</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  Generated for the project &ldquo;Diagnosis-Specific Selective Prediction for Safe Reduced-Lead ECG AI&rdquo;.
+  Dataset: PTB-XL v1.0.3 &mdash; Wagner et al., Sci. Data 7, 154 (2020). PhysioNet, CC-BY 4.0.
+</footer>
+
+</body>
+</html>

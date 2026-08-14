@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Generated figures (regenerable)
+figures/
+
+# Generated artifacts
+*.log
+*.tmp
+exploration_viewer.html
+
+# PTB-XL raw dataset (~1GB, regenerable from PhysioNet)
+ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3/
+*.dat
+*.hea
+
+# Dataset checksums / changelogs (ship with dataset, not this repo)
+SHA256SUMS.txt
+ptbxl_v*_changelog.txt

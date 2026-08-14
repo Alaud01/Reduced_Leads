@@ -1,0 +1,13 @@
+# Core data handling
+pandas>=2.0
+numpy>=1.24
+
+# ECG / WFDB signal loading
+wfdb>=4.0
+
+# Visualization
+matplotlib>=3.7
+seaborn>=0.13
+
+# Scientific utilities
+scipy>=1.10

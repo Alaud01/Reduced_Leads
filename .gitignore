@@ -35,6 +35,9 @@ figures/
 *.tmp
 exploration_viewer.html
 
+# Model checkpoints (large, regenerable via training)
+checkpoints/*.pt
+
 # PTB-XL raw dataset (~1GB, regenerable from PhysioNet)
 ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3/
 *.dat

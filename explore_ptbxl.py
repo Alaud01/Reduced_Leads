@@ -98,20 +98,58 @@ plt.close()
 print(f"  Saved {FIGS}/01_class_distribution.png")
 
 # ---------------------------------------------------------------- fig 2
-print("\n[3/7] Subclass (fine SCP code) breakdown for MI, STTC, CD ...")
-SUBSHOW = {"MI": ["IMI", "ASMI", "AMI", "ILMI", "LMI"],
-           "STTC": ["NDT", "NST_", "ISC_", "STD_", "STE_", "ISCA_", "ISCAL", "ISCIL", "ISCAL_"],
-           "CD": ["CRBBB", "CLBBB", "IRBBB", "LAFB", "LPFB", "1AVB", "IVCD", "3AVB", "2AVB"]}
-fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
-for ax, (cls, subs) in zip(axes, SUBSHOW.items()):
-    cnts = {s: Y.scp_codes.apply(lambda d: s in d).sum() for s in subs}
+print("\n[3/7] Subclass (fine SCP code) breakdown — all diagnostic superclasses ...")
+# Derive subcodes programmatically from scp_statements.csv (filter diagnostic == 1,
+# group by diagnostic_class). This avoids hand-typed lists that can contain typos
+# or miss codes. Only codes that actually appear in the data are kept.
+SUBCLASSES = {}  # superclass -> sorted list of (code, count)
+for cls in SUP_CLASSES:
+    subcodes_for_cls = agg[agg.diagnostic_class == cls].index.tolist()
+    cnts = {s: int(Y.scp_codes.apply(lambda d: s in d).sum()) for s in subcodes_for_cls}
+    # drop zero-count codes (don't exist in the data)
     cnts = {k: v for k, v in cnts.items() if v > 0}
-    s = pd.Series(cnts).sort_values()
-    sns.barplot(x=s.values, y=s.index, ax=ax, color=PALETTE[cls])
-    ax.set_title(f"{cls} subclasses ({len(cnts)} codes)")
+    SUBCLASSES[cls] = sorted(cnts.items(), key=lambda x: x[1])  # ascending for horizontal bars
+
+# 2x2 grid; height per row scales with the max number of subcodes in that row
+n_codes = {cls: len(v) for cls, v in SUBCLASSES.items()}
+print(f"  Subcode counts: {n_codes}")
+# arrange so the two tallest panels are on different rows (MI=14, STTC=13 vs CD=11, HYP=5)
+PANEL_ORDER = ["MI", "STTC", "CD", "HYP"]  # MI & CD top, STTC & HYP bottom -> balanced
+# actually put tall ones diagonally: MI (14) top-left, CD (11) top-right,
+# STTC (13) bottom-left, HYP (5) bottom-right
+PANEL_ORDER = [("MI", 0, 0), ("CD", 0, 1), ("STTC", 1, 0), ("HYP", 1, 1)]
+# row heights proportional to the max bar count in that row
+row0_max = max(n_codes["MI"], n_codes["CD"])
+row1_max = max(n_codes["STTC"], n_codes["HYP"])
+h_per_bar = 0.30  # inches per horizontal bar
+fig_h = max(row0_max, row1_max) * h_per_bar + 2.5  # +padding for titles/labels
+fig, axes = plt.subplots(2, 2, figsize=(16, fig_h))
+
+for cls, r, c in PANEL_ORDER:
+    ax = axes[r][c]
+    items = SUBCLASSES[cls]  # ascending
+    codes = [it[0] for it in items]
+    vals = [it[1] for it in items]
+    # lookup descriptions for y-axis labels
+    descs = []
+    for code in codes:
+        d = agg.loc[code, "description"] if code in agg.index else ""
+        # truncate long descriptions
+        d = (d[:34] + "...") if isinstance(d, str) and len(d) > 37 else d
+        descs.append(f"{code}  ({d})" if d else code)
+    sns.barplot(x=vals, y=descs, ax=ax, color=PALETTE[cls], hue=descs, legend=False)
+    ax.set_title(f"{cls}  ({len(codes)} subcodes)", loc="left", fontsize=11)
     ax.set_xlabel("records"); ax.set_ylabel("")
-    for i, v in enumerate(s.values):
-        ax.text(v + 15, i, f"{v:,}", va="center", fontsize=8)
+    # annotate counts
+    xmax = max(vals) if vals else 1
+    xpad = xmax * 0.012
+    for i, v in enumerate(vals):
+        ax.text(v + xpad, i, f"{v:,}", va="center", fontsize=7.5)
+    ax.set_xlim(0, xmax * 1.18)
+    ax.tick_params(axis="y", labelsize=7.5)
+
+plt.suptitle("Fine SCP subcode breakdown per diagnostic superclass (n=21,799, diagnostic codes only)",
+             y=1.0, fontsize=12, weight="bold")
 plt.tight_layout()
 plt.savefig(f"{FIGS}/02_subclass_breakdown.png")
 plt.close()

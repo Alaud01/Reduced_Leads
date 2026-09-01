@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "run_name": "smoke-evaluator-v2",
+  "created_at_utc": "2026-09-01T20:59:50.292791+00:00",
+  "checkpoint": {
+    "path": "/Users/al/Documents/Projects/Reduced_Leads/checkpoints/best.pt",
+    "sha256": "94c6b79a9ee418f3bf041a9503c932b75010e964b68ac45ddff768bf923fcac6",
+    "epoch": 17,
+    "training_run_id": null,
+    "training_seed": null
+  },
+  "dataset": {
+    "root": "/Users/al/Documents/Projects/Reduced_Leads/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3",
+    "version": "1.0.3",
+    "train_folds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "validation_fold": 9,
+    "test_fold": 10
+  },
+  "evaluation": {
+    "splits": [
+      "val"
+    ],
+    "test_evaluated": false,
+    "lead_sets": {
+      "1-lead-II": [
+        "II"
+      ]
+    },
+    "batch_size": 2,
+    "num_workers": 0,
+    "max_n": 2,
+    "device": "cpu"
+  },
+  "model_cfg": {
+    "patch_len": 50,
+    "d_model": 256,
+    "n_layers": 6,
+    "n_heads": 8,
+    "ffn_mult": 4,
+    "dropout": 0.1,
+    "n_leads": 12,
+    "use_missing_token": true,
+    "use_grad_ckpt": true
+  },
+  "normalization": {
+    "source": "recomputed-from-train-first-2",
+    "mean": [
+      -0.0003365144948475063,
+      0.00027898617554455996,
+      0.0006294923950918019,
+      3.3003449061652645e-05,
+      -0.00044750532833859324,
+      0.00046849733917042613,
+      -0.0010569806909188628,
+      0.005417488515377045,
+      0.002402992220595479,
+      -0.00011100587289547548,
+      0.002908998867496848,
+      0.002110494766384363
+    ],
+    "std": [
+      0.12185169011354446,
+      0.18614384531974792,
+      0.14210231602191925,
+      0.14043454825878143,
+      0.09413457661867142,
+      0.1538170874118805,
+      0.18272584676742554,
+      0.3524514436721802,
+      0.2769370973110199,
+      0.21039347350597382,
+      0.17359939217567444,
+      0.15037333965301514
+    ]
+  },
+  "label_schema_source": "runtime-config-fallback",
+  "label_schema": {
+    "superclass": [
+      "NORM",
+      "MI",
+      "STTC",
+      "CD",
+      "HYP"
+    ],
+    "subcode": [
+      "1AVB",
+      "2AVB",
+      "3AVB",
+      "ALMI",
+      "AMI",
+      "ANEUR",
+      "ASMI",
+      "CLBBB",
+      "CRBBB",
+      "DIG",
+      "EL",
+      "ILBBB",
+      "ILMI",
+      "IMI",
+      "INJAL",
+      "INJAS",
+      "INJIL",
+      "INJIN",
+      "INJLA",
+      "IPLMI",
+      "IPMI",
+      "IRBBB",
+      "ISCAL",
+      "ISCAN",
+      "ISCAS",
+      "ISCIL",
+      "ISCIN",
+      "ISCLA",
+      "ISC_",
+      "IVCD",
+      "LAFB",
+      "LAO/LAE",
+      "LMI",
+      "LNGQT",
+      "LPFB",
+      "LVH",
+      "NDT",
+      "NORM",
+      "NST_",
+      "PMI",
+      "RAO/RAE",
+      "RVH",
+      "SEHYP",
+      "WPW"
+    ],
+    "rhythm": [
+      "AFIB",
+      "AFLT",
+      "BIGU",
+      "PACE",
+      "PSVT",
+      "SARRH",
+      "SBRAD",
+      "SR",
+      "STACH",
+      "SVARR",
+      "SVTAC",
+      "TRIGU"
+    ]
+  },
+  "environment": {
+    "python": "3.14.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "torch": "2.13.0",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0"
+  },
+  "artifacts": [
+    "records__val.csv.gz",
+    "predictions/val__1-lead-II.csv.gz",
+    "metrics.json"
+  ],
+  "completed_at_utc": "2026-09-01T20:59:50.372723+00:00"
+}

@@ -1,0 +1,585 @@
+{
+  "schema_version": 1,
+  "results": [
+    {
+      "split": "val",
+      "lead_set": "2-lead",
+      "n_records": 4,
+      "groups": {
+        "superclass": {
+          "n_classes": 5,
+          "n_evaluable_classes": 2,
+          "macro_auroc": 0.6666666666666667,
+          "macro_average_precision": 0.6666666666666666,
+          "classes": [
+            {
+              "diagnosis": "NORM",
+              "n": 4,
+              "positives": 1,
+              "negatives": 3,
+              "prevalence": 0.25,
+              "auroc": 1.0,
+              "average_precision": 1.0
+            },
+            {
+              "diagnosis": "MI",
+              "n": 4,
+              "positives": 1,
+              "negatives": 3,
+              "prevalence": 0.25,
+              "auroc": 0.33333333333333337,
+              "average_precision": 0.3333333333333333
+            },
+            {
+              "diagnosis": "STTC",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "CD",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "HYP",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "subcode": {
+          "n_classes": 44,
+          "n_evaluable_classes": 2,
+          "macro_auroc": 0.6666666666666667,
+          "macro_average_precision": 0.6666666666666666,
+          "classes": [
+            {
+              "diagnosis": "1AVB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "2AVB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "3AVB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ALMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "AMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ANEUR",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ASMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "CLBBB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "CRBBB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "DIG",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "EL",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ILBBB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ILMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "IMI",
+              "n": 4,
+              "positives": 1,
+              "negatives": 3,
+              "prevalence": 0.25,
+              "auroc": 0.33333333333333337,
+              "average_precision": 0.3333333333333333
+            },
+            {
+              "diagnosis": "INJAL",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "INJAS",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "INJIL",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "INJIN",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "INJLA",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "IPLMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "IPMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "IRBBB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCAL",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCAN",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCAS",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCIL",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCIN",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISCLA",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "ISC_",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "IVCD",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LAFB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LAO/LAE",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LNGQT",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LPFB",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "LVH",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "NDT",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "NORM",
+              "n": 4,
+              "positives": 1,
+              "negatives": 3,
+              "prevalence": 0.25,
+              "auroc": 1.0,
+              "average_precision": 1.0
+            },
+            {
+              "diagnosis": "NST_",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "PMI",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "RAO/RAE",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "RVH",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SEHYP",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "WPW",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        },
+        "rhythm": {
+          "n_classes": 12,
+          "n_evaluable_classes": 3,
+          "macro_auroc": 0.888888888888889,
+          "macro_average_precision": 0.8333333333333334,
+          "classes": [
+            {
+              "diagnosis": "AFIB",
+              "n": 4,
+              "positives": 1,
+              "negatives": 3,
+              "prevalence": 0.25,
+              "auroc": 0.6666666666666667,
+              "average_precision": 0.5
+            },
+            {
+              "diagnosis": "AFLT",
+              "n": 4,
+              "positives": 2,
+              "negatives": 2,
+              "prevalence": 0.5,
+              "auroc": 1.0,
+              "average_precision": 1.0
+            },
+            {
+              "diagnosis": "BIGU",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "PACE",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "PSVT",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SARRH",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SBRAD",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SR",
+              "n": 4,
+              "positives": 2,
+              "negatives": 2,
+              "prevalence": 0.5,
+              "auroc": 1.0,
+              "average_precision": 1.0
+            },
+            {
+              "diagnosis": "STACH",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SVARR",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "SVTAC",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            },
+            {
+              "diagnosis": "TRIGU",
+              "n": 4,
+              "positives": 0,
+              "negatives": 4,
+              "prevalence": 0.0,
+              "auroc": null,
+              "average_precision": null
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

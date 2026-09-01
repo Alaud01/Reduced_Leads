@@ -12,19 +12,22 @@ The script:
   3. computes inverse-frequency class weights for super/sub/rhythm heads
   4. trains with random lead-dropping augmentation
   5. evaluates on the val split at every configured lead subset
-  6. checkpoints the best model by macro-AUC averaged across subsets
+  6. checkpoints the best model by 12-lead superclass macro-AUC
 """
 from __future__ import annotations
 import argparse
+from dataclasses import asdict
+from datetime import datetime, timezone
 import json
 import os
+import random
 import time
 from typing import Dict, List
 import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, get_worker_info
 from sklearn.metrics import roc_auc_score
 from tqdm import tqdm
 
@@ -32,14 +35,19 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from .config import ModelCfg, TrainCfg, LEAD_NAMES, N_LEADS
+from .config import (
+    DATA_ROOT, LEAD_NAMES, LEAD_SUBSETS, ModelCfg, N_LEADS, RHYTHMS,
+    SUBCODES, SUPERCLASSES, TrainCfg,
+)
 from .labels import load_metadata, build_label_frame, class_weights, split_indices
 from .data import PTBXLDataset, compute_train_norm, make_collate
 from .model import LeadAwareTransformer
 from .losses import MultiTaskLoss
 
 
-def plot_training_curves(log_path: str, out_dir: str) -> str | None:
+def plot_training_curves(
+    log_path: str, out_dir: str, run_id: str | None = None,
+) -> str | None:
     """
     Read the JSONL training log and produce a 3-panel figure:
       (1) train loss components vs. step (raw + EMA smoothing)
@@ -52,6 +60,8 @@ def plot_training_curves(log_path: str, out_dir: str) -> str | None:
         print(f"[plot] no log at {log_path}")
         return None
     log = pd.read_json(log_path, lines=True)
+    if run_id is not None and "run_id" in log.columns:
+        log = log[log["run_id"] == run_id].copy()
     if log.empty:
         print("[plot] log is empty")
         return None
@@ -102,6 +112,13 @@ def plot_training_curves(log_path: str, out_dir: str) -> str | None:
                 break
         subset_colors = {
             "12-lead": "#222222",
+            "6-lead-limb": "#4c72b0",
+            "4-lead": "#dd8452",
+            "3-lead": "#55a868",
+            "2-lead": "#c44e52",
+            "1-lead-I": "#8172b3",
+            "1-lead-II": "#937860",
+            # Backward-compatible names used by pre-manifest logs.
             "I+II+III+aVR+aVL+aVF": "#4c72b0",
             "I+II+III+V2": "#dd8452",
             "I+II+V2": "#55a868",
@@ -167,6 +184,35 @@ def get_device(name: str) -> torch.device:
     return torch.device(name)
 
 
+def seed_everything(seed: int) -> None:
+    """Seed model initialization, shuffling, and host-side randomness."""
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
+def seed_worker(_worker_id: int) -> None:
+    """Give each DataLoader worker an independent deterministic NumPy RNG."""
+    info = get_worker_info()
+    if info is None:
+        return
+    worker_seed = int(info.seed % (2**32))
+    random.seed(worker_seed)
+    np.random.seed(worker_seed)
+    if hasattr(info.dataset, "rng"):
+        info.dataset.rng = np.random.default_rng(worker_seed)
+
+
+def lead_subset_name(leads: List[str]) -> str:
+    key = tuple(leads)
+    for name, configured in LEAD_SUBSETS.items():
+        if key == configured:
+            return name
+    return "+".join(leads)
+
+
 def build_dataloaders(
     df: pd.DataFrame,
     norm: Dict[str, np.ndarray],
@@ -176,6 +222,8 @@ def build_dataloaders(
 ):
     """Build train + val dataloaders.  Val uses the full 12-lead subset."""
     rng = np.random.default_rng(seed)
+    loader_generator = torch.Generator()
+    loader_generator.manual_seed(seed)
     train_idx, val_idx, _ = split_indices(df)
     train_df = df.loc[train_idx]
     val_df = df.loc[val_idx]
@@ -196,7 +244,8 @@ def build_dataloaders(
     train_dl = DataLoader(
         train_ds, batch_size=cfg.batch_size, shuffle=True,
         num_workers=2, collate_fn=make_collate, drop_last=True,
-        persistent_workers=True,
+        persistent_workers=True, worker_init_fn=seed_worker,
+        generator=loader_generator,
     )
     val_dl = DataLoader(
         val_ds, batch_size=cfg.batch_size, shuffle=False,
@@ -351,6 +400,12 @@ def main():
     p.add_argument("--out-dir", type=str, default=None)
     args = p.parse_args()
 
+    seed_everything(args.seed)
+    run_id = (
+        datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+        + f"-seed{args.seed}"
+    )
+
     mcfg = ModelCfg()
     tcfg = TrainCfg()
     if args.epochs is not None: tcfg.epochs = args.epochs
@@ -379,6 +434,34 @@ def main():
     norm = compute_train_norm(df, max_load=200 if args.quick else 2000)
     print(f"[train]   per-lead mean: {norm['mean'].round(4).tolist()}")
     print(f"[train]   per-lead std : {norm['std'].round(4).tolist()}")
+
+    train_manifest = {
+        "schema_version": 1,
+        "run_id": run_id,
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "seed": args.seed,
+        "data_root": DATA_ROOT,
+        "model_cfg": asdict(mcfg),
+        "train_cfg": asdict(tcfg),
+        "normalization": {
+            "mean": norm["mean"].tolist(),
+            "std": norm["std"].tolist(),
+            "source": (
+                "PTB-XL train folds 1-8, first "
+                f"{200 if args.quick else 2000} records"
+            ),
+        },
+        "label_schema": {
+            "superclass": SUPERCLASSES,
+            "subcode": SUBCODES,
+            "rhythm": RHYTHMS,
+        },
+        "torch_version": str(torch.__version__),
+    }
+    manifest_path = os.path.join(tcfg.out_dir, f"train_manifest_{run_id}.json")
+    with open(manifest_path, "w") as f:
+        json.dump(train_manifest, f, indent=2)
+    print(f"[train] manifest -> {manifest_path}")
 
     print("[train] computing class weights ...")
     super_w = class_weights(df, "superclass", tau=0.5)
@@ -426,6 +509,8 @@ def main():
             model, loss_fn, optimizer, scheduler, train_dl, device,
             tcfg.grad_clip, epoch, global_step,
         )
+        for entry in batch_log:
+            entry["run_id"] = run_id
         t_train = time.time() - t0
 
         # append batch-level logs to JSONL
@@ -445,7 +530,7 @@ def main():
                 model, val_df, norm, subset, device,
                 batch_size=tcfg.batch_size, max_n=eval_max_n,
             )
-            tag = "+".join(subset) if len(subset) < 12 else "12-lead"
+            tag = lead_subset_name(subset)
             subset_metrics[tag] = m
             print(f"[train]   val[{tag:20s}] super={m['super_auc']:.3f} "
                   f"sub={m['sub_auc']:.3f} rhy={m['rhythm_auc']:.3f}")
@@ -453,7 +538,8 @@ def main():
 
         # epoch-level summary to JSONL
         epoch_summary = {
-            "type": "epoch", "epoch": epoch, "step": global_step,
+            "type": "epoch", "run_id": run_id,
+            "epoch": epoch, "step": global_step,
             "train_loss": train_totals["loss"],
             "train_loss_super": train_totals["loss_super"],
             "train_loss_sub": train_totals["loss_sub"],
@@ -476,6 +562,11 @@ def main():
                 "model_state": model.state_dict(),
                 "optimizer_state": optimizer.state_dict(),
                 "model_cfg": mcfg.__dict__,
+                "train_cfg": asdict(tcfg),
+                "norm": {"mean": norm["mean"].tolist(), "std": norm["std"].tolist()},
+                "label_schema": train_manifest["label_schema"],
+                "seed": args.seed,
+                "run_id": run_id,
                 "val_super_auc_12": cur,
             }
             path = os.path.join(tcfg.out_dir, "best.pt")
@@ -489,12 +580,19 @@ def main():
         "epoch": tcfg.epochs,
         "model_state": model.state_dict(),
         "model_cfg": mcfg.__dict__,
+        "train_cfg": asdict(tcfg),
+        "norm": {"mean": norm["mean"].tolist(), "std": norm["std"].tolist()},
+        "label_schema": train_manifest["label_schema"],
+        "seed": args.seed,
+        "run_id": run_id,
     }, final)
     print(f"[train] saved final -> {final}")
     print(f"[train] done. best super_auc@12lead={best_metric:.4f}")
 
     # Plot training curves from the JSONL log
-    plot_training_curves(os.path.join(tcfg.out_dir, "train_log.jsonl"), tcfg.out_dir)
+    plot_training_curves(
+        os.path.join(tcfg.out_dir, "train_log.jsonl"), tcfg.out_dir, run_id=run_id,
+    )
 
 
 if __name__ == "__main__":

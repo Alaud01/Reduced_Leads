@@ -45,9 +45,10 @@ Derived column added by `labels.load_metadata()`:
 |---|---|---|
 | `fold_role` | `train` / `val` / `test` | folds 1–8 → train, 9 → val, 10 → test (`config.TRAIN_FOLDS`, `VAL_FOLD`, `TEST_FOLD`) |
 
-Notable unused columns (present in the CSV): `patient_id`, `age`, `sex`, `height`,
-`weight`, `nurse`, `site`, `device`, `recording_date`, noise/quality flags, `validated_by`.
-`patient_id` being unused means samples are per-recording; PTB-XL folds are patient-wise,
+The frozen-checkpoint evaluator exports `patient_id`, `age`, `sex`, and the available
+noise/quality flags alongside diagnosis-level predictions. Other columns such as
+`height`, `weight`, `nurse`, `site`, `device`, `recording_date`, and `validated_by`
+remain unused. Samples are evaluated per recording; PTB-XL folds are patient-wise,
 so no patient leaks across splits, but a patient may appear multiple times within a split.
 
 ## Label taxonomy
@@ -90,12 +91,14 @@ labels → (B, 5) / (B, 44) / (B, 12), `ecg_id` → (B,).
 4. Lead-dropping: 0–10 leads randomly dropped per training sample (`drop_min=0`,
    `drop_max=10`; ≥2 leads always kept). Dropped leads are zeroed and flagged in
    `lead_mask`. At eval, fixed subsets instead (`TrainCfg.eval_subsets`):
-   12 / 6 (limb) / 4 / 3 / 2 / 1 leads.
+   12 / 6 (limb) / 4 / 3 / 2 / 1 leads, with separate I-only and II-only sets.
 
 ## Caveats
 
 - Normalization stats are an approximation: first 2000 train records in index
-  order, not the full train split and not a random sample.
+  order, not the full train split and not a random sample. New checkpoints persist
+  the exact arrays; evaluation of older checkpoints recomputes them and records that
+  fallback in the evaluation manifest.
 - WFDB decodes invalid samples as NaN; `load_signal` does not impute or mask them.
 - Reduced-lead inputs are simulated by masking 12-lead recordings — they are not
   recordings from actual reduced-lead devices (see PROJECT.md).

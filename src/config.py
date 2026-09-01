@@ -2,7 +2,7 @@
 Configuration for the lead-aware selective-prediction backbone (Option B).
 """
 from dataclasses import dataclass, field
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 import os
 
 DATA_ROOT = os.path.join(
@@ -15,6 +15,18 @@ LEAD_NAMES: List[str] = [
     "V1", "V2", "V3", "V4", "V5", "V6",
 ]
 N_LEADS: int = len(LEAD_NAMES)  # 12
+
+# Canonical fixed lead sets used by training-time validation and frozen-model
+# evaluation.  Keep names stable: they are persisted in prediction artifacts.
+LEAD_SUBSETS: Dict[str, Tuple[str, ...]] = {
+    "12-lead": tuple(LEAD_NAMES),
+    "6-lead-limb": ("I", "II", "III", "aVR", "aVL", "aVF"),
+    "4-lead": ("I", "II", "III", "V2"),
+    "3-lead": ("I", "II", "V2"),
+    "2-lead": ("I", "II"),
+    "1-lead-I": ("I",),
+    "1-lead-II": ("II",),
+}
 
 SIGNAL_HZ: int = 100              # low-resolution records (records100)
 SIGNAL_LEN: int = 1000            # 10 s @ 100 Hz
@@ -73,7 +85,7 @@ class ModelCfg:
 
     @property
     def n_patches(self) -> int:
-        return SIGNAL_LEN // self.patch_len  # 100
+        return SIGNAL_LEN // self.patch_len  # 20
 
 
 @dataclass
@@ -97,14 +109,9 @@ class TrainCfg:
     drop_max: int = 10                # max leads dropped per sample (10 => min 2 kept)
     drop_prob_per_lead: float = 0.0   # base per-lead drop prob; sample-specific drawn in [0, drop_max/n_leads]
     # Evaluation lead subsets (lead names)
-    eval_subsets: List[List[str]] = field(default_factory=lambda: [
-        ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"],
-        ["I", "II", "III", "aVR", "aVL", "aVF"],
-        ["I", "II", "III", "V2"],
-        ["I", "II", "V2"],
-        ["I", "II"],
-        ["I"],
-    ])
+    eval_subsets: List[List[str]] = field(
+        default_factory=lambda: [list(leads) for leads in LEAD_SUBSETS.values()]
+    )
     # Checkpointing
     out_dir: str = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "checkpoints")

@@ -34,6 +34,7 @@ figures/
 *.log
 *.tmp
 exploration_viewer.html
+artifacts/
 
 # Model checkpoints (large, regenerable via training)
 checkpoints/*.pt

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "run_id": "20260901T221413894850Z-seed42",
+  "created_at_utc": "2026-09-01T22:14:14.845060+00:00",
+  "seed": 42,
+  "data_root": "/Users/al/Documents/Projects/Reduced_Leads/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3",
+  "model_cfg": {
+    "patch_len": 50,
+    "d_model": 256,
+    "n_layers": 6,
+    "n_heads": 8,
+    "ffn_mult": 4,
+    "dropout": 0.1,
+    "n_leads": 12,
+    "use_missing_token": true,
+    "use_grad_ckpt": true
+  },
+  "train_cfg": {
+    "device": "mps",
+    "batch_size": 32,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "epochs": 50,
+    "warmup_steps": 500,
+    "grad_clip": 1.0,
+    "w_super": 1.0,
+    "w_sub": 1.0,
+    "w_rhythm": 0.5,
+    "w_lead_presence": 0.2,
+    "drop_min": 0,
+    "drop_max": 10,
+    "drop_prob_per_lead": 0.0,
+    "eval_subsets": [
+      [
+        "I",
+        "II",
+        "III",
+        "aVR",
+        "aVL",
+        "aVF",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6"
+      ],
+      [
+        "I",
+        "II",
+        "III",
+        "aVR",
+        "aVL",
+        "aVF"
+      ],
+      [
+        "I",
+        "II",
+        "III",
+        "V2"
+      ],
+      [
+        "I",
+        "II",
+        "V2"
+      ],
+      [
+        "I",
+        "II"
+      ],
+      [
+        "I"
+      ],
+      [
+        "II"
+      ]
+    ],
+    "out_dir": "/Users/al/Documents/Projects/Reduced_Leads/checkpoints"
+  },
+  "normalization": {
+    "mean": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "std": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "source": "PTB-XL train folds 1-8, first 2000 records"
+  },
+  "label_schema": {
+    "superclass": [
+      "NORM",
+      "MI",
+      "STTC",
+      "CD",
+      "HYP"
+    ],
+    "subcode": [
+      "1AVB",
+      "2AVB",
+      "3AVB",
+      "ALMI",
+      "AMI",
+      "ANEUR",
+      "ASMI",
+      "CLBBB",
+      "CRBBB",
+      "DIG",
+      "EL",
+      "ILBBB",
+      "ILMI",
+      "IMI",
+      "INJAL",
+      "INJAS",
+      "INJIL",
+      "INJIN",
+      "INJLA",
+      "IPLMI",
+      "IPMI",
+      "IRBBB",
+      "ISCAL",
+      "ISCAN",
+      "ISCAS",
+      "ISCIL",
+      "ISCIN",
+      "ISCLA",
+      "ISC_",
+      "IVCD",
+      "LAFB",
+      "LAO/LAE",
+      "LMI",
+      "LNGQT",
+      "LPFB",
+      "LVH",
+      "NDT",
+      "NORM",
+      "NST_",
+      "PMI",
+      "RAO/RAE",
+      "RVH",
+      "SEHYP",
+      "WPW"
+    ],
+    "rhythm": [
+      "AFIB",
+      "AFLT",
+      "BIGU",
+      "PACE",
+      "PSVT",
+      "SARRH",
+      "SBRAD",
+      "SR",
+      "STACH",
+      "SVARR",
+      "SVTAC",
+      "TRIGU"
+    ]
+  },
+  "torch_version": "2.10.0"
+}

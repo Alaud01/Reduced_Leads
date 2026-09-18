@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "protocol_id": "ptbxl-afib-locked-test-v1",
+  "status": "exploratory_research",
+  "split": "test",
+  "target": {
+    "diagnosis_group": "rhythm",
+    "diagnosis": "AFIB"
+  },
+  "intended_use": {
+    "population": "Adults represented by PTB-XL receiving a 10-second resting ECG",
+    "prediction_unit": "ECG record",
+    "inference_unit": "patient",
+    "role": "Retrospective triage decision support",
+    "claim_boundary": "Not a clinical diagnosis, device-equivalence claim, or deployment authorization"
+  },
+  "required_lead_sets": [
+    "6-lead-limb",
+    "4-lead",
+    "3-lead",
+    "2-lead",
+    "1-lead-I",
+    "1-lead-II"
+  ],
+  "primary_analysis": {
+    "lead_set": "2-lead",
+    "endpoint": "trusted_negative_error",
+    "risk_limit": 0.02,
+    "interpretation": "Research target inherited from the frozen policy; not clinically validated"
+  },
+  "secondary_analysis": {
+    "trusted_positive_error_limit": 0.10,
+    "metrics": [
+      "auroc",
+      "average_precision",
+      "brier",
+      "log_loss",
+      "calibration_intercept",
+      "calibration_slope",
+      "sensitivity",
+      "specificity",
+      "positive_predictive_value",
+      "negative_predictive_value",
+      "automated_coverage",
+      "expert_referral_rate"
+    ],
+    "multiplicity": "Descriptive; no confirmatory claims from secondary comparisons"
+  },
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20260907,
+  "calibration_bins": 10,
+  "minimum_subgroup_records": 25,
+  "subgroups": [
+    "age_band",
+    "sex",
+    "any_signal_quality_flag",
+    "individual_signal_quality_flags"
+  ],
+  "locking_rules": [
+    "The model and policy must be frozen before test predictions are read",
+    "The test export must contain every record; max_n is forbidden",
+    "Checkpoint, label schema, target, and lead sets must match",
+    "No calibration or threshold fitting is permitted during audit",
+    "Any test-driven change creates a new model version requiring new untouched evaluation data"
+  ]
+}

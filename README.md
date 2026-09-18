@@ -31,8 +31,12 @@ See `PROJECT.md` for the research scope and `DATASET.md` for dataset details.
 │   ├── model.py          LeadAwareTransformer (lead + time transformer encoder)
 │   ├── losses.py         Multi-task BCE loss with inverse-frequency class weights
 │   ├── train.py          Training entrypoint with manifests, JSONL logs, plots
-│   └── evaluate.py       Frozen-checkpoint prediction export (this repo's CLI)
-└── tests/                Unit tests for evaluation helpers and split integrity
+│   ├── evaluate.py       Frozen-checkpoint prediction export
+│   ├── selective.py      Calibration, risk control, and sequential triage policy
+│   ├── statistics.py     Patient-aware audit metrics and clustered bootstrap
+│   └── audit_policy.py   Fit-free locked-test policy audit
+├── protocol/             Versioned, machine-readable evaluation protocols
+└── tests/                Unit and split-integrity tests
 ```
 
 ## Setup
@@ -192,19 +196,148 @@ Each invocation creates a unique directory under `artifacts/evaluation/`
   set, and output family. Classes without both positive and negative examples
   are reported but excluded from the macro means.
 
-## Downstream use (roadmap)
+## Selective prediction — `src/selective.py`
 
-The prediction exports are designed as the input to:
+The selective-prediction CLI consumes **validation-fold files only**. It starts
+with AFIB by default but supports any exported superclass, subcode, or rhythm:
 
-1. **Calibration** — per-diagnosis reliability curves from exported
-   probabilities (e.g. on val fold 9).
-2. **Selective prediction / triage** — a three-action policy per diagnosis:
-   trust the reduced-lead output, obtain a full 12-lead, or refer for expert
-   review, expressed as accuracy–coverage curves.
-3. **Conformal risk control** — distribution-free guarantees built on the
-   exported per-diagnosis scores.
-4. **Subgroup and noise analysis** — reliability stratified by age/sex
-   (`patient_id`, `age`, `sex` columns) and by signal-quality flags.
+```bash
+python -m src.selective \
+  --evaluation-dir artifacts/evaluation/<complete-run> \
+  --diagnosis-group rhythm \
+  --diagnosis AFIB
+```
+
+If `--evaluation-dir` is omitted, the command finds the newest complete
+validation export containing all requested lead sets.
+
+For every diagnosis × reduced-lead set, it:
+
+1. estimates development performance with patient-grouped outer cross-fitting;
+2. splits each development partition again by patient, fitting a monotone affine
+   (Platt) calibrator on one half; the other half is randomly split by patient
+   into independent reduced-stage and rescue-stage risk partitions;
+3. controls trusted-positive and trusted-negative errors separately using
+   one-sided exact binomial bounds, simultaneously corrected over a fixed
+   threshold grid and the four reduced/12-lead decision families. The rescue
+   threshold uses only records referred by the frozen reduced-stage policy;
+4. applies the sequential policy: `trust_reduced` → `trust_12_lead` after
+   acquisition → `expert_review` when neither stage meets its bound;
+5. fits and serializes a final policy on fold 9 only, ready for one-time fold-10
+   evaluation without refitting.
+
+Defaults are deliberately asymmetric: `--max-positive-risk 0.10` and
+`--max-negative-risk 0.02`. These are research defaults, not clinical operating
+requirements; they must be prespecified for the intended use case. An infeasible
+direction gets no threshold and therefore abstains—risk targets are never silently
+relaxed.
+
+Outputs under `artifacts/selective/<run>/`:
+
+- `policy.json` — frozen calibrators and diagnosis/lead-specific thresholds,
+  including the statistical contract and all cross-fit fold policies;
+- `decisions.csv.gz` — cross-fitted probabilities, predictions, all three actions,
+  correctness, demographics, and signal-quality metadata;
+- `risk_coverage.csv.gz` — empirical risks, exact upper bounds, and coverage over
+  the complete fixed threshold grid;
+- `summary.json` — action rates, selective error, sensitivity/specificity,
+  raw-versus-calibrated metrics, and patient-bootstrap 95% intervals;
+- `calibration.png`, `risk_coverage.png`, and `actions.png`.
+
+The exact binomial bounds assume independent records. Patient-grouped partitions
+and cluster bootstrap intervals do not remove the known repeat-ECG limitation.
+This is not yet the project’s final conformal method or a clinical guarantee under
+distribution shift. External validation and explicit conformal sensitivity
+analyses remain on the roadmap.
+
+## Locked test audit — `src/audit_policy.py`
+
+After model selection and policy fitting are complete, export fold 10 and apply
+the frozen policy without refitting:
+
+```bash
+python -m src.evaluate --checkpoint checkpoints/best.pt --splits val test
+python -m src.audit_policy \
+  --evaluation-dir artifacts/evaluation/<val-and-test-export> \
+  --policy artifacts/selective/<run>/policy.json \
+  --protocol protocol/afib_v1.json
+```
+
+The audit refuses incomplete or `--max-n`-limited test exports and verifies the
+checkpoint hash, label schema, target, lead sets, policy state, and risk limits
+before reading test predictions. It writes fit-free test decisions, discrimination
+and calibration metrics, conservative patient-level summaries, patient-cluster
+bootstrap intervals, subgroup tables, paired reduced-vs-12-lead contrasts,
+descriptive risk-coverage curves, and a hashed artifact manifest under
+`artifacts/audit/`.
+
+The v1 AFIB protocol is explicitly exploratory research. A result within its
+risk limits is not a new finite-sample guarantee, a clinical diagnosis claim, or
+authorization to retune against fold 10. See `AFIB_EVALUATION_PROTOCOL.md` and
+`REFERENCES.md` for the evidence ladder and literature rationale.
+
+### Post-hoc positive-call sensitivity policy
+
+The original locked policy found no positive threshold satisfying its 10%
+simultaneous upper-risk constraint. A separate, non-confirmatory sensitivity
+policy keeps the 2% negative-risk constraint and 25-case minimum, but relaxes
+the positive-risk upper-bound constraint to 40%. This value is deliberately
+descriptive: it is the smallest round validation-only setting that makes the
+2-lead pathway estimable after 12-lead confirmation, not a clinically acceptable
+error target.
+
+```bash
+python -m src.selective \
+  --evaluation-dir artifacts/evaluation/<validation-export> \
+  --run-name afib-positive-exploratory-risk40-v2 \
+  --max-positive-risk 0.40 \
+  --max-negative-risk 0.02 \
+  --confidence 0.95 \
+  --min-trusted 25 \
+  --bootstrap 2000
+
+python -m src.audit_policy \
+  --evaluation-dir artifacts/evaluation/<test-export> \
+  --policy artifacts/selective/afib-positive-exploratory-risk40-v2/policy.json \
+  --protocol protocol/afib_positive_exploratory_v1.json \
+  --run-name afib-positive-exploratory-test-v2
+```
+
+Because this policy was proposed after reviewing the original test audit, its
+test results are hypothesis-generating even though its thresholds are fitted
+using validation data only. Any confirmation requires new untouched external
+data.
+
+## All-label research audit — `src/audit_all_labels.py`
+
+The all-label workflow expands the same validation-fit/test-audit boundary to
+every superclass, diagnostic subcode, and rhythm label in the evaluation
+manifest. Every label receives discrimination, calibration, prevalence,
+risk-coverage, and reduced-vs-12-lead comparisons. Selective policies are fitted
+only for labels with at least 25 positive and 25 negative validation patients;
+sparser labels remain explicitly marked `insufficient_data` and receive model
+metrics only.
+
+```bash
+python -m src.audit_all_labels fit \
+  --evaluation-dir artifacts/evaluation/<validation-export> \
+  --protocol protocol/all_labels_v1.json \
+  --run-name all-labels-baseline-v2
+
+python -m src.audit_all_labels audit \
+  --evaluation-dir artifacts/evaluation/<test-export> \
+  --policy artifacts/selective-all/all-labels-baseline-v2/policy.json \
+  --protocol protocol/all_labels_v1.json \
+  --run-name all-labels-test-v3
+```
+
+The shared 10% positive and 2% negative risk limits are comparison anchors, not
+diagnosis-specific clinical choices. In particular, the meaning and harm of a
+positive decision differs for `NORM` versus a disease label. The test fold has
+also already been inspected during AFIB development, so this complete-label
+audit is post-hoc; new external data is required for confirmation.
+See `ALL_LABEL_EVALUATION_PROTOCOL.md` for the evidence tiers, action semantics,
+uncertainty rules, and advancement criteria.
 
 ## Testing
 
@@ -212,6 +345,50 @@ The prediction exports are designed as the input to:
 python -m unittest discover -s tests -q
 ```
 
-Covers evaluation helpers (metrics, schema/normalization validation, sigmoid
-stability) and — when local PTB-XL metadata is present — the official split
+Covers evaluation helpers, calibration, threshold risk bounds, infeasible-policy
+abstention, all three routing actions, cross-fit completeness, calibration split
+patient isolation, and—when local PTB-XL metadata is present—the official split
 counts and patient isolation across folds.
+
+
+## Use-contract fitting and audit
+
+The shared all-label engine now fits every exported label plus the frozen
+`max_logit` AFIB-or-AFLT composite. It applies the ischemia, conduction, and
+assert-normal limits from `protocol/use_contract_v1.json`. Labels outside these
+groups retain the descriptive 10%/2% anchors. Assert-normal negative automation
+is disabled because the contract defines no negative-call limit for those labels.
+Every target must meet both the positive- and negative-patient eligibility floors.
+Single-class and sparse targets still receive model-performance outputs.
+
+```bash
+python -m src.use_contract fit \
+  --evaluation-dir artifacts/evaluation/<validation-only-export> \
+  --run-name contract-routed-v2
+
+python -m src.use_contract audit \
+  --evaluation-dir artifacts/evaluation/<test-export> \
+  --policy artifacts/selective-all/contract-routed-v2/policy.json \
+  --run-name contract-routed-v2-audit
+```
+
+Use `--lead-sets 2-lead` during fitting for a primary-lead-only run. Audit reads
+the frozen lead selection. Both commands also work through `src.audit_all_labels`
+with `--protocol protocol/use_contract_v1.json` (all leads by default).
+
+New bundles record execution method
+`fixed-grid-clopper-pearson-bonferroni-routed-v2`, the normalized execution
+contract, per-target limits, and hashed artifacts. Audit checks the saved policy
+hash, validation-only source manifest, checkpoint, source input hashes, schema,
+lead definitions, eligibility, and target/lead enumeration before reading test
+predictions. Keep the original validation export available for these checks.
+All prediction populations must match the exported `records__<split>.csv.gz`.
+Normality coverage is reported separately from disease coverage; risk checks
+use each target's limits. Zero-bootstrap runs explicitly report no intervals.
+
+Historical protocol JSON files and existing fitted artifacts are unchanged.
+Older all-label/composite bundles must be refitted on validation into a new
+output directory to use the corrected method; they are not silently upgraded.
+The additional independent risk partition can reduce coverage. Existing test
+fold reuse remains exploratory, and the correction does not create an untouched
+confirmatory cohort or resolve the repeat-ECG limitation of record-level bounds.

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "protocol_id": "ptbxl-afib-positive-sensitivity-v1",
+  "status": "post_hoc_exploratory_research",
+  "split": "test",
+  "target": {
+    "diagnosis_group": "rhythm",
+    "diagnosis": "AFIB"
+  },
+  "analysis_context": {
+    "relationship_to_locked_audit": "Secondary sensitivity analysis created after the original locked test audit",
+    "selection_basis": "The 0.40 positive-risk upper-bound limit was selected from validation risk curves only; the original test result remains the primary result",
+    "interpretation": "Hypothesis-generating comparison, not independent confirmation or a clinical safety claim"
+  },
+  "intended_use": {
+    "population": "Adults represented by PTB-XL receiving a 10-second resting ECG",
+    "prediction_unit": "ECG record",
+    "inference_unit": "patient",
+    "role": "Retrospective sensitivity analysis of automated positive AFIB triage",
+    "claim_boundary": "Not a clinical diagnosis, prospective validation, deployment authorization, or replacement for clinician confirmation"
+  },
+  "required_lead_sets": [
+    "6-lead-limb",
+    "4-lead",
+    "3-lead",
+    "2-lead",
+    "1-lead-I",
+    "1-lead-II"
+  ],
+  "primary_analysis": {
+    "lead_set": "2-lead",
+    "endpoint": "trusted_positive_error",
+    "risk_limit": 0.40,
+    "interpretation": "Exploratory upper-bound constraint chosen to make a validation-fitted 2-lead/12-lead positive route estimable; not a clinically acceptable error target"
+  },
+  "secondary_analysis": {
+    "trusted_positive_error_limit": 0.40,
+    "trusted_negative_error_limit": 0.02,
+    "metrics": [
+      "trusted_positive_error",
+      "trusted_negative_error",
+      "automated_sensitivity",
+      "automated_specificity",
+      "automated_coverage",
+      "expert_referral_rate",
+      "twelve_lead_acquisition_rate",
+      "auroc",
+      "average_precision",
+      "brier",
+      "calibration_intercept",
+      "calibration_slope"
+    ],
+    "multiplicity": "Descriptive; no confirmatory claims from this post-hoc sensitivity analysis"
+  },
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20260917,
+  "calibration_bins": 10,
+  "minimum_subgroup_records": 25,
+  "subgroups": [
+    "age_band",
+    "sex",
+    "any_signal_quality_flag",
+    "individual_signal_quality_flags"
+  ],
+  "locking_rules": [
+    "Fit calibration and thresholds on validation predictions only",
+    "Keep the original afib_v1 locked-test result unchanged and primary",
+    "Apply the exploratory policy to test predictions without refitting",
+    "Do not select another threshold or risk limit from exploratory test results",
+    "Require new untouched external data for any confirmatory claim"
+  ]
+}

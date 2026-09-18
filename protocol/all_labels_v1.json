@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "protocol_id": "ptbxl-all-labels-exploratory-v1",
+  "status": "post_hoc_exploratory_research",
+  "splits": {
+    "policy_fit": "val",
+    "audit": "test"
+  },
+  "diagnosis_groups": [
+    "superclass",
+    "subcode",
+    "rhythm"
+  ],
+  "lead_sets": [
+    "6-lead-limb",
+    "4-lead",
+    "3-lead",
+    "2-lead",
+    "1-lead-I",
+    "1-lead-II"
+  ],
+  "policy_eligibility": {
+    "minimum_positive_patients": 25,
+    "minimum_negative_patients": 25,
+    "outer_folds": 5
+  },
+  "shared_policy_constraints": {
+    "max_positive_risk": 0.10,
+    "max_negative_risk": 0.02,
+    "confidence": 0.95,
+    "minimum_trusted_records": 25,
+    "threshold_grid_size": 101,
+    "seed": 42
+  },
+  "uncertainty": {
+    "patient_bootstrap_replicates": 500,
+    "confidence": 0.95
+  },
+  "calibration_bins": 10,
+  "minimum_subgroup_records": 25,
+  "interpretation": {
+    "purpose": "Research-wide screening of model and selective-policy behavior across every exported label",
+    "sparse_label_rule": "All labels receive model metrics; selective policies are not fitted below the patient-count eligibility boundary",
+    "shared_constraint_warning": "The common risk limits are engineering comparison anchors, not diagnosis-specific clinical harm thresholds",
+    "test_reuse_warning": "The test fold has already been inspected for AFIB, so all-label results are post-hoc and require untouched external data for confirmation",
+    "claim_boundary": "Not a clinical diagnosis, deployment authorization, or evidence that one risk tradeoff is appropriate for every diagnosis"
+  }
+}

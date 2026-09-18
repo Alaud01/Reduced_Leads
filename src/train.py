@@ -256,7 +256,7 @@ def build_dataloaders(
 
 
 def move_batch(batch: Dict[str, torch.Tensor], device: torch.device) -> Dict[str, torch.Tensor]:
-    return {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
+    return {k: v.to(device, non_blocking=True) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
 
 
 @torch.no_grad()
@@ -268,6 +268,7 @@ def evaluate_subset(
     device: torch.device,
     batch_size: int = 64,
     max_n: int | None = None,
+    use_amp: bool = False,
 ) -> Dict[str, float]:
     """
     Evaluate the model at a single fixed lead subset.
@@ -285,9 +286,12 @@ def evaluate_subset(
     model.eval()
     sup_preds, sub_preds, rhy_preds = [], [], []
     sup_y, sub_y, rhy_y = [], [], []
+    amp_device = device.type if device.type in ("mps", "cuda") else "cpu"
+    use_eval_amp = bool(use_amp and device.type in ("mps", "cuda"))
     for batch in dl:
         batch = move_batch(batch, device)
-        out = model(batch["x"], batch["lead_mask"])
+        with torch.amp.autocast(amp_device, dtype=torch.float16, enabled=use_eval_amp):
+            out = model(batch["x"], batch["lead_mask"])
         sup_preds.append(torch.sigmoid(out["cls_super"]).cpu().numpy())
         sub_preds.append(torch.sigmoid(out["cls_sub"]).cpu().numpy())
         rhy_preds.append(torch.sigmoid(out["aux_rhythm"]).cpu().numpy())
@@ -327,25 +331,43 @@ def train_one_epoch(
     scheduler: torch.optim.lr_scheduler.LambdaLR,
     train_dl: DataLoader, device: torch.device, grad_clip: float,
     epoch: int, global_step: int, log_every: int = 25,
+    use_amp: bool = False, scaler: torch.amp.GradScaler | None = None,
 ) -> tuple[Dict[str, float], int, List[Dict]]:
     model.train()
     totals = {"loss": 0.0, "loss_super": 0.0, "loss_sub": 0.0,
               "loss_rhythm": 0.0, "loss_lead_presence": 0.0}
     n = 0
     batch_log: List[Dict] = []
+    amp_device = device.type if device.type in ("mps", "cuda") else "cpu"
     pbar = tqdm(train_dl, desc=f"epoch {epoch}", leave=False,
                 bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}{postfix}]")
     for bi, batch in enumerate(pbar):
         batch = move_batch(batch, device)
-        out = model(batch["x"], batch["lead_mask"])
-        losses = loss_fn(out, batch)
-        loss = losses["loss"]
         optimizer.zero_grad(set_to_none=True)
-        loss.backward()
-        if grad_clip is not None and grad_clip > 0:
-            torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
-        optimizer.step()
-        scheduler.step()
+        with torch.amp.autocast(amp_device, dtype=torch.float16, enabled=use_amp):
+            out = model(batch["x"], batch["lead_mask"])
+            losses = loss_fn(out, batch)
+            loss = losses["loss"]
+        optimizer_updated = True
+        if scaler is not None:
+            scale_before = scaler.get_scale()
+            scaler.scale(loss).backward()
+            if grad_clip is not None and grad_clip > 0:
+                scaler.unscale_(optimizer)
+                torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
+            scaler.step(optimizer)
+            scaler.update()
+            # GradScaler lowers its scale when non-finite gradients cause it
+            # to skip the update. Successful steps retain or grow the scale.
+            optimizer_updated = scaler.get_scale() >= scale_before
+        else:
+            loss.backward()
+            if grad_clip is not None and grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
+            optimizer.step()
+        if optimizer_updated:
+            scheduler.step()
+        # Keep the existing batch-based logging axis, including skipped steps.
         global_step += 1
         bs = batch["x"].shape[0]
         n += bs
@@ -368,6 +390,7 @@ def train_one_epoch(
             })
             batch_log.append({
                 "epoch": epoch, "step": global_step, "batch": bi,
+                "optimizer_updated": optimizer_updated,
                 "loss": run["loss"], "loss_super": run["loss_super"],
                 "loss_sub": run["loss_sub"], "loss_rhythm": run["loss_rhythm"],
                 "loss_lp": run["loss_lead_presence"], "lr": lr_now,
@@ -398,6 +421,12 @@ def main():
     p.add_argument("--eval-max-n", type=int, default=None,
                    help="limit val eval samples (useful for quick)")
     p.add_argument("--out-dir", type=str, default=None)
+    p.add_argument("--no-amp", action="store_true",
+                   help="disable MPS/CUDA fp16 autocast (default: enabled)")
+    p.add_argument("--eval-full-every", type=int, default=None,
+                   help="full 7-subset val eval cadence (default from TrainCfg)")
+    p.add_argument("--grad-ckpt", action="store_true",
+                   help="re-enable gradient checkpointing (default: off; only needed on OOM)")
     args = p.parse_args()
 
     seed_everything(args.seed)
@@ -413,6 +442,9 @@ def main():
     if args.device is not None: tcfg.device = args.device
     if args.lr is not None: tcfg.lr = args.lr
     if args.out_dir is not None: tcfg.out_dir = args.out_dir
+    if args.no_amp: tcfg.use_amp = False
+    if args.eval_full_every is not None: tcfg.eval_full_every = args.eval_full_every
+    if args.grad_ckpt: mcfg.use_grad_ckpt = True
     if args.quick:
         tcfg.epochs = 1
         tcfg.batch_size = 16
@@ -422,6 +454,10 @@ def main():
 
     device = get_device(tcfg.device)
     print(f"[train] device = {device}")
+    use_amp = bool(tcfg.use_amp and device.type in ("mps", "cuda"))
+    scaler = torch.amp.GradScaler(device.type) if use_amp else None
+    print(f"[train] amp(fp16) = {use_amp} | batch_size = {tcfg.batch_size} "
+          f"| grad_ckpt = {mcfg.use_grad_ckpt} | eval_full_every = {tcfg.eval_full_every}")
 
     print("[train] loading metadata ...")
     Y = load_metadata()
@@ -508,6 +544,7 @@ def main():
         train_totals, global_step, batch_log = train_one_epoch(
             model, loss_fn, optimizer, scheduler, train_dl, device,
             tcfg.grad_clip, epoch, global_step,
+            use_amp=use_amp, scaler=scaler,
         )
         for entry in batch_log:
             entry["run_id"] = run_id
@@ -518,17 +555,30 @@ def main():
             for entry in batch_log:
                 f.write(json.dumps(entry) + "\n")
 
-        # Evaluate across lead subsets
+        # Evaluate across lead subsets (full 7 only every Nth epoch;
+        # 12-lead-only otherwise — sufficient for best-checkpoint tracking
+        # and ~7x cheaper).
         eval_t0 = time.time()
         print(f"\r[train] [epoch {epoch}/{tcfg.epochs}] train_loss={train_totals['loss']:.4f} "
               f"super={train_totals['loss_super']:.4f} sub={train_totals['loss_sub']:.4f} "
               f"rhy={train_totals['loss_rhythm']:.4f} lp={train_totals['loss_lead_presence']:.4f} "
               f"({t_train:.1f}s)            ")
+        cadence = max(1, int(tcfg.eval_full_every))
+        is_full_eval = (epoch == 1) or (epoch == tcfg.epochs) or (epoch % cadence == 0)
+        if is_full_eval:
+            eval_list = tcfg.eval_subsets
+        else:
+            # 12-lead subset for best-tracking; fall back to first subset
+            # if the eval list was customized without a 12-lead entry.
+            eval_list = [s for s in tcfg.eval_subsets
+                         if lead_subset_name(s) == "12-lead"] or tcfg.eval_subsets[:1]
+            print(f"[train]   (12-lead-only eval; full eval every {cadence} epochs)")
         subset_metrics = {}
-        for subset in tcfg.eval_subsets:
+        for subset in eval_list:
             m = evaluate_subset(
                 model, val_df, norm, subset, device,
                 batch_size=tcfg.batch_size, max_n=eval_max_n,
+                use_amp=use_amp,
             )
             tag = lead_subset_name(subset)
             subset_metrics[tag] = m

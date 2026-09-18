@@ -116,11 +116,22 @@ Per run it:
    stats and provenance, label schema, versions);
 3. trains with the multi-task loss under lead-dropping augmentation, logging
    batch metrics to `train_log.jsonl` (entries tagged with `run_id`);
-4. evaluates the val split at every canonical lead subset after each epoch;
+4. evaluates 12-lead validation every epoch, and all canonical subsets on the
+   first, last, and every fifth epoch (`--eval-full-every` controls the cadence);
 5. tracks the best checkpoint by **12-lead superclass macro-AUC** and saves
    `best.pt` / `last.pt`, both embedding `model_cfg`, `train_cfg`, normalization
    arrays, and `label_schema`;
 6. renders `training_curves.png` from the JSONL log for the current run.
+
+Automatic mixed precision (AMP) uses FP16 for suitable GPU operations while
+keeping numerically sensitive operations in FP32, reducing memory use and often
+improving speed. It is enabled by default on MPS/CUDA; `--no-amp` disables it for
+both training and validation. CPU runs use FP32. Gradient scaling helps preserve
+small gradients and skips a weight update when gradients are non-finite. The
+learning-rate schedule advances only after a successful update. Logged `step`
+still counts processed batches; `optimizer_updated` identifies whether the
+logged batch updated weights. Use `--grad-ckpt` to enable gradient checkpointing
+when additional memory savings are needed.
 
 ## Evaluation — `src/evaluate.py`
 

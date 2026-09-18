@@ -74,9 +74,11 @@ class ModelCfg:
     use_missing_token: bool = True    # adds a learnable missing-lead token
     # Gradient checkpointing — recompute block activations during backward
     # instead of storing them. Cuts activation memory from O(n_layers) to O(1)
-    # at the cost of ~25-30% extra compute. Essential for fitting the model
-    # on 24 GB Apple Silicon MPS without OOM.
-    use_grad_ckpt: bool = True
+    # at the cost of ~25-30% extra compute. Disabled by default: the 9.8M-param
+    # backbone peaks at ~4.3 GB on Apple Silicon (bs=64, fp16), well within
+    # 24 GB unified memory. Re-enable only if you scale up d_model/n_layers
+    # or hit OOM.
+    use_grad_ckpt: bool = False
 
     @property
     def lead_emb_size(self) -> int:
@@ -92,8 +94,11 @@ class ModelCfg:
 class TrainCfg:
     # Device
     device: str = "mps"               # apple silicon MPS
+    # Mixed precision (MPS/CUDA only; no-op on CPU). M4 GPU is fp16-strong:
+    # bs=64 fp16 trains ~35% faster per epoch than bs=32 fp32 at same accuracy.
+    use_amp: bool = True
     # Optim
-    batch_size: int = 32              # fits 24 GB Apple Silicon with grad checkpointing
+    batch_size: int = 64              # M4 saturation point (32 under-utilizes GPU, 128 gives nothing extra)
     lr: float = 1e-4
     weight_decay: float = 1e-4
     epochs: int = 50
@@ -112,6 +117,10 @@ class TrainCfg:
     eval_subsets: List[List[str]] = field(
         default_factory=lambda: [list(leads) for leads in LEAD_SUBSETS.values()]
     )
+    # Full 7-subset val eval is ~110 s/epoch; 12-lead-only is ~15 s.
+    # Evaluate all subsets every Nth epoch (and always on epoch 1 + final
+    # epoch); 12-lead-only otherwise for best-checkpoint tracking.
+    eval_full_every: int = 5
     # Checkpointing
     out_dir: str = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "checkpoints")

@@ -50,6 +50,17 @@ REQUIRED_PREDICTION_COLUMNS = {
 }
 
 
+from .assemble_evaluation import verify_sources
+from .research_risk import (
+    PATIENT_METHOD, representative_ecgs, fit_patient_crc, apply_patient_crc,
+    feasibility_rows, repeat_sensitivity, exact_binomial_interval,
+)
+
+
+def policy_method(protocol):
+    return PATIENT_METHOD if protocol.get('risk_unit') == 'patient_representative' else SEQUENTIAL_METHOD
+
+
 def _load_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         raise FileNotFoundError(path)
@@ -118,6 +129,10 @@ def load_all_label_protocol(path: Path, lead_sets: Sequence[str] | None = None) 
         raise ValueError("outer_folds must be at least two")
     if float(uncertainty.get("confidence", 0.95)) != 0.95:
         raise ValueError("patient bootstrap currently supports confidence=0.95 only")
+    if protocol.get('risk_unit', 'record') not in ('record', 'patient_representative'):
+        raise ValueError('unknown risk inference unit')
+    if protocol.get('crc_alpha') is not None and not 0 < float(protocol['crc_alpha']) < 1:
+        raise ValueError('CRC alpha must be in (0, 1)')
     return protocol
 
 
@@ -204,6 +219,8 @@ def _validate_evaluation_manifest(
 ) -> None:
     if manifest.get("status") != "complete":
         raise ValueError("evaluation manifest status must be complete")
+    if protocol.get("require_independent_calibration") and manifest.get("checkpoint", {}).get("calibration_independent") is not True:
+        raise ValueError("this protocol requires fold-9-independent model selection; retrain using fold 8")
     evaluation = manifest.get("evaluation")
     if not isinstance(evaluation, dict):
         raise ValueError("evaluation manifest is missing evaluation metadata")
@@ -343,6 +360,7 @@ def _verify_frozen_bundle(
     if not source_path.is_file() or sha256_file(source_path) != source.get("manifest_sha256"):
         raise ValueError("validation source manifest SHA-256 mismatch")
     source_manifest = _load_json(source_path)
+    verify_sources(source_path.parent, source_manifest)
     _validate_evaluation_manifest(source_manifest, "val", protocol)
     checkpoint = payload.get("source_checkpoint_sha256")
     if any(value != checkpoint for value in (
@@ -364,7 +382,7 @@ def _verify_frozen_bundle(
         if item.get("path") != str(expected) or not expected.is_file() or item.get("sha256") != sha256_file(expected):
             raise ValueError(f"validation input SHA-256 mismatch: {key}")
     config = payload.get("configuration", {})
-    if config.get("execution_protocol") != protocol or config.get("method") != SEQUENTIAL_METHOD:
+    if config.get("execution_protocol") != protocol or config.get("method") != policy_method(protocol):
         raise ValueError("unsupported or changed execution contract; refit on validation with the current method")
     if config.get("lead_sets") != protocol["lead_sets"]:
         raise ValueError("policy lead configuration differs from protocol")
@@ -401,10 +419,12 @@ def _verify_frozen_bundle(
         if policies:
             _policy_index({"status": "frozen_on_validation", "policies": policies})
         for lead in policies:
-            if lead["policy"].get("method") != SEQUENTIAL_METHOD:
+            if lead["policy"].get("method") != policy_method(protocol):
                 raise ValueError("policy lacks independent routed risk calibration")
             for stage in ("reduced", FULL_LEAD_SET):
                 risk = lead["policy"][stage].get("risk_control", {})
+                if protocol.get("risk_unit") == "patient_representative" and risk.get("inference_unit") != "patient_representative":
+                    raise ValueError("patient protocol requires patient-independent risk calibration")
                 for key, expected in (
                     ("max_positive_risk", constraints["max_positive_risk"]),
                     ("max_negative_risk", constraints["max_negative_risk"]),
@@ -431,6 +451,7 @@ def fit_all_label_policies(
     protocol = load_all_label_protocol(protocol_path, lead_sets)
     source_manifest_path = evaluation_dir / "manifest.json"
     source_manifest = _load_json(source_manifest_path)
+    verify_sources(evaluation_dir, source_manifest)
     _validate_evaluation_manifest(source_manifest, "val", protocol)
     checkpoint = source_manifest.get("checkpoint")
     if not isinstance(checkpoint, dict) or not checkpoint.get("sha256"):
@@ -486,13 +507,14 @@ def fit_all_label_policies(
     decision_frames: list[pd.DataFrame] = []
     curve_frames: list[pd.DataFrame] = []
 
+    feasibility = []
     twelve_bundle = frames[FULL_LEAD_SET]
     for diagnosis_group, diagnosis in targets:
         print(f"[all-labels:fit] {diagnosis_group}/{diagnosis}")
         twelve = _target_frame(twelve_bundle, diagnosis_group, diagnosis)
         constraints = _constraints(protocol, diagnosis_group, diagnosis)
         eligibility = target_eligibility(
-            twelve, minimum_positive, minimum_negative,
+            representative_ecgs(twelve, protocol["representative_seed"]) if protocol.get("risk_unit") == "patient_representative" else twelve, minimum_positive, minimum_negative,
         )
         eligibility_rows.append({
             "diagnosis_group": diagnosis_group,
@@ -509,6 +531,15 @@ def fit_all_label_policies(
             "risk_limits": constraints,
             "interpretation": _interpretation(diagnosis_group, diagnosis),
         }
+        if protocol.get('crc_alpha') is not None:
+            target_entry['crc_sensitivity'] = {
+                lead: {**fit_patient_crc(
+                    _target_frame(frames[lead], diagnosis_group, diagnosis),
+                    float(protocol['crc_alpha']), int(constraints['threshold_grid_size']),
+                    allow_positive=constraints['max_positive_risk'] is not None,
+                    allow_negative=constraints['max_negative_risk'] is not None,
+                ), 'independent_calibration_verified': checkpoint.get('calibration_independent') is True} for lead in (FULL_LEAD_SET, *lead_sets)
+            }
         if not eligibility["policy_eligible"]:
             policy_targets.append(target_entry)
             continue
@@ -520,6 +551,8 @@ def fit_all_label_policies(
         for lead_index, lead_set in enumerate(lead_sets):
             reduced = _target_frame(frames[lead_set], diagnosis_group, diagnosis)
             paired = pair_lead_predictions(reduced, twelve)
+            if protocol.get('risk_unit') == 'patient_representative':
+                paired = representative_ecgs(paired, protocol['representative_seed'])
             try:
                 decisions, fold_policies = cross_fitted_decisions(
                     paired,
@@ -544,6 +577,17 @@ def fit_all_label_policies(
                 lead_failures.append({"lead_set": lead_set, "reason": str(error)})
                 continue
 
+            if protocol.get('risk_unit') == 'patient_representative':
+                for fitted in [final_policy, *[f['policy'] for f in fold_policies]]:
+                    fitted['method'] = PATIENT_METHOD
+                    fitted['inference_unit'] = 'one_protocol_selected_ecg_per_patient'
+                    fitted['representative_seed'] = protocol['representative_seed']
+                    for stage in ('reduced', FULL_LEAD_SET):
+                        fitted[stage]['risk_control']['inference_unit'] = 'patient_representative'
+                        fitted[stage]['risk_control']['method'] = 'learn-then-test-exact-binomial-bonferroni'
+                for row in feasibility_rows(curves, constraints['confidence'], constraints['threshold_grid_size']):
+                    feasibility.append({'diagnosis_group': diagnosis_group, 'diagnosis': diagnosis,
+                                        'lead_set': lead_set, **row})
             decisions.insert(2, "diagnosis_group", diagnosis_group)
             decisions.insert(3, "diagnosis", diagnosis)
             decisions.insert(4, "lead_set", lead_set)
@@ -599,7 +643,7 @@ def fit_all_label_policies(
             "policy_eligibility": eligibility_config,
             "shared_policy_constraints": protocol["shared_policy_constraints"],
             "execution_protocol": protocol,
-            "method": SEQUENTIAL_METHOD,
+            "method": policy_method(protocol),
         },
         "targets": policy_targets,
     }, policy_path)
@@ -630,6 +674,10 @@ def fit_all_label_policies(
         eligibility_path, decisions_path, curves_path, policy_path,
         validation_metrics_path, report_path,
     ]
+    if feasibility:
+        feasibility_path = run_dir / 'feasibility.csv.gz'
+        atomic_csv_gz(pd.DataFrame(feasibility), feasibility_path)
+        artifacts.append(feasibility_path)
     manifest["artifacts"] = _artifact_entries(run_dir, artifacts)
     manifest["status"] = "complete"
     manifest["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
@@ -670,6 +718,7 @@ def _flatten_policy_metrics(
         "diagnosis_group": diagnosis_group,
         "diagnosis": diagnosis,
         "lead_set": lead_set,
+        "automation_status": "no_automated_decisions" if point["automated_coverage"] == 0 else "automated_decisions_observed",
         **point,
         **{f"patient_{name}": value for name, value in patient.items()},
     }
@@ -724,17 +773,21 @@ def _audit_report(
     policy_metrics: pd.DataFrame,
 ) -> str:
     eligible = int(label_summary.policy_eligible.sum())
-    risk_lines = []
+    risk_lines = [
+        "- Zero automated coverage means insufficient evidence for automation, not demonstrated safety.",
+        "- The patient-representative protocol reports primary policy metrics on one ECG per patient; all-record and repeat-patient results are separate sensitivities.",
+        "- CRC sensitivity controls unconditional patient any-error loss; it does not certify conditional accepted-case error.",
+    ]
     for direction in ("positive", "negative"):
         error = f"trusted_{direction}_error"
-        upper = f"{error}_ci_upper"
+        upper = f"{error}_exact95_upper" if protocol.get("risk_unit") == "patient_representative" else f"{error}_ci_upper"
         limit = f"max_{direction}_risk"
         routes = policy_metrics[policy_metrics[error].notna()] if error in policy_metrics else pd.DataFrame()
         checked = routes.dropna(subset=[upper, limit]) if not routes.empty and upper in routes else pd.DataFrame()
         uncertain = int((checked[upper] > checked[limit]).sum()) if not checked.empty else 0
         risk_lines.append(
             f"- {direction.title()} routes evaluated: {len(routes)}; intervals available: {len(checked)}; "
-            f"bootstrap upper interval above the target-specific limit: {uncertain}."
+            f"descriptive upper interval above the target-specific limit: {uncertain}."
         )
     group_rows = []
     for (group, lead_set), subset in model_metrics.groupby(
@@ -835,6 +888,7 @@ def audit_all_label_policies(
 
     _verify_frozen_bundle(policy_path, policy_payload, policy_manifest, protocol, evaluation_manifest)
 
+    verify_sources(evaluation_dir, evaluation_manifest)
     lead_sets = [str(value) for value in protocol["lead_sets"]]
     schema = evaluation_manifest["label_schema"]
     assert isinstance(schema, dict)
@@ -991,7 +1045,7 @@ def audit_all_label_policies(
                 diagnosis_group,
                 diagnosis,
                 lead_set,
-                decisions,
+                representative_ecgs(decisions, protocol["representative_seed"]) if protocol.get("risk_unit") == "patient_representative" else decisions,
                 bootstrap,
                 seed + target_index * 1009 + lead_index,
             )
@@ -1000,7 +1054,15 @@ def audit_all_label_policies(
                 max_positive_risk=limits["max_positive_risk"],
                 max_negative_risk=limits["max_negative_risk"],
                 interpretation=_interpretation(diagnosis_group, diagnosis),
+                inference_unit=protocol.get("risk_unit", "record"),
             )
+            if protocol.get('risk_unit') == 'patient_representative':
+                policy_row['risk_interval_method'] = 'patient_binomial_exact_95_descriptive'
+                for direction in ('positive', 'negative'):
+                    lower, upper = exact_binomial_interval(
+                        policy_row[f'trusted_{direction}_errors'], policy_row[f'trusted_{direction}_records'])
+                    policy_row[f'trusted_{direction}_error_exact95_lower'] = lower
+                    policy_row[f'trusted_{direction}_error_exact95_upper'] = upper
             policy_rows.append(policy_row)
             subgroup_rows.extend(_batch_subgroup_rows(
                 decisions,
@@ -1010,6 +1072,17 @@ def audit_all_label_policies(
                 minimum_subgroup_records,
             ))
 
+    sensitivity_rows = []
+    crc_rows = []
+    for entry in policy_payload['targets']:
+        group, diagnosis = entry['diagnosis_group'], entry['diagnosis']
+        for lead, crc in entry.get('crc_sensitivity', {}).items():
+            crc_rows.append({'diagnosis_group': group, 'diagnosis': diagnosis, 'lead_set': lead,
+                             **apply_patient_crc(_target_frame(frames[lead], group, diagnosis), crc)})
+    for decisions in decision_frames:
+        identity = {key: decisions.iloc[0][key] for key in ('diagnosis_group', 'diagnosis', 'lead_set')}
+        sensitivity_rows.extend({**identity, **row} for row in repeat_sensitivity(
+            decisions, protocol.get('representative_seed', 42)))
     label_summary = pd.DataFrame(label_rows)
     model_metrics = pd.DataFrame(model_rows)
     policy_metrics = pd.DataFrame(policy_rows) if policy_rows else pd.DataFrame(columns=[
@@ -1045,6 +1118,11 @@ def audit_all_label_policies(
         label_path, model_path, policy_metrics_path, subgroup_path, contrasts_path,
         calibration_path, risk_path, decisions_path, report_path,
     ]
+    for name, rows in (('repeat_ecg_sensitivity', sensitivity_rows), ('crc_sensitivity', crc_rows)):
+        if rows:
+            extra_path = run_dir / f'{name}.csv.gz'
+            atomic_csv_gz(pd.DataFrame(rows), extra_path)
+            artifacts.append(extra_path)
     manifest["artifacts"] = _artifact_entries(run_dir, artifacts)
     manifest["status"] = "complete"
     manifest["completed_at_utc"] = datetime.now(timezone.utc).isoformat()

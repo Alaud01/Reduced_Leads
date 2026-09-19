@@ -250,3 +250,64 @@ class PolicyWorkflowTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PatientSpecialistWorkflowTest(unittest.TestCase):
+    setUp = PolicyWorkflowTest.setUp
+    export = PolicyWorkflowTest.export
+
+    def make_bundle(self, split):
+        import shutil
+        from src.assemble_evaluation import assemble
+        y = np.arange(160) % 2
+        source = self.export(split, {('rhythm', 'AFIB'): y, ('rhythm', 'AFLT'): np.zeros(160, dtype=int)})
+        directories = {}
+        for lead, digest in [('2-lead', 'b'*64), ('12-lead', 'c'*64)]:
+            directory = self.root / f'{split}-{lead}'
+            shutil.copytree(source, directory)
+            manifest_path = directory / 'manifest.json'
+            manifest = json.loads(manifest_path.read_text())
+            manifest['checkpoint'] = {'sha256': digest, 'calibration_independent': True, 'training_lead_set': lead}
+            manifest['dataset'] = {'root': '/mac/data' if lead == '2-lead' else '/runpod/data', 'version': '1.0.3'}
+            manifest['evaluation']['lead_sets'] = {lead: list(LEAD_SUBSETS[lead])}
+            manifest_path.write_text(json.dumps(manifest))
+            directories[lead] = directory
+        return assemble(directories['2-lead'], directories['12-lead'], '2-lead', split, self.root / f'bundle-{split}')
+
+    def test_two_models_patient_policy_and_crc_audit_without_refitting(self):
+        val = self.make_bundle('val')
+        test = self.make_bundle('test')
+        config = json.loads(Path('protocol/use_contract_v2.json').read_text())
+        config['uncertainty']['replicates'] = 0
+        protocol = self.root / 'patient-protocol.json'
+        protocol.write_text(json.dumps(config))
+        run = fit_contract_policies(val, protocol, self.output, 'patient-fit', ['2-lead'])
+        payload = json.loads((run / 'policy.json').read_text())
+        self.assertEqual(payload['configuration']['method'], 'patient-representative-ltt-routed-v3')
+        self.assertTrue((run / 'feasibility.csv.gz').is_file())
+        with patch('src.audit_all_labels.fit_sequential_policy', side_effect=AssertionError('refit')), \
+             patch('src.audit_all_labels.fit_patient_crc', side_effect=AssertionError('CRC refit')):
+            audit = audit_contract_policies(test, run / 'policy.json', protocol, self.output, 'patient-audit')
+        self.assertTrue((audit / 'repeat_ecg_sensitivity.csv.gz').is_file())
+        self.assertTrue((audit / 'crc_sensitivity.csv.gz').is_file())
+        crc = pd.read_csv(audit / 'crc_sensitivity.csv.gz')
+        self.assertEqual(len(crc), 6)  # AFIB, AFLT, composite x two standalone models
+        manifest = json.loads((test / 'manifest.json').read_text())
+        self.assertEqual(manifest['checkpoint']['stage_checkpoint_sha256'], {'2-lead': 'b'*64, '12-lead': 'c'*64})
+
+    def test_rejects_dependent_model_before_prediction_read(self):
+        from src.audit_all_labels import _validate_evaluation_manifest, load_all_label_protocol
+        val = self.make_bundle('val')
+        manifest = json.loads((val / 'manifest.json').read_text())
+        manifest['checkpoint']['calibration_independent'] = False
+        protocol = load_all_label_protocol(Path('protocol/use_contract_v2.json'), ['2-lead'])
+        with self.assertRaisesRegex(ValueError, 'independent'):
+            _validate_evaluation_manifest(manifest, 'val', protocol)
+
+    def test_stage_source_mutation_is_rejected(self):
+        from src.assemble_evaluation import verify_sources
+        val = self.make_bundle('val')
+        manifest = json.loads((val / 'manifest.json').read_text())
+        Path(manifest['stage_sources'][0]['path']).write_text('{}')
+        with self.assertRaisesRegex(ValueError, 'source artifact hash'):
+            verify_sources(val, manifest)

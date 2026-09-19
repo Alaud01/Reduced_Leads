@@ -375,6 +375,9 @@ def main() -> None:
     if norm_source != "checkpoint":
         print(f"[evaluate] warning: normalization {norm_source}")
 
+    checkpoint_train_cfg = checkpoint.get("train_cfg")
+    if not isinstance(checkpoint_train_cfg, Mapping):
+        checkpoint_train_cfg = {}
     manifest = {
         "schema_version": 1,
         "status": "in_progress",
@@ -386,11 +389,22 @@ def main() -> None:
             "epoch": checkpoint.get("epoch"),
             "training_run_id": checkpoint.get("run_id"),
             "training_seed": checkpoint.get("seed"),
+            "selection_fold": checkpoint_train_cfg.get("selection_fold", 9),
+            "calibration_independent": (checkpoint.get("checkpoint_schema_version") == 3
+                and checkpoint.get("resume_contract", {}).get("split_design") == "train1-7_select8_calibrate9_audit10"
+                and checkpoint_train_cfg.get("selection_fold", 9) == 8),
+            "training_lead_set": checkpoint_train_cfg.get(
+                "training_lead_set", "legacy-random"
+            ),
+            "selection_lead_set": checkpoint.get(
+                "selection_lead_set", "12-lead"
+            ),
         },
         "dataset": {
             "root": DATA_ROOT,
             "version": Path(DATA_ROOT).name.rsplit("-", 1)[-1],
-            "train_folds": list(TRAIN_FOLDS),
+            "train_folds": [f for f in TRAIN_FOLDS if f != checkpoint_train_cfg.get("selection_fold", 9)],
+            "model_selection_fold": checkpoint_train_cfg.get("selection_fold", 9),
             "validation_fold": VAL_FOLD,
             "test_fold": TEST_FOLD,
         },

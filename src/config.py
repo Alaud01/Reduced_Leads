@@ -99,6 +99,7 @@ class TrainCfg:
     use_amp: bool = True
     # Optim
     batch_size: int = 64              # M4 saturation point (32 under-utilizes GPU, 128 gives nothing extra)
+    num_workers: int = 2              # set 0 where process/shared-memory workers are unavailable
     lr: float = 1e-4
     weight_decay: float = 1e-4
     epochs: int = 50
@@ -109,6 +110,13 @@ class TrainCfg:
     w_sub: float = 1.0
     w_rhythm: float = 0.5
     w_lead_presence: float = 0.2      # auxiliary regularizer
+    # Fold 9 is reserved for policy calibration; fold 8 selects checkpoints.
+    selection_fold: int = 8
+    selection_lead: str | None = None
+    # Input regime. ``random`` trains the shared lead-aware model with lead
+    # dropping; a canonical LEAD_SUBSETS key trains a direct fixed-lead
+    # comparator using exactly that subset for every sample.
+    training_lead_set: str = "random"
     # Lead-dropping augmentation
     drop_min: int = 0                 # min leads dropped per sample (0 = keep all)
     drop_max: int = 10                # max leads dropped per sample (10 => min 2 kept)

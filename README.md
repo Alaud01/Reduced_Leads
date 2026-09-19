@@ -106,7 +106,12 @@ Gradient checkpointing keeps training within 24 GB Apple Silicon MPS memory.
 python -m src.train                  # full run (50 epochs)
 python -m src.train --quick          # smoke test (1 epoch, 256 records)
 python -m src.train --device cpu     # force CPU
+python -m src.train --train-lead-set 12-lead --out-dir checkpoints/fixed-12
+python -m src.train --train-lead-set 2-lead --out-dir checkpoints/fixed-I-II
 ```
+
+Use `--num-workers 0` on restricted hosts without multiprocessing/shared-memory
+support; Runpod can generally retain the default of 2 or use a larger value.
 
 Per run it:
 
@@ -114,13 +119,17 @@ Per run it:
    per-worker augmentation RNGs;
 2. writes `checkpoints/train_manifest_<run_id>.json` (config, normalization
    stats and provenance, label schema, versions);
-3. trains with the multi-task loss under lead-dropping augmentation, logging
-   batch metrics to `train_log.jsonl` (entries tagged with `run_id`);
-4. evaluates 12-lead validation every epoch, and all canonical subsets on the
-   first, last, and every fifth epoch (`--eval-full-every` controls the cadence);
-5. tracks the best checkpoint by **12-lead superclass macro-AUC** and saves
-   `best.pt` / `last.pt`, both embedding `model_cfg`, `train_cfg`, normalization
-   arrays, and `label_schema`;
+3. trains with the multi-task loss under random lead dropping by default, or
+   directly on one fixed canonical subset selected with `--train-lead-set`;
+   the lead-presence auxiliary loss is disabled for fixed inputs because its
+   target would be constant;
+4. for the random-lead model, evaluates 12-lead validation every epoch and all
+   subsets periodically; fixed-lead comparators evaluate only their matching
+   input subset;
+5. selects the best checkpoint by superclass macro-AUC on **12 leads for the
+   random model, or the matching fixed lead set for a direct comparator**;
+   `best.pt` and the epoch-boundary `last.pt` contain model, optimizer,
+   scheduler, AMP scaler, normalization, configuration, and label schema state;
 6. renders `training_curves.png` from the JSONL log for the current run.
 
 Automatic mixed precision (AMP) uses FP16 for suitable GPU operations while
@@ -132,6 +141,19 @@ learning-rate schedule advances only after a successful update. Logged `step`
 still counts processed batches; `optimizer_updated` identifies whether the
 logged batch updated weights. Use `--grad-ckpt` to enable gradient checkpointing
 when additional memory savings are needed.
+
+Interrupted schema-v3 runs can resume at the next epoch without restarting the
+learning-rate schedule:
+
+```bash
+python -m src.train --resume checkpoints/fixed-I-II/last.pt --device cuda
+```
+
+Resume preserves random state and freezes the seed, schedule, validation IDs/limit,
+label order, waveform-content fingerprints, architecture, device and worker count.
+Copy the complete run directory, including `last.pt`, `best.pt` and its training
+manifest. Earlier checkpoint schemas remain usable for inference but are refused
+for faithful resume. See [the research protocol](RESEARCH_PROTOCOL.md) for details.
 
 ## Evaluation — `src/evaluate.py`
 
@@ -185,6 +207,19 @@ Evaluation runs over the canonical named sets in `src/config.py` (`LEAD_SUBSETS`
 `12-lead`, `6-lead-limb`, `4-lead`, `3-lead`, `2-lead`, `1-lead-I`, `1-lead-II`.
 These names are stable and are persisted in prediction artifacts; select them
 with `--lead-sets`.
+
+For direct-model comparisons, export the fixed model only on the lead set it
+was trained on, and export the random model on that same lead set:
+
+```bash
+python -m src.evaluate --checkpoint checkpoints/fixed-12/best.pt \
+  --lead-sets 12-lead --run-name fixed-12-val
+python -m src.evaluate --checkpoint checkpoints/fixed-I-II/best.pt \
+  --lead-sets 2-lead --run-name fixed-I-II-val
+```
+
+Evaluation manifests record both the checkpoint's training lead regime and its
+model-selection lead set so results cannot be silently mixed across regimes.
 
 ### Artifacts
 
@@ -255,11 +290,13 @@ Outputs under `artifacts/selective/<run>/`:
   raw-versus-calibrated metrics, and patient-bootstrap 95% intervals;
 - `calibration.png`, `risk_coverage.png`, and `actions.png`.
 
-The exact binomial bounds assume independent records. Patient-grouped partitions
+The historical single-target/v1 exact binomial bounds assume independent records. Patient-grouped partitions
 and cluster bootstrap intervals do not remove the known repeat-ECG limitation.
-This is not yet the project’s final conformal method or a clinical guarantee under
-distribution shift. External validation and explicit conformal sensitivity
-analyses remain on the roadmap.
+The new v2 all-label workflow uses one outcome-blind ECG per patient for primary
+conditional risk, with separate patient-cluster conformal and repeat-ECG
+sensitivities. See [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md). External
+validation remains necessary; these methods do not guarantee performance under
+distribution shift.
 
 ## Locked test audit — `src/audit_policy.py`
 
@@ -403,3 +440,13 @@ output directory to use the corrected method; they are not silently upgraded.
 The additional independent risk partition can reduce coverage. Existing test
 fold reuse remains exploratory, and the correction does not create an untouched
 confirmatory cohort or resolve the repeat-ECG limitation of record-level bounds.
+
+## Patient-level v2 research workflow
+
+[RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md) documents the independent model-selection
+split, matched training comparisons, schema-v3 resume, specialist-model assembly,
+patient-level risk control, conformal sensitivity, repeat-ECG analysis and explicit
+zero-coverage reporting. New training uses folds 1–7 for fitting, fold 8 for
+checkpoint selection, and reserves fold 9 for policy calibration. Use
+`protocol/use_contract_v2.json` for new independent runs. Historical checkpoints
+are accepted only by the separately labeled legacy exploratory protocol.

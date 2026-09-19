@@ -401,15 +401,17 @@ def pair_lead_predictions(reduced: pd.DataFrame, twelve: pd.DataFrame) -> pd.Dat
     left = reduced[["ecg_id", "target", "logit", *metadata]].rename(
         columns={"logit": "reduced_logit"},
     )
-    right = twelve[["ecg_id", "target", "logit"]].rename(
-        columns={"target": "twelve_target", "logit": "twelve_logit"},
+    right = twelve[["ecg_id", "patient_id", "target", "logit"]].rename(
+        columns={"target": "twelve_target", "logit": "twelve_logit", "patient_id": "twelve_patient_id"},
     )
     paired = left.merge(right, on="ecg_id", how="inner", validate="one_to_one")
     if len(paired) != len(reduced) or len(paired) != len(twelve):
         raise ValueError("reduced and 12-lead prediction files have different ECG IDs")
     if not np.array_equal(paired.target.to_numpy(), paired.twelve_target.to_numpy()):
         raise ValueError("reduced and 12-lead targets disagree")
-    return paired.drop(columns="twelve_target")
+    if not paired.patient_id.equals(paired.twelve_patient_id):
+        raise ValueError("reduced and 12-lead patient IDs disagree")
+    return paired.drop(columns=["twelve_target", "twelve_patient_id"])
 
 
 def fit_sequential_policy(

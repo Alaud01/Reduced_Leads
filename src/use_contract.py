@@ -219,6 +219,10 @@ def execution_protocol(contract: Dict[str, Any], lead_sets: Sequence[str] | None
         "calibration_bins": int(uncertainty["calibration_bins"]),
         "minimum_subgroup_records": int(uncertainty["minimum_subgroup_records"]),
         "composite_scoring": COMPOSITE_SCORING_V1,
+        **({"risk_unit": stats["risk_unit"],
+            "representative_seed": int(stats["representative_seed"]),
+            "require_independent_calibration": bool(stats["require_independent_calibration"]),
+            "crc_alpha": stats["crc_alpha"]} if "risk_unit" in stats else {}),
         "use_contract": contract,
     }
 

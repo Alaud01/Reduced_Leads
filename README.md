@@ -13,6 +13,10 @@ calibration, selective prediction, and later conformal risk control.
 
 See `PROJECT.md` for the research scope and `DATASET.md` for dataset details.
 
+Open [training-pipeline.html](training-pipeline.html) in a browser for an animated,
+SVG-only walkthrough of the training pipeline. It runs locally without a server
+or dependencies, with play/pause, replay, and stage selection controls.
+
 ## Repository layout
 
 ```

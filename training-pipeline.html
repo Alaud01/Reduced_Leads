@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training pipeline · Reduced Leads</title>
+<style>
+:root{
+  --bg:#ffffff;--fg:#111111;--muted:#666666;--line:#d4d4d4;--light:#f5f5f5;
+  --green:#0a8a5f;--yellow:#c19a00;--red:#c92a2a;--ecg:#c92a2a;
+  --amber-bg:#fbf6e7;--amber-line:#cbb45a;--green-bg:#edf5f1;--yellow-bg:#fdf8e0;--red-bg:#fdecec;
+}
+*{box-sizing:border-box;border-radius:0!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,a{touch-action:manipulation}button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+header,main,footer{max-width:1140px;margin:auto;padding:0 28px}
+header{height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600}
+.brand svg{width:26px;height:26px}
+a{color:inherit;text-decoration:none}
+header a{font-size:12px;color:var(--muted)}
+.eyebrow{letter-spacing:2px;font-size:10px;font-weight:700;color:var(--muted)}
+.intro{padding:26px 0 20px;display:flex;justify-content:space-between;gap:24px;align-items:end}
+h1{font-size:clamp(24px,3.4vw,36px);line-height:1.15;letter-spacing:-1px;font-weight:600;margin:6px 0 6px}
+.intro p{color:var(--muted);margin:0;max-width:520px;font-size:13px}
+.tag{white-space:nowrap;border:1px solid var(--line);padding:6px 12px;font-size:10px;letter-spacing:1.5px;color:var(--muted)}
+.player{border:1px solid var(--fg);overflow:hidden;background:#fff}
+.stage-top{display:flex;justify-content:space-between;padding:12px 18px;font-size:10px;letter-spacing:1.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.stage-top span:first-child{color:var(--fg);font-weight:600}
+.canvas{background:#fff;overflow:hidden;padding:8px}
+.canvas svg{display:block;width:100%;height:auto;max-height:400px;min-height:220px}
+svg text{font-family:inherit;fill:var(--fg)}
+svg .minor{fill:var(--muted);font-size:12px}
+svg .label{font-size:13px}
+svg .tiny{fill:var(--muted);font-size:10px;letter-spacing:.6px}
+svg .wire{fill:none;stroke:var(--fg);stroke-width:1;opacity:.4}
+svg .flow{fill:none;stroke:var(--fg);stroke-width:1.2}
+svg .signal{fill:none;stroke:var(--ecg);stroke-width:1.5;stroke-linecap:square}
+.caption{padding:14px 18px;border-top:1px solid var(--line)}
+.caption h2{margin:0 0 3px;font-size:16px;font-weight:600;letter-spacing:-.2px}
+.caption p{margin:0;color:var(--muted);font-size:13px;max-width:720px}
+.controls{display:flex;gap:10px;align-items:center;border-top:1px solid var(--line);padding:10px 18px}
+.play{border:1px solid var(--fg);background:var(--fg);color:#fff;padding:6px 18px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+.plain{border:1px solid var(--line);background:#fff;color:var(--fg);padding:6px 14px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+.plain:hover{border-color:var(--fg)}
+.timeline{flex:1;accent-color:var(--fg);min-width:90px}
+.count{font-size:12px;color:var(--muted);min-width:52px;text-align:right;letter-spacing:1px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0;border:1px solid var(--line);border-top:none}
+.step{background:#fff;border:none;border-right:1px solid var(--line);padding:12px 10px;text-align:left;font-size:12px;color:var(--muted)}
+.step:last-child{border-right:none}
+.step span{display:block;font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-bottom:3px}
+.step[aria-current="step"]{color:var(--fg);box-shadow:inset 0 -3px 0 var(--fg);background:var(--light)}
+footer{display:flex;justify-content:space-between;padding:20px 28px 34px;font-size:10px;letter-spacing:1.5px;color:var(--muted)}
+.reveal{opacity:0;animation:reveal .5s cubic-bezier(.2,.7,.3,1) var(--delay,0s) forwards}
+.enter{opacity:0;transform:translateX(30px);animation:enter .7s cubic-bezier(.2,.7,.3,1) .3s forwards}
+.zoom{opacity:0;transform:scale(.94);transform-origin:center;animation:zoom .6s linear .15s forwards}
+.compress{transform:scale(1);animation:compress 1.1s cubic-bezier(.2,.7,.3,1) .25s forwards}
+@keyframes reveal{to{opacity:1}}
+@keyframes enter{to{opacity:1;transform:none}}
+@keyframes zoom{to{opacity:1;transform:none}}
+@keyframes compress{to{transform:scale(.9)}}
+.wobble{animation:wobbleX var(--dur,1.05s) cubic-bezier(.3,.7,.3,1) var(--delay,0s) both}
+@keyframes wobbleX{
+  0%{transform:translateX(var(--a,34px));opacity:.05}
+  35%{transform:translateX(var(--b,-20px));opacity:1}
+  62%{transform:translateX(var(--c,8px))}
+  82%{transform:translateX(var(--d,-3px))}
+  100%{transform:translateX(0);opacity:1}
+}
+.canvas.still .reveal,.canvas.still .enter,.canvas.still .zoom,.canvas.still .compress,.canvas.still .wobble,.canvas.paused .reveal,.canvas.paused .enter,.canvas.paused .zoom,.canvas.paused .compress,.canvas.paused .wobble{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){.reveal,.enter,.zoom,.compress,.wobble{animation:none!important}}
+@media (max-width:640px){.controls{flex-wrap:wrap}.intro{flex-direction:column;align-items:start}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="training-pipeline.html"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M1 16h7l3-9 5 18 4-12 3 3h6" fill="none" stroke="#c92a2a" stroke-width="2"/></svg>Reduced Leads</a><a href="ptb-xl-overview.html">Dataset ↗</a></header>
+<main>
+<section class="player" aria-label="Animated training pipeline">
+<div class="stage-top"><span id="scene-label">01 / THE DATA SOURCE</span><span>SCHEMATIC</span></div>
+<div class="canvas" id="canvas"></div>
+<div class="caption" aria-live="polite"><h2 id="title"></h2><p id="description"></p></div>
+<div class="controls"><button class="play" id="play">Pause</button><button class="plain" id="restart" aria-label="Replay pipeline">Replay</button><input class="timeline" id="timeline" type="range" min="0" max="7" step="1" value="0" aria-label="Pipeline stage"><span class="count" id="count">01 / 08</span><button class="plain" id="next" aria-label="Next stage">Next</button></div>
+</section>
+<nav class="steps" id="steps" aria-label="Jump to a stage"></nav>
+</main><footer><span>PTB-XL · LEAD-AWARE TRANSFORMER</span><span>Illustrative · SVG</span></footer>
+<script>
+const $=id=>document.getElementById(id);
+const green='#0a8a5f',yellow='#c19a00',red='#c92a2a',ink='#111',line='#d4d4d4',lightBg='#f5f5f5',greenBg='#edf5f1',amberBg='#fbf6e7',amberLine='#cbb45a';
+const txt=(x,y,s,cls='label',extra='')=>`<text x="${x}" y="${y}" class="${cls}" ${extra}>${s}</text>`;
+const rect=(x,y,w,h,fill='#fff',stroke=line)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}"/>`;
+const path=(d,cls='wire',extra='')=>`<path d="${d}" class="${cls}" ${extra}/>`;
+const arrow=(x,y,w=85)=>path(`M${x} ${y}h${w}`,'flow','marker-end="url(#arrow)"');
+function wave(x,y,w=160,h=25){const pts=[[0,0],[.12,0],[.17,-.12],[.21,0],[.3,0],[.34,.2],[.38,-1],[.42,.5],[.46,0],[.58,0],[.65,-.23],[.73,0],[1,0]];return path(pts.map(([a,b],i)=>`${i?'L':'M'}${x+a*w} ${y+b*h}`).join(' '),'signal');}
+const names=['I','II','III','aVR','aVL','aVF','V1','V2','V3','V4','V5','V6'];
+function card(x,y,name,w=180,h=66,color=ink){return `<g>${rect(x,y,w,h,'#fff',color)}${txt(x+10,y+16,name,'tiny')}${wave(x+10,y+h*.64,w-20,14)}</g>`;}
+function grid(split=false){let s='';for(let i=0;i<40;i++){let c=split?(i<32?green:i<36?yellow:red):line;let x=146+(i%10)*73,y=76+Math.floor(i/10)*59;s+=`<g class="reveal" style="--delay:${i*.025}s">${rect(x,y,61,45,'#fff',c)}${path(`M${x+8} ${y+26}h10l4-10 5 18 4-8h20`,'signal',`style="stroke:${c};stroke-width:1.3"`)}</g>`;}return s;}
+function jitter(i){const s=(k)=>{const t=Math.sin((i+1)*127.1+k*311.7)*43758.5453;return t-Math.floor(t)};return {a:26+s(1)*48,b:-(14+s(2)*34),c:6+s(3)*16,d:-(3+s(4)*8),delay:s(5)*.35,dur:.95+s(6)*.55};}
+const scenes=[
+{nav:'Download',label:'DATA SOURCE',title:'A dataset, ready to explore.',description:'PTB-XL from PhysioNet: ECG waveforms with patient metadata and diagnostic labels.',draw:()=>`${rect(132,89,232,168)}${path('M198 162c-20-30 11-57 34-43 14-39 74-27 75 9 38 0 38 48 7 48H209','signal')}${txt(248,216,'PhysioNet','label','text-anchor="middle"')}${arrow(390,170,190)}<g class="enter">${rect(618,78,227,190)}${path('M653 116h157M653 137h157M653 158h157','wire')}${wave(653,206,156,24)}${txt(730,247,'PTB-XL / records100','minor','text-anchor="middle"')}</g>${txt(500,317,'Waveforms + metadata + labels','minor','text-anchor="middle"')}`},
+{nav:'Separate leads',label:'TWELVE VIEWS',title:'One recording. Twelve leads.',description:'Each ECG is split into synchronized channels — different views of the same heartbeat, not separate patients.',draw:()=>`${card(120,144,'12-LEAD RECORDING',235,110)}${arrow(383,199,120)}${['I','II','III'].map((n,i)=>`<g class="reveal" style="--delay:${i*.5}s">${card(562,66+i*90,n,275,67)}${path(`M525 199V${99+i*90}h37`,'wire')}</g>`).join('')}${txt(700,354,'3 of 12 synchronized channels','minor','text-anchor="middle"')}`},
+{nav:'Zoom out',label:'FULL PICTURE',title:'Step back. See every lead.',description:'All twelve channels: six limb leads and six chest leads, 1,000 samples each.',draw:()=>`<g class="zoom">${names.map((n,i)=>card(100+(i%4)*210,63+Math.floor(i/4)*91,n,180,66)).join('')}</g>${txt(500,354,'12 leads × 1,000 samples × 21,799 recordings','minor','text-anchor="middle"')}`},
+{nav:'Split dataset',label:'PATIENT-LEVEL SPLITS',title:'Separate learning from evaluation.',description:'Official fold overview. Split by patient, not by lead; the test pool stays untouched until audit.',draw:()=>`${grid(true)}${[[green,'Train / development',145],[yellow,'Val / calibration',471],[red,'Test (locked)',743]].map(([c,t,x])=>`<circle cx="${x}" cy="336" r="4" fill="${c}"/>${txt(x+12,340,t,'minor')}`).join('')}`},
+{nav:'Build tensors',label:'SIGNALS INTO NUMBERS',title:'Pack waveforms into tensors.',description:'Normalize with training-derived statistics, arrange as lead × time, and mark dropped channels with a lead mask.',draw:()=>`<g class="compress">${[0,1,2].map(i=>card(105,72+i*83,names[i],265,66)).join('')}</g>${arrow(404,188,113)}<g class="reveal" style="--delay:1s">${rect(569,67,309,224)}${txt(590,95,'LEAD','tiny')}${txt(654,95,'t₁       t₂       t₃       …       t₁₀₀₀','tiny')}${[0,1,2,3,4].map((i)=>`${path(`M582 ${110+i*35}h284`,'wire')}${txt(593,133+i*35,names[i],'minor')}${txt(657,133+i*35,['0.12    0.08   −0.21    …','0.04    0.17     0.82    …','−0.03   0.11     0.42    …','0.07   −0.04    0.13    …','0.10    0.06   −0.09    …'][i],'minor')}`).join('')}</g>${txt(500,346,'Batch × 12 leads × 1,000 samples + lead mask','minor','text-anchor="middle"')}`},
+{nav:'Neural network',label:'LEAD-AWARE LEARNING',title:'Local patterns into context.',description:'Tokenize leads into patches, mix across leads (green) then across time (yellow), pool, and read out the four scoring heads.',draw:()=>`${[['Patches','leads → tokens',112,'#fff',['#e5e5e5','#e5e5e5','#e5e5e5','#e5e5e5']],['Lead attention','mix across leads',335,'#edf5f1',['#d6e8db','#d6e8db','#d6e8db','#d6e8db']],['Time attention','mix across patches',558,'#fdf8e0',['#efe6bd','#efe6bd','#efe6bd','#efe6bd']],['Pool + heads','scoring',781,'#f5f5f5',['#0a8a5f','#c19a00','#c92a2a','#d4d4d4']]].map(([title,sub,x,bg,chips],i)=>`<g class="reveal" style="--delay:${i*.4}s">${rect(x,80,135,180,bg)}${[0,1,2,3].map(j=>rect(x+23,100+j*30,89,18,chips[j],'none')).join('')}${txt(x+67,290,title,'label','text-anchor="middle"')}${txt(x+67,310,sub,'tiny','text-anchor="middle"')}</g>${i<3?arrow(x+145,168,67):''}`).join('')}${txt(500,42,'6 lead-attention + 6 time-attention blocks','minor','text-anchor="middle"')}<g>${rect(300,332,400,30,'#fff',line)}<circle cx="315" cy="347" r="4" fill="${green}"/>${txt(325,351,'lead-aware','tiny')}<circle cx="410" cy="347" r="4" fill="${yellow}" stroke="#8a7300" stroke-width="1"/>${txt(420,351,'time-aware','tiny')}${txt(505,351,'green = leads · yellow = time','tiny')}</g>`},
+{nav:'Predict',label:'MODEL OUTPUTS · LOCKED TEST',title:'Strongest diagnoses still work at 2 leads.',description:'Locked fold-10 readout of the lead-aware model (see REFERENCES). NORM is the best superclass; AFIB is the primary rhythm. Bars = AUROC; black 2-lead, green 12-lead.',draw:()=>`${rect(60,100,245,165)}${txt(72,122,'LEAD-AWARE MODEL','tiny')}${txt(182,148,'PTB-XL · locked test','tiny','text-anchor="middle"')}${txt(182,170,'2-lead vs 12-lead','minor','text-anchor="middle"')}${wave(72,195,221,16)}${txt(182,232,'patient split · fold 10','tiny','text-anchor="middle"')}${txt(182,250,'n = 2,198 ECGs','tiny','text-anchor="middle"')}${arrow(322,182,68)}${['NORM','STTC','AFIB','MI','CD'].map((n,i)=>{let t=[.937,.926,.967,.909,.897][i],r=[.909,.896,.957,.867,.843][i],rowY=62+i*52;return `<g>${txt(410,rowY+28,n,'minor')}${[r,t].map((v,j)=>{let q=jitter(i*7+j);let by=rowY+(j?26:8);return `<g class="wobble" style="--a:${q.a}px;--b:${q.b}px;--c:${q.c}px;--d:${q.d}px;--delay:${.15+i*.06+j*.05+q.delay}s;--dur:${q.dur}s"><rect x="500" y="${by}" width="275" height="14" fill="${lightBg}"/><rect x="500" y="${by}" width="${Math.round(275*v)}" height="14" fill="${j?green:'#000'}"/></g>`}).join('')}${txt(786,rowY+19,r.toFixed(3),'tiny')}${txt(786,rowY+37,t.toFixed(3),'tiny')}</g>`}).join('')}${txt(410,352,'AUROC · held-out test fold','tiny')}<circle cx="600" cy="348" r="4" fill="#000"/>${txt(610,352,'2-lead','tiny')}<circle cx="680" cy="348" r="4" fill="${green}"/>${txt(690,352,'12-lead','tiny')}`},
+{nav:'Calculate error',label:'LEARNING LOOP',title:'Compare. Calculate. Learn.',description:'Weighted binary cross-entropy across all heads; backpropagate and update weights. Val and test never update weights.',draw:()=>`${rect(95,80,230,169)}${txt(115,108,'PREDICTION → TARGET','tiny')}${['NORM     0.82 → 1','MI             0.12 → 0','STTC       0.26 → 0'].map((s,i)=>txt(116,149+i*33,s,'label')).join('')}${arrow(345,165,92)}<g class="reveal" style="--delay:.6s">${rect(460,96,200,135,amberBg,amberLine)}${txt(560,130,'BINARY CROSS-ENTROPY','tiny','text-anchor="middle"')}${txt(560,166,'−log(0.82) = 0.198','label','text-anchor="middle"')}${txt(560,196,'NORM example · y = 1','tiny','text-anchor="middle"')}</g>${arrow(681,165,71)}<g class="reveal" style="--delay:1.3s">${rect(776,110,136,109,greenBg)}${txt(844,151,'Combine losses','label','text-anchor="middle"')}${txt(844,178,'Update weights','minor','text-anchor="middle"')}</g>${path('M844 235v64H210v-35','flow','marker-end="url(#arrow)"')}${txt(520,324,'Backpropagate → optimizer step → next batch','minor','text-anchor="middle"')}`}
+];
+let index=0,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,elapsed=0,last=performance.now();
+const duration=8500;
+$('steps').innerHTML=scenes.map((s,i)=>`<button class="step" data-index="${i}"><span>${String(i+1).padStart(2,'0')}</span>${s.nav}</button>`).join('');
+function syncPlay(){ if(playing)$('canvas').classList.remove('still'); $('play').textContent=playing?'Pause':'Play';$('play').setAttribute('aria-label',playing?'Pause animation':'Play animation');$('canvas').classList.toggle('paused',!playing); }
+function render(){$('canvas').classList.toggle('still',!playing);let s=scenes[index];$('canvas').innerHTML=`<svg viewBox="0 0 1000 390" role="img" aria-labelledby="svgtitle svgdesc"><title id="svgtitle">${s.title}</title><desc id="svgdesc">${s.description}</desc><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="${ink}" stroke-width="1.5"/></marker></defs>${s.draw()}</svg>`;$('title').textContent=s.title;$('description').textContent=s.description;$('scene-label').textContent=`${String(index+1).padStart(2,'0')} / ${s.label}`;$('count').textContent=`${String(index+1).padStart(2,'0')} / 08`;$('timeline').value=index;$('timeline').setAttribute('aria-valuetext',`${index+1}: ${s.nav}`);document.querySelectorAll('.step').forEach((b,i)=>{if(i===index)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});syncPlay();}
+function go(i){index=i;elapsed=0;render();}
+$('play').onclick=()=>{if(!playing&&index===7&&elapsed>=duration)go(0);playing=!playing;last=performance.now();syncPlay();};
+$('restart').onclick=()=>{playing=true;go(0);};
+$('next').onclick=()=>go((index+1)%scenes.length);
+$('timeline').oninput=e=>{go(Number(e.target.value));};
+$('steps').onclick=e=>{let b=e.target.closest('button');if(b){go(Number(b.dataset.index));}};
+function tick(now){if(playing&&!document.hidden){elapsed+=Math.min(now-last,100);if(elapsed>=duration){if(index<7)go(index+1);else{playing=false;syncPlay();}}}last=now;requestAnimationFrame(tick);}
+render();requestAnimationFrame(tick);
+</script>
+</body>
+</html>

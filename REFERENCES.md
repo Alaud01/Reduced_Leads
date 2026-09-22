@@ -2,7 +2,7 @@
 
 This file tracks the evidence used in `AFIB_EVALUATION_PROTOCOL.md`,
 `ALL_LABEL_EVALUATION_PROTOCOL.md`, and `USE_CONTRACT.md`. Links point to the
-paper, publisher, PubMed record, or official dataset page. Accessed 2026-09-07.
+paper, publisher, PubMed record, or official dataset page. Accessed 2026-09-20.
 Citation keys are stable identifiers for project documents.
 
 ## ECG datasets, reduced leads, and model studies
@@ -37,6 +37,35 @@ Official dataset: [PhysioNet Challenge 2021 v1.0.3](https://physionet.org/conten
 Used for: canonical 12-, 6-, 4-, 3-, and 2-lead comparisons and evidence that
 reduced-lead performance must be evaluated separately across diagnoses and data
 sources.
+
+### `reyna2022_multilead_challenge`
+
+Reyna MA, Sadr N, Perez Alday EA, et al. Issues in the automated
+classification of multilead ECGs using heterogeneous labels and populations.
+*Physiological Measurement*. 2022;43(8):084001.
+[doi:10.1088/1361-6579/ac79fd](https://doi.org/10.1088/1361-6579/ac79fd).
+
+Used for: the main PhysioNet Challenge 2021 analysis. Across submitted systems,
+average Challenge-metric changes from 12 to 2 leads were generally below 2%,
+but results varied substantially by diagnosis and source database. This is the
+closest large multisource precedent for the project's finding that reduced-lead
+adequacy is target-specific. Its aggregate Challenge score is not numerically
+interchangeable with this project's macro-AUROC or conditional selective risk.
+
+### `saglietto2024_single_twelve`
+
+Saglietto A, Baccega D, Esposito R, et al. Convolutional neural network
+(CNN)-enabled electrocardiogram (ECG) analysis: a comparison between standard
+twelve-lead and single-lead setups. *Frontiers in Cardiovascular Medicine*.
+2024;11:1327179.
+[doi:10.3389/fcvm.2024.1327179](https://doi.org/10.3389/fcvm.2024.1327179).
+
+Used for: direct-training evidence that single-lead models can retain useful
+performance for some abnormalities, while the gap from 12 leads depends on the
+target. The paper retrains/fine-tunes models for each input setup; it
+therefore supports interpreting the poor masked-12-lead result here as an
+input-regime mismatch rather than proof that two-lead ECG is intrinsically
+inadequate.
 
 ### `perezalday2020_multisource`
 
@@ -128,6 +157,18 @@ In: *International Conference on Learning Representations*. 2024.
 
 Used for: conformal control of expected bounded monotone loss and the explicit
 assumptions behind a finite-sample risk-control sensitivity analysis.
+
+### `feng2023_selective_prediction_sets`
+
+Feng J, Sondhi A, Perry J, Simon N. Selective prediction-set models with
+coverage rate guarantees. *Biometrics*. 2023;79(2):811-825.
+[doi:10.1111/biom.13612](https://doi.org/10.1111/biom.13612).
+
+Used for: healthcare-specific precedent for allowing a model to abstain and
+send difficult cases to human review, and for the principle that both accuracy
+on accepted cases and the amount of accepted coverage must be reported. It also
+supports treating a policy with 0% coverage as safe abstention but not as useful
+automation.
 
 ### `clopper1934_binomial`
 

@@ -38,6 +38,9 @@ artifacts/
 
 # Model checkpoints (large, regenerable via training)
 checkpoints/*.pt
+# Epoch-boundary resume checkpoints (~150 MB, over GitHub's 100 MB file
+# limit). Inference snapshots (best.pt) stay tracked; resume state is local.
+**/last.pt
 
 # PTB-XL raw dataset (~1GB, regenerable from PhysioNet)
 ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3/

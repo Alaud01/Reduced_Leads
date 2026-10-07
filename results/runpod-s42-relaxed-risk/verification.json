@@ -1,0 +1,62 @@
+[
+  {
+    "run": "neg02-pos40--fixed2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg02-pos40--random2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg02-pos40--fixed12-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg025-pos10--fixed2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg025-pos10--random2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg025-pos10--fixed12-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos10--fixed2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos10--random2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos10--fixed12-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos40--fixed2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos40--random2-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  },
+  {
+    "run": "neg03-pos40--fixed12-s42",
+    "all_nonprimary_policies_unchanged": true,
+    "all_nonprimary_selected_test_metrics_unchanged": true
+  }
+]

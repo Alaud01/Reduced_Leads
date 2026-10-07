@@ -1,0 +1,20 @@
+# Project abstract and scope
+
+Background: Portable and reduced-lead electrocardiography can expand access to rhythm and screening assessment, including in remote and resource-limited Canadian settings. The PhysioNet/Computing in Cardiology Challenge 2021 showed that many abnormalities remain detectable from fewer leads on average, but average accuracy does not answer the deployment question that matters clinically: for this recording and this diagnostic target, is reduced-lead interpretation safe enough to act on, or should the system require a full 12-lead ECG or clinician review?
+
+Objective: To develop and evaluate a diagnosis-specific selective-prediction framework that estimates when reduced-lead ECG artificial intelligence is reliable and when it should abstain.
+
+Methods: We will use the open-access PTB-XL dataset (21,799 twelve-lead, 10-second ECGs from 18,869 patients; SCP-ECG labels; official patient-level folds 1–8/9/10 for train/validation/test). Reduced-lead inputs will be created by retaining standard subsets used in prior benchmarking: 6-lead (limb), 4-lead (I, II, III, V2), 3-lead (I, II, V2), 2-lead (I, II), and single-lead (I or II). A multi-label deep neural network will be trained on twelve-lead waveforms and evaluated under lead masking, with comparison to models trained directly on each reduced-lead set. Calibration and uncertainty quantification (including conformal risk control) will convert model scores into one of three actions per diagnosis: trust reduced-lead output, obtain full 12-lead, or refer for expert review. Primary analyses will report diagnosis-stratified discrimination, calibration, and accuracy–coverage curves, emphasizing myocardial infarction/ST–T classes, conduction block, and atrial fibrillation/flutter. External validation will use source-held-out public cohorts from the PhysioNet Challenge 2021 training databases (e.g., CPSC, G12EC, Chapman–Shaoxing/Ningbo). Subgroup reliability will be assessed by age and sex; signal-quality metadata will be used to stress-test abstention under noise and artifact. Reduced-lead inputs are simulated by lead masking and are not equivalent to consumer wearable form factors.
+
+Expected contribution: A transparent reliability map of which diagnoses, under which lead sets, can be safely automated—and a fail-safe triage policy aligned with responsible clinical AI deployment.
+
+
+Implementation clarification (patient-level protocol v2): folds 1–8 form the
+model-development pool, with folds 1–7 used for gradient fitting and fold 8 for
+checkpoint selection. Fold 9 is reserved for probability calibration and risk
+control, independently of checkpoint selection. Primary conditional-risk
+inference uses one outcome-blind selected ECG per patient. Patient-cluster
+conformal risk control and repeat-ECG analyses are separately reported
+sensitivities with distinct estimands. See [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md)
+and `protocol/use_contract_v2.json`; previously inspected test cohorts remain
+exploratory and require untouched external confirmation.

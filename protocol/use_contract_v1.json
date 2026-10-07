@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "protocol_id": "ptbxl-use-contract-v1",
+  "status": "frozen_research_contract",
+  "replaces_generic_limits": {
+    "prior": "protocol/all_labels_v1.json shared 0.10 positive / 0.02 negative for all 61 labels",
+    "reason": "Generic limits produce 0% coverage for MI/STTC/CD/HYP despite 249-476 positive patients each, 0 auto positives for AFIB (sensitivity 0.0), and conflate assert-normal (NORM/SR) with assert-disease harms. See USE_CONTRACT.md evidence tables."
+  },
+  "intended_use": {
+    "population": "Adults represented by PTB-XL receiving a 10-second resting ECG in primary-care-like triage. Do not generalize to ambulatory screening, exercise, pediatric, or wearable form factors.",
+    "input": {
+      "duration_s": 10,
+      "sampling_hz": 100,
+      "leads": "Standard 12-lead placement masked to canonical subsets in src/config.py LEAD_SUBSETS (12, 6-limb, 4, 3, 2, 1-I, 1-II). Masked hospital ECGs are not device-equivalence with portable hardware.",
+      "filtering_gain_missing": "As acquired in PTB-XL; WFDB NaNs not imputed; missing leads zeroed with missing-lead token. Any new device must prespecify filtering, gain, and missing-signal behavior before evaluation."
+    },
+    "reference_standard": {
+      "retrospective": "PTB-XL SCP-ECG dataset label",
+      "prospective": "Blinded adjudication by at least two qualified readers with prespecified disagreement process"
+    },
+    "prediction_unit": "ECG record (operational)",
+    "inference_unit": "patient (formal guarantees and bootstrap unit)",
+    "role": "Retrospective triage decision support. First AF diagnosis requires clinician visual confirmation per current AF guidance.",
+    "claim_boundary": "Not a clinical diagnosis, device-equivalence claim, deployment authorization, or regulatory submission. All risk limits below are research placeholders pending clinical harm specification."
+  },
+  "targets": {
+    "primary": {
+      "id": "AFIB-or-AFLT",
+      "definition": "Composite target = 1 if rhythm AFIB target = 1 OR rhythm AFLT target = 1, else 0. Record-level OR; patient-level endpoint aggregates per inference_unit.",
+      "rationale": "AFLT alone is ineligible (test 7 records / 6 patients; val 7 records) and clinically confusable with AFIB. AFIB alone test 152 records / 130 patients; composite test 157 records / 134 patients; val 156 records / 125 patients. Composite captures 2 dual-labeled records that AFIB-only scores as false positives. Scoring rule for composite probability (e.g. max of calibrated AFIB/AFLT probs) must be frozen before any validation fit; target definition here does not itself fit thresholds.",
+      "confounders_for_error_analysis": ["AFLT", "SR", "SVTAC", "PSVT", "SARRH", "SVARR", "extra_beats", "pacemaker"]
+    },
+    "secondary_disease_groups": ["MI-ischemia", "conduction", "other_rhythm"],
+    "assert_normal_separate": {
+      "labels": ["superclass/NORM", "subcode/NORM", "rhythm/SR"],
+      "rule": "Trusted positive for these labels asserts normality / sinus rhythm (rule-out of disease). Do not aggregate their coverage or errors with assert-disease labels. Apply rule-out stringency to their trusted positives. Current SR 63% coverage at 8.35% error and NORM ~20% at 5-6% error FAIL this bar and must not be described as safe automation."
+    }
+  },
+  "actions": {
+    "trust_reduced": "Display reduced-lead prediction with abstention log; no human required for that diagnosis; record remains eligible for other-diagnosis referrals.",
+    "trust_12_lead": "After obtain_12_lead, display 12-lead-stage prediction; no human required for that diagnosis.",
+    "obtain_12_lead": "Require full 12-lead acquisition then re-run 12-lead stage; if 12-lead stage untrusted, escalate to expert_review.",
+    "expert_review": "Queue to qualified reader; block automated output for that diagnosis. Referral rate is a cost metric, not a failure.",
+    "semantics_warning": "trust_positive for disease = assert disease present. trust_positive for NORM/SR = assert no abnormality. False-positive harms are not interchangeable."
+  },
+  "risk_limits_placeholders": {
+    "warning": "Not clinically validated. Require clinician harm specification before any deployment claim. Chosen to separate false-reassurance (miss) from false-alert harms and to make 0%-coverage failure visible per group.",
+    "AFIB-or-AFLT_rule_out": {
+      "endpoint": "trusted_negative_error",
+      "max_risk": 0.02,
+      "confidence": 0.95,
+      "minimum_trusted_records": 25,
+      "rationale": "Retain afib_v1 2% false-reassurance placeholder for primary rule-out."
+    },
+    "AFIB-or-AFLT_rule_in": {
+      "endpoint": "trusted_positive_error",
+      "comparability_anchor": 0.10,
+      "exploratory_sensitivity_only": 0.40,
+      "rationale": "10% anchor produced 0 auto positives (sensitivity 0.0) on test; 40% produced 80 auto positives at 17.5% empirical error. Neither is a clinical target. Rule-in is secondary/descriptive; first AF still requires visual confirmation."
+    },
+    "MI_STTC_ischemia": {
+      "applies_to": ["superclass/MI", "superclass/STTC", "subcode/IMI", "subcode/ASMI", "subcode/ALMI", "subcode/ILMI", "subcode/AMI", "subcode/ISC_", "subcode/ISCAL"],
+      "trusted_negative_error_max": 0.01,
+      "trusted_positive_error_max": 0.05,
+      "rationale": "Stricter both directions than generic: missed ischemia and false cath-lab activation both high harm. Under generic 10%/2%, MI/STTC had 0% coverage despite 476/475 positive patients, proving infeasibility under generic limits, not sample size."
+    },
+    "conduction": {
+      "applies_to": ["superclass/CD", "subcode/1AVB", "subcode/CLBBB", "subcode/CRBBB", "subcode/IRBBB", "subcode/IVCD", "subcode/LAFB"],
+      "trusted_negative_error_max": 0.02,
+      "trusted_positive_error_max": 0.10,
+      "rationale": "Retain generic as starting anchor. Do not pool: CLBBB 98% / CRBBB 97% coverage vs IRBBB/IVCD/LAFB 0% under identical limits. Report per-label."
+    },
+    "assert_normal": {
+      "applies_to": ["superclass/NORM", "subcode/NORM", "rhythm/SR"],
+      "trusted_positive_error_max": 0.02,
+      "rule": "Apply rule-out stringency to trusted positives asserting normality. Never average with disease labels."
+    }
+  },
+  "primary_analysis": {
+    "lead_set": "2-lead",
+    "target": "AFIB-or-AFLT",
+    "endpoint": "trusted_negative_error",
+    "risk_limit": 0.02,
+    "secondary_metrics": ["automated_coverage", "expert_referral_rate", "twelve_lead_acquisition_rate", "auroc", "average_precision", "brier", "calibration_intercept", "calibration_slope"],
+    "multiplicity": "Single primary. All other leads, diagnoses, subgroups, and rule-in analyses are secondary/descriptive with no significance claims."
+  },
+  "policy_eligibility": {
+    "minimum_positive_patients": 25,
+    "minimum_negative_patients": 25,
+    "note": "Engineering stability floor only, not clinical adequacy. External N planned via Riley precision for discrimination/calibration/utility."
+  },
+  "uncertainty": {
+    "unit": "patient",
+    "method": "patient-cluster bootstrap",
+    "replicates": 2000,
+    "confidence": 0.95,
+    "calibration_bins": 10,
+    "minimum_subgroup_records": 25
+  },
+  "subgroups": ["age_band", "sex", "any_signal_quality_flag", "individual_signal_quality_flags"],
+  "statistical_method": {
+    "current": "fixed-grid one-sided Clopper-Pearson with Bonferroni over grid x stages (record-level, patient-grouped splits)",
+    "limitation": "Record-level bounds with repeat ECGs per patient overstate independence. Require one-ECG-per-patient sensitivity and conformal-risk-control sensitivity before any confirmatory claim (items 3 in roadmap).",
+    "threshold_grid_size": 101,
+    "seed": 42
+  },
+  "locking_rules": [
+    "Fit calibration, composite scoring rule, and thresholds on validation (fold 9) or external-recalibration split only",
+    "Freeze checkpoint SHA-256, label schema, lead sets, protocol hash before reading audit split",
+    "No threshold or limit selection on the audit split; test/external audit is fit-free",
+    "Do not modify this file after first audit read; any change creates protocol/use_contract_v2.json and requires a new untouched cohort",
+    "Prior protocols protocol/afib_v1.json and protocol/all_labels_v1.json remain frozen and unchanged as historical records"
+  ]
+}

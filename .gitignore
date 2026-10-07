@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Generated outputs. See docs/ARTIFACTS.md for the full tracking policy:
+#   tracked   -> results/ (curated aggregate evidence), examples/ (synthetic)
+#   released  -> model weights and full per-record bundles (GitHub Releases)
+#   ignored   -> everything a command regenerates locally (below)
+# ---------------------------------------------------------------------------
+
+# Local training outputs (best.pt, last.pt, logs, manifests, curves)
+checkpoints/
+# Local evaluation, policy and audit outputs
+artifacts/
+# Local copies of remote (e.g. Runpod) training runs
+runpod-results/
+# Generated figures and exploration output
+figures/
+exploration_viewer.html
+# Downloaded or locally built release bundles
+release/
+*.log
+!results/**/*.log
+*.tmp
+# Resume checkpoints anywhere (~150 MB, above GitHub's 100 MB file limit)
+**/last.pt
+
+# PTB-XL raw dataset (~1GB, regenerable from PhysioNet)
+# (no trailing slash, so a symlink to the dataset is ignored too)
+ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3
+*.dat
+*.hea
+
+# Dataset checksums / changelogs (ship with dataset, not this repo)
+SHA256SUMS.txt
+ptbxl_v*_changelog.txt

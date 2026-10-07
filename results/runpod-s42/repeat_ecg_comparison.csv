@@ -1,0 +1,465 @@
+approach,diagnosis_group,diagnosis,lead_set,population,n_patients,status,n_records,reduced_trust_rate,twelve_lead_acquisition_rate,twelve_lead_rescue_rate,expert_referral_rate,automated_coverage,automated_error,trusted_positive_records,trusted_positive_errors,trusted_negative_records,trusted_negative_errors,trusted_positive_error,trusted_negative_error,automated_sensitivity,automated_specificity,positive_automation_recall,negative_automation_recall,positive_referral_rate,negative_referral_rate,patient_any_automated_error
+"Previous model, patient analysis",superclass,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,MI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,MI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,MI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,MI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,STTC,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,STTC,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,STTC,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,STTC,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,CD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,CD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,CD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,CD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,HYP,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,HYP,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,HYP,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",superclass,HYP,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,1AVB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,1AVB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,1AVB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,1AVB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,AMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,AMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,AMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,AMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ASMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ASMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ASMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ASMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,CLBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,CLBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,CLBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,CLBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,CRBBB,2-lead,all_records_descriptive,1904,automated_decisions_observed,2198,0.0,1.0,0.9481346678798908,0.0518653321201091,0.9481346678798908,0.0019193857965451,0,0,2084,4,,0.0019193857965451,0.0,1.0,0.0,0.9701492537313432,0.925925925925926,0.0298507462686567,0.0021008403361344
+"Previous model, patient analysis",subcode,CRBBB,2-lead,one_ecg_per_patient_primary,1904,automated_decisions_observed,1904,0.0,1.0,0.9495798319327732,0.0504201680672268,0.9495798319327732,0.0016592920353982,0,0,1808,3,,0.0016592920353982,0.0,1.0,0.0,0.9704301075268816,0.9318181818181818,0.0295698924731182,0.0015756302521008
+"Previous model, patient analysis",subcode,CRBBB,2-lead,repeat_patient_records_descriptive,228,automated_decisions_observed,522,0.0,1.0,0.942528735632184,0.057471264367816,0.942528735632184,0.0020325203252032,0,0,492,1,,0.0020325203252032,0.0,1.0,0.0,0.9722772277227724,0.9411764705882352,0.0277227722772277,0.0043859649122807
+"Previous model, patient analysis",subcode,CRBBB,2-lead,single_record_patients_descriptive,1676,automated_decisions_observed,1676,0.0,1.0,0.9498806682577564,0.0501193317422434,0.9498806682577564,0.0018844221105527,0,0,1592,3,,0.0018844221105527,0.0,1.0,0.0,0.9694935936546676,0.918918918918919,0.0305064063453325,0.0017899761336515
+"Previous model, patient analysis",subcode,ILMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ILMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ILMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ILMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISCAL,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISCAL,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISCAL,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISCAL,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISC_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISC_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISC_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,ISC_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IVCD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IVCD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IVCD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,IVCD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAFB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAFB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAFB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAFB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAO/LAE,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAO/LAE,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAO/LAE,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LAO/LAE,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LVH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LVH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LVH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,LVH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NDT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NDT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NDT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NDT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NST_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NST_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NST_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",subcode,NST_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,PACE,2-lead,all_records_descriptive,1904,automated_decisions_observed,2198,0.9740673339399454,0.0259326660600545,0.0,0.0259326660600545,0.9740673339399454,0.004203643157403,0,0,2141,9,,0.004203643157403,0.0,1.0,0.0,0.9824884792626728,0.6785714285714286,0.0175115207373271,0.0042016806722689
+"Previous model, patient analysis",rhythm,PACE,2-lead,one_ecg_per_patient_primary,1904,automated_decisions_observed,1904,0.9784663865546218,0.0215336134453781,0.0,0.0215336134453781,0.9784663865546218,0.0037573805689747,0,0,1863,7,,0.0037573805689747,0.0,1.0,0.0,0.9861849096705632,0.6818181818181818,0.0138150903294367,0.0036764705882352
+"Previous model, patient analysis",rhythm,PACE,2-lead,repeat_patient_records_descriptive,228,automated_decisions_observed,522,0.9444444444444444,0.0555555555555555,0.0,0.0555555555555555,0.9444444444444444,0.0060851926977687,0,0,493,3,,0.0060851926977687,0.0,1.0,0.0,0.95703125,0.7,0.04296875,0.0087719298245614
+"Previous model, patient analysis",rhythm,PACE,2-lead,single_record_patients_descriptive,1676,automated_decisions_observed,1676,0.9832935560859188,0.0167064439140811,0.0,0.0167064439140811,0.9832935560859188,0.0036407766990291,0,0,1648,6,,0.0036407766990291,0.0,1.0,0.0,0.9903498190591074,0.6666666666666666,0.0096501809408926,0.0035799522673031
+"Previous model, patient analysis",rhythm,SARRH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SARRH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SARRH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SARRH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SBRAD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SBRAD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SBRAD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SBRAD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SR,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SR,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SR,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,SR,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,STACH,2-lead,all_records_descriptive,1904,automated_decisions_observed,2198,0.9126478616924476,0.0873521383075523,0.0,0.0873521383075523,0.9126478616924476,0.0034895314057826,0,0,2006,7,,0.0034895314057826,0.0,1.0,0.0,0.9447069943289224,0.9146341463414634,0.0552930056710775,0.0031512605042016
+"Previous model, patient analysis",rhythm,STACH,2-lead,one_ecg_per_patient_primary,1904,automated_decisions_observed,1904,0.91859243697479,0.08140756302521,0.0,0.08140756302521,0.91859243697479,0.0022870211549456,0,0,1749,4,,0.0022870211549456,0.0,1.0,0.0,0.9504357298474946,0.9411764705882352,0.0495642701525054,0.0021008403361344
+"Previous model, patient analysis",rhythm,STACH,2-lead,repeat_patient_records_descriptive,228,automated_decisions_observed,522,0.8697318007662835,0.1302681992337164,0.0,0.1302681992337164,0.8697318007662835,0.0088105726872246,0,0,454,4,,0.0088105726872246,0.0,1.0,0.0,0.9018036072144288,0.8260869565217391,0.0981963927855711,0.0131578947368421
+"Previous model, patient analysis",rhythm,STACH,2-lead,single_record_patients_descriptive,1676,automated_decisions_observed,1676,0.9260143198090692,0.0739856801909307,0.0,0.0739856801909307,0.9260143198090692,0.0019329896907216,0,0,1552,3,,0.0019329896907216,0.0,1.0,0.0,0.9579468150896724,0.9491525423728814,0.0420531849103277,0.0017899761336515
+"Previous model, patient analysis",rhythm,AFIB-or-AFLT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB-or-AFLT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB-or-AFLT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+"Previous model, patient analysis",rhythm,AFIB-or-AFLT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,MI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,MI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,MI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,MI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,STTC,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,STTC,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,STTC,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,STTC,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,CD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,CD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,CD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,CD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,HYP,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,HYP,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,HYP,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,superclass,HYP,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,1AVB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,1AVB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,1AVB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,1AVB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,AMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,AMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,AMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,AMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ASMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ASMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ASMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ASMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CLBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CLBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CLBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CLBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,CRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ILMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ILMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ILMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ILMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISCAL,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISCAL,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISCAL,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISCAL,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISC_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISC_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISC_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,ISC_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IVCD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IVCD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IVCD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,IVCD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAFB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAFB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAFB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAFB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAO/LAE,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAO/LAE,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAO/LAE,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LAO/LAE,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LVH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LVH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LVH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,LVH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NDT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NDT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NDT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NDT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NST_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NST_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NST_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,subcode,NST_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,PACE,2-lead,all_records_descriptive,1904,automated_decisions_observed,2198,0.9181073703366696,0.0818926296633303,0.0,0.0818926296633303,0.9181073703366696,0.0024777006937561,0,0,2018,5,,0.0024777006937561,0.0,1.0,0.0,0.9276497695852536,0.8214285714285714,0.0723502304147465,0.002626050420168
+Fixed I+II,rhythm,PACE,2-lead,one_ecg_per_patient_primary,1904,automated_decisions_observed,1904,0.9243697478991596,0.0756302521008403,0.0,0.0756302521008403,0.9243697478991596,0.0022727272727272,0,0,1760,4,,0.0022727272727272,0.0,1.0,0.0,0.9330499468650372,0.8181818181818182,0.0669500531349628,0.0021008403361344
+Fixed I+II,rhythm,PACE,2-lead,repeat_patient_records_descriptive,228,automated_decisions_observed,522,0.8773946360153256,0.1226053639846743,0.0,0.1226053639846743,0.8773946360153256,0.0021834061135371,0,0,458,1,,0.0021834061135371,0.0,1.0,0.0,0.892578125,0.9,0.107421875,0.0043859649122807
+Fixed I+II,rhythm,PACE,2-lead,single_record_patients_descriptive,1676,automated_decisions_observed,1676,0.9307875894988068,0.0692124105011933,0.0,0.0692124105011933,0.9307875894988068,0.0025641025641025,0,0,1560,4,,0.0025641025641025,0.0,1.0,0.0,0.9384800965018094,0.7777777777777778,0.0615199034981905,0.0023866348448687
+Fixed I+II,rhythm,SARRH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SARRH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SARRH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SARRH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SBRAD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SBRAD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SBRAD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SBRAD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SR,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SR,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SR,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,SR,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,STACH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,STACH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,STACH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,STACH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB-or-AFLT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB-or-AFLT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB-or-AFLT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Fixed I+II,rhythm,AFIB-or-AFLT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,MI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,MI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,MI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,MI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,STTC,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,STTC,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,STTC,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,STTC,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,CD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,CD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,CD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,CD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,HYP,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,HYP,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,HYP,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,superclass,HYP,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,1AVB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,1AVB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,1AVB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,1AVB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,AMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,AMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,AMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,AMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ASMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ASMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ASMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ASMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CLBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CLBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CLBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CLBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,CRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ILMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ILMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ILMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ILMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISCAL,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISCAL,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISCAL,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISCAL,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISC_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISC_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISC_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,ISC_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IVCD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IVCD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IVCD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,IVCD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAFB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAFB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAFB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAFB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAO/LAE,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAO/LAE,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAO/LAE,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LAO/LAE,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LVH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LVH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LVH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,LVH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NDT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NDT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NDT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NDT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NST_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NST_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NST_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,subcode,NST_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,PACE,2-lead,all_records_descriptive,1904,automated_decisions_observed,2198,0.95950864422202,0.0404913557779799,0.0,0.0404913557779799,0.95950864422202,0.0052157420578473,0,0,2109,11,,0.0052157420578473,0.0,1.0,0.0,0.966820276497696,0.6071428571428571,0.0331797235023041,0.0052521008403361
+Random lead training,rhythm,PACE,2-lead,one_ecg_per_patient_primary,1904,automated_decisions_observed,1904,0.96218487394958,0.0378151260504201,0.0,0.0378151260504201,0.96218487394958,0.0054585152838427,0,0,1832,10,,0.0054585152838427,0.0,1.0,0.0,0.9681190223166845,0.5454545454545454,0.0318809776833156,0.0052521008403361
+Random lead training,rhythm,PACE,2-lead,repeat_patient_records_descriptive,228,automated_decisions_observed,522,0.9367816091954024,0.0632183908045977,0.0,0.0632183908045977,0.9367816091954024,0.0040899795501022,0,0,489,2,,0.0040899795501022,0.0,1.0,0.0,0.951171875,0.8,0.048828125,0.0043859649122807
+Random lead training,rhythm,PACE,2-lead,single_record_patients_descriptive,1676,automated_decisions_observed,1676,0.9665871121718376,0.0334128878281622,0.0,0.0334128878281622,0.9665871121718376,0.0055555555555555,0,0,1620,9,,0.0055555555555555,0.0,1.0,0.0,0.971652593486128,0.5,0.0283474065138721,0.0053699284009546
+Random lead training,rhythm,SARRH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SARRH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SARRH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SARRH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SBRAD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SBRAD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SBRAD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SBRAD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SR,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SR,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SR,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,SR,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,STACH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,STACH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,STACH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,STACH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB-or-AFLT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB-or-AFLT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB-or-AFLT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Random lead training,rhythm,AFIB-or-AFLT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,MI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,MI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,MI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,MI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,STTC,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,STTC,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,STTC,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,STTC,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,CD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,CD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,CD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,CD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,HYP,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,HYP,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,HYP,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,superclass,HYP,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,1AVB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,1AVB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,1AVB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,1AVB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,AMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,AMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,AMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,AMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ASMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ASMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ASMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ASMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CLBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CLBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CLBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CLBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,CRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ILMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ILMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ILMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ILMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IMI,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IMI,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IMI,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IMI,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IRBBB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IRBBB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IRBBB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IRBBB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISCAL,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISCAL,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISCAL,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISCAL,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISC_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISC_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISC_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,ISC_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IVCD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IVCD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IVCD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,IVCD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAFB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAFB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAFB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAFB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAO/LAE,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAO/LAE,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAO/LAE,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LAO/LAE,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LVH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LVH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LVH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,LVH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NDT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NDT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NDT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NDT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NORM,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NORM,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NORM,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NORM,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NST_,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NST_,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NST_,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,subcode,NST_,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,PACE,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,PACE,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,PACE,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,PACE,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SARRH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SARRH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SARRH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SARRH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SBRAD,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SBRAD,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SBRAD,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SBRAD,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SR,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SR,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SR,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,SR,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,STACH,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,STACH,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,STACH,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,STACH,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB-or-AFLT,2-lead,all_records_descriptive,1904,no_automated_decisions,2198,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB-or-AFLT,2-lead,one_ecg_per_patient_primary,1904,no_automated_decisions,1904,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB-or-AFLT,2-lead,repeat_patient_records_descriptive,228,no_automated_decisions,522,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0
+Twelve-lead model masked to I+II,rhythm,AFIB-or-AFLT,2-lead,single_record_patients_descriptive,1676,no_automated_decisions,1676,0.0,1.0,0.0,1.0,0.0,,0,0,0,0,,,,,0.0,0.0,1.0,1.0,0.0

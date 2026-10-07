@@ -1,0 +1,38 @@
+[
+  {
+    "model": "fixed12-s42",
+    "best_sha256": "8d030e41ba046df9416a1da7c60a31a259bcda61c2fa800fe12e1b48b30d8db2",
+    "best_epoch": 13,
+    "selection_auc": 0.9159219441812525,
+    "last_epoch": 50,
+    "skipped_updates": 0,
+    "logged_updates": 550,
+    "local_waveforms_match": true,
+    "selection_lead": "12-lead",
+    "split_design": "train1-7_select8_calibrate9_audit10"
+  },
+  {
+    "model": "fixed2-s42",
+    "best_sha256": "2dd7620d2d96f251f3fc64797c0abc3ff9cbaf78d46022c0f58f01f1c87c58ee",
+    "best_epoch": 15,
+    "selection_auc": 0.8841534963439323,
+    "last_epoch": 50,
+    "skipped_updates": 0,
+    "logged_updates": 550,
+    "local_waveforms_match": true,
+    "selection_lead": "2-lead",
+    "split_design": "train1-7_select8_calibrate9_audit10"
+  },
+  {
+    "model": "random2-s42",
+    "best_sha256": "095a424958eb6a6a212518fe0e7ded7aa6585b291773b12513813079f0b47ff0",
+    "best_epoch": 32,
+    "selection_auc": 0.8679186424490883,
+    "last_epoch": 50,
+    "skipped_updates": 1,
+    "logged_updates": 550,
+    "local_waveforms_match": true,
+    "selection_lead": "2-lead",
+    "split_design": "train1-7_select8_calibrate9_audit10"
+  }
+]

@@ -1,0 +1,465 @@
+approach,diagnosis_group,diagnosis,lead_set,stage,direction,max_risk,minimum_error_free_independent_patients,maximum_observed_trusted,best_risk_upper,status
+Previous model,superclass,NORM,2-lead,12-lead,negative,,,263,0.0860852020211359,direction_disabled
+Previous model,superclass,NORM,2-lead,12-lead,positive,0.02,446.0,223,0.1183533174038885,insufficient_evidence_for_automation
+Previous model,superclass,NORM,2-lead,reduced,negative,,,251,0.0692901328856961,direction_disabled
+Previous model,superclass,NORM,2-lead,reduced,positive,0.02,446.0,234,0.2168323272797835,insufficient_evidence_for_automation
+Previous model,superclass,MI,2-lead,12-lead,negative,0.01,896.0,386,0.0734126978161016,insufficient_evidence_for_automation
+Previous model,superclass,MI,2-lead,12-lead,positive,0.05,176.0,100,0.2587885175829287,insufficient_evidence_for_automation
+Previous model,superclass,MI,2-lead,reduced,negative,0.01,896.0,410,0.0950498138540413,insufficient_evidence_for_automation
+Previous model,superclass,MI,2-lead,reduced,positive,0.05,176.0,75,0.4510839755498655,insufficient_evidence_for_automation
+Previous model,superclass,STTC,2-lead,12-lead,negative,0.01,896.0,390,0.0446435840645072,insufficient_evidence_for_automation
+Previous model,superclass,STTC,2-lead,12-lead,positive,0.05,176.0,96,0.348301801495012,insufficient_evidence_for_automation
+Previous model,superclass,STTC,2-lead,reduced,negative,0.01,896.0,381,0.0605554586727938,insufficient_evidence_for_automation
+Previous model,superclass,STTC,2-lead,reduced,positive,0.05,176.0,104,0.4628667967601535,insufficient_evidence_for_automation
+Previous model,superclass,CD,2-lead,12-lead,negative,0.02,446.0,393,0.0710934226314828,insufficient_evidence_for_automation
+Previous model,superclass,CD,2-lead,12-lead,positive,0.1,86.0,93,0.3042924413687848,insufficient_evidence_for_automation
+Previous model,superclass,CD,2-lead,reduced,negative,0.02,446.0,397,0.0947419631556861,insufficient_evidence_for_automation
+Previous model,superclass,CD,2-lead,reduced,positive,0.1,86.0,88,0.3571738778169193,insufficient_evidence_for_automation
+Previous model,superclass,HYP,2-lead,12-lead,negative,0.02,446.0,450,0.04141152911954,insufficient_evidence_for_automation
+Previous model,superclass,HYP,2-lead,12-lead,positive,0.1,86.0,36,0.5275211347253981,insufficient_evidence_for_automation
+Previous model,superclass,HYP,2-lead,reduced,negative,0.02,446.0,458,0.0987490479140022,insufficient_evidence_for_automation
+Previous model,superclass,HYP,2-lead,reduced,positive,0.1,86.0,27,0.7209603997520875,insufficient_evidence_for_automation
+Previous model,subcode,1AVB,2-lead,12-lead,negative,0.02,446.0,486,0.050763021216979,insufficient_evidence_for_automation
+Previous model,subcode,1AVB,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,1AVB,2-lead,reduced,negative,0.02,446.0,485,0.0468166403543527,insufficient_evidence_for_automation
+Previous model,subcode,1AVB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,AMI,2-lead,12-lead,negative,0.01,896.0,486,0.046093297964717,insufficient_evidence_for_automation
+Previous model,subcode,AMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,AMI,2-lead,reduced,negative,0.01,896.0,485,0.0430684860998118,insufficient_evidence_for_automation
+Previous model,subcode,AMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ASMI,2-lead,12-lead,negative,0.01,896.0,446,0.0278964191810971,insufficient_evidence_for_automation
+Previous model,subcode,ASMI,2-lead,12-lead,positive,0.05,176.0,40,0.5773752050758845,insufficient_evidence_for_automation
+Previous model,subcode,ASMI,2-lead,reduced,negative,0.01,896.0,469,0.0643157038894906,insufficient_evidence_for_automation
+Previous model,subcode,ASMI,2-lead,reduced,positive,0.05,176.0,16,0.8418597624058947,insufficient_evidence_for_automation
+Previous model,subcode,CLBBB,2-lead,12-lead,negative,0.02,446.0,476,0.0233986090039243,insufficient_evidence_for_automation
+Previous model,subcode,CLBBB,2-lead,12-lead,positive,0.1,86.0,10,0.7051416037874423,insufficient_evidence_for_automation
+Previous model,subcode,CLBBB,2-lead,reduced,negative,0.02,446.0,475,0.0210945839259141,insufficient_evidence_for_automation
+Previous model,subcode,CLBBB,2-lead,reduced,positive,0.1,86.0,10,0.8519060038900987,insufficient_evidence_for_automation
+Previous model,subcode,CRBBB,2-lead,12-lead,negative,0.02,446.0,473,0.0194107649834744,feasible
+Previous model,subcode,CRBBB,2-lead,12-lead,positive,0.1,86.0,13,0.6839637873842458,insufficient_evidence_for_automation
+Previous model,subcode,CRBBB,2-lead,reduced,negative,0.02,446.0,485,0.022296907051649,insufficient_evidence_for_automation
+Previous model,subcode,CRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ILMI,2-lead,12-lead,negative,0.01,896.0,486,0.0215492836364821,insufficient_evidence_for_automation
+Previous model,subcode,ILMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ILMI,2-lead,reduced,negative,0.01,896.0,485,0.0272270337226933,insufficient_evidence_for_automation
+Previous model,subcode,ILMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,IMI,2-lead,12-lead,negative,0.01,896.0,461,0.0800909284268849,insufficient_evidence_for_automation
+Previous model,subcode,IMI,2-lead,12-lead,positive,0.05,176.0,25,0.7800878901650203,insufficient_evidence_for_automation
+Previous model,subcode,IMI,2-lead,reduced,negative,0.01,896.0,483,0.0994256083589821,insufficient_evidence_for_automation
+Previous model,subcode,IMI,2-lead,reduced,positive,0.05,176.0,2,0.999938116897122,insufficient_evidence_for_automation
+Previous model,subcode,IRBBB,2-lead,12-lead,negative,0.02,446.0,482,0.0459838592747024,insufficient_evidence_for_automation
+Previous model,subcode,IRBBB,2-lead,12-lead,positive,0.1,86.0,4,0.9999587441725676,insufficient_evidence_for_automation
+Previous model,subcode,IRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0350731319190136,insufficient_evidence_for_automation
+Previous model,subcode,IRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ISCAL,2-lead,12-lead,negative,0.01,896.0,486,0.024348394841934,insufficient_evidence_for_automation
+Previous model,subcode,ISCAL,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ISCAL,2-lead,reduced,negative,0.01,896.0,485,0.0230391226322364,insufficient_evidence_for_automation
+Previous model,subcode,ISCAL,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,ISC_,2-lead,12-lead,negative,0.01,896.0,469,0.027356282201026,insufficient_evidence_for_automation
+Previous model,subcode,ISC_,2-lead,12-lead,positive,0.05,176.0,17,0.6036887589986835,insufficient_evidence_for_automation
+Previous model,subcode,ISC_,2-lead,reduced,negative,0.01,896.0,474,0.0326547401286595,insufficient_evidence_for_automation
+Previous model,subcode,ISC_,2-lead,reduced,positive,0.05,176.0,11,0.8166486888017912,insufficient_evidence_for_automation
+Previous model,subcode,IVCD,2-lead,12-lead,negative,0.02,446.0,486,0.0494923118286571,insufficient_evidence_for_automation
+Previous model,subcode,IVCD,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,IVCD,2-lead,reduced,negative,0.02,446.0,485,0.0493238239869271,insufficient_evidence_for_automation
+Previous model,subcode,IVCD,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,LAFB,2-lead,12-lead,negative,0.02,446.0,457,0.0337681756461195,insufficient_evidence_for_automation
+Previous model,subcode,LAFB,2-lead,12-lead,positive,0.1,86.0,29,0.8497890830661144,insufficient_evidence_for_automation
+Previous model,subcode,LAFB,2-lead,reduced,negative,0.02,446.0,459,0.0543149261369094,insufficient_evidence_for_automation
+Previous model,subcode,LAFB,2-lead,reduced,positive,0.1,86.0,26,0.7827376555796488,insufficient_evidence_for_automation
+Previous model,subcode,LAO/LAE,2-lead,12-lead,negative,0.02,446.0,486,0.0302259537256863,insufficient_evidence_for_automation
+Previous model,subcode,LAO/LAE,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,LAO/LAE,2-lead,reduced,negative,0.02,446.0,485,0.0515309176925922,insufficient_evidence_for_automation
+Previous model,subcode,LAO/LAE,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,LVH,2-lead,12-lead,negative,0.02,446.0,450,0.0290679991073735,insufficient_evidence_for_automation
+Previous model,subcode,LVH,2-lead,12-lead,positive,0.1,86.0,36,0.514727404291091,insufficient_evidence_for_automation
+Previous model,subcode,LVH,2-lead,reduced,negative,0.02,446.0,460,0.0645645028332147,insufficient_evidence_for_automation
+Previous model,subcode,LVH,2-lead,reduced,positive,0.1,86.0,25,0.7611333232841713,insufficient_evidence_for_automation
+Previous model,subcode,NDT,2-lead,12-lead,negative,0.02,446.0,475,0.0359819467635638,insufficient_evidence_for_automation
+Previous model,subcode,NDT,2-lead,12-lead,positive,0.1,86.0,11,0.9743409847965944,insufficient_evidence_for_automation
+Previous model,subcode,NDT,2-lead,reduced,negative,0.02,446.0,482,0.0362020038573865,insufficient_evidence_for_automation
+Previous model,subcode,NDT,2-lead,reduced,positive,0.1,86.0,3,0.9888751460127528,insufficient_evidence_for_automation
+Previous model,subcode,NORM,2-lead,12-lead,negative,,,263,0.0850160185317582,direction_disabled
+Previous model,subcode,NORM,2-lead,12-lead,positive,0.02,446.0,223,0.0961497102861937,insufficient_evidence_for_automation
+Previous model,subcode,NORM,2-lead,reduced,negative,,,253,0.0680629910947945,direction_disabled
+Previous model,subcode,NORM,2-lead,reduced,positive,0.02,446.0,232,0.2177617764132083,insufficient_evidence_for_automation
+Previous model,subcode,NST_,2-lead,12-lead,negative,0.02,446.0,486,0.0329948393280196,insufficient_evidence_for_automation
+Previous model,subcode,NST_,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,subcode,NST_,2-lead,reduced,negative,0.02,446.0,485,0.033967206795089,insufficient_evidence_for_automation
+Previous model,subcode,NST_,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB,2-lead,12-lead,negative,0.02,446.0,460,0.0279831775949636,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB,2-lead,12-lead,positive,0.1,86.0,26,0.7109497788236989,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB,2-lead,reduced,negative,0.02,446.0,461,0.0245476800428094,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB,2-lead,reduced,positive,0.1,86.0,24,0.474104822259256,insufficient_evidence_for_automation
+Previous model,rhythm,PACE,2-lead,12-lead,negative,0.02,446.0,8,0.67523173895908,insufficient_evidence_for_automation
+Previous model,rhythm,PACE,2-lead,12-lead,positive,0.1,86.0,5,0.8346067703302396,insufficient_evidence_for_automation
+Previous model,rhythm,PACE,2-lead,reduced,negative,0.02,446.0,480,0.0189209319757423,feasible
+Previous model,rhythm,PACE,2-lead,reduced,positive,0.1,86.0,5,0.8945255766204568,insufficient_evidence_for_automation
+Previous model,rhythm,SARRH,2-lead,12-lead,negative,0.02,446.0,486,0.0557992846777681,insufficient_evidence_for_automation
+Previous model,rhythm,SARRH,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,rhythm,SARRH,2-lead,reduced,negative,0.02,446.0,485,0.0524569295456593,insufficient_evidence_for_automation
+Previous model,rhythm,SARRH,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+Previous model,rhythm,SBRAD,2-lead,12-lead,negative,0.02,446.0,482,0.0317537033345286,insufficient_evidence_for_automation
+Previous model,rhythm,SBRAD,2-lead,12-lead,positive,0.1,86.0,4,0.9683538963069148,insufficient_evidence_for_automation
+Previous model,rhythm,SBRAD,2-lead,reduced,negative,0.02,446.0,477,0.0329006554861323,insufficient_evidence_for_automation
+Previous model,rhythm,SBRAD,2-lead,reduced,positive,0.1,86.0,8,0.8945255766204568,insufficient_evidence_for_automation
+Previous model,rhythm,SR,2-lead,12-lead,negative,,,80,0.2014268280650507,direction_disabled
+Previous model,rhythm,SR,2-lead,12-lead,positive,0.02,446.0,406,0.1052808514168538,insufficient_evidence_for_automation
+Previous model,rhythm,SR,2-lead,reduced,negative,,,72,0.3981583248222716,direction_disabled
+Previous model,rhythm,SR,2-lead,reduced,positive,0.02,446.0,413,0.095126594104648,insufficient_evidence_for_automation
+Previous model,rhythm,STACH,2-lead,12-lead,negative,0.02,446.0,28,0.3981583248222716,insufficient_evidence_for_automation
+Previous model,rhythm,STACH,2-lead,12-lead,positive,0.1,86.0,20,0.7708073940917037,insufficient_evidence_for_automation
+Previous model,rhythm,STACH,2-lead,reduced,negative,0.02,446.0,475,0.0197951125439923,feasible
+Previous model,rhythm,STACH,2-lead,reduced,positive,0.1,86.0,10,0.7873668739630332,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB-or-AFLT,2-lead,12-lead,negative,0.02,446.0,458,0.0352124648519176,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB-or-AFLT,2-lead,12-lead,positive,0.1,86.0,28,0.6768701722875887,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB-or-AFLT,2-lead,reduced,negative,0.02,446.0,462,0.0252361838107493,insufficient_evidence_for_automation
+Previous model,rhythm,AFIB-or-AFLT,2-lead,reduced,positive,0.1,86.0,23,0.474104822259256,insufficient_evidence_for_automation
+fixed12-s42,superclass,NORM,2-lead,12-lead,negative,,,263,0.1013530861479562,direction_disabled
+fixed12-s42,superclass,NORM,2-lead,12-lead,positive,0.02,446.0,223,0.1572835751791993,insufficient_evidence_for_automation
+fixed12-s42,superclass,NORM,2-lead,reduced,negative,,,320,0.2450930999169703,direction_disabled
+fixed12-s42,superclass,NORM,2-lead,reduced,positive,0.02,446.0,165,0.5693720414301249,insufficient_evidence_for_automation
+fixed12-s42,superclass,MI,2-lead,12-lead,negative,0.01,896.0,383,0.1030132908453111,insufficient_evidence_for_automation
+fixed12-s42,superclass,MI,2-lead,12-lead,positive,0.05,176.0,103,0.286265601288595,insufficient_evidence_for_automation
+fixed12-s42,superclass,MI,2-lead,reduced,negative,0.01,896.0,482,0.2483695225303127,insufficient_evidence_for_automation
+fixed12-s42,superclass,MI,2-lead,reduced,positive,0.05,176.0,3,0.9501655641261404,insufficient_evidence_for_automation
+fixed12-s42,superclass,STTC,2-lead,12-lead,negative,0.01,896.0,393,0.0596160157995068,insufficient_evidence_for_automation
+fixed12-s42,superclass,STTC,2-lead,12-lead,positive,0.05,176.0,93,0.3853358384734455,insufficient_evidence_for_automation
+fixed12-s42,superclass,STTC,2-lead,reduced,negative,0.01,896.0,456,0.1819767831327337,insufficient_evidence_for_automation
+fixed12-s42,superclass,STTC,2-lead,reduced,positive,0.05,176.0,29,0.8187127869299393,insufficient_evidence_for_automation
+fixed12-s42,superclass,CD,2-lead,12-lead,negative,0.02,446.0,403,0.0969666569851691,insufficient_evidence_for_automation
+fixed12-s42,superclass,CD,2-lead,12-lead,positive,0.1,86.0,83,0.3026141280010817,insufficient_evidence_for_automation
+fixed12-s42,superclass,CD,2-lead,reduced,negative,0.02,446.0,485,0.2534950723508632,insufficient_evidence_for_automation
+fixed12-s42,superclass,CD,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,superclass,HYP,2-lead,12-lead,negative,0.02,446.0,450,0.0558606224806053,insufficient_evidence_for_automation
+fixed12-s42,superclass,HYP,2-lead,12-lead,positive,0.1,86.0,36,0.5356184015214125,insufficient_evidence_for_automation
+fixed12-s42,superclass,HYP,2-lead,reduced,negative,0.02,446.0,480,0.1404194146744602,insufficient_evidence_for_automation
+fixed12-s42,superclass,HYP,2-lead,reduced,positive,0.1,86.0,5,0.9888751460127528,insufficient_evidence_for_automation
+fixed12-s42,subcode,1AVB,2-lead,12-lead,negative,0.02,446.0,486,0.0513797509462986,insufficient_evidence_for_automation
+fixed12-s42,subcode,1AVB,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,1AVB,2-lead,reduced,negative,0.02,446.0,485,0.0737535457256599,insufficient_evidence_for_automation
+fixed12-s42,subcode,1AVB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,AMI,2-lead,12-lead,negative,0.01,896.0,486,0.0419836572381999,insufficient_evidence_for_automation
+fixed12-s42,subcode,AMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,AMI,2-lead,reduced,negative,0.01,896.0,485,0.0459770086066973,insufficient_evidence_for_automation
+fixed12-s42,subcode,AMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ASMI,2-lead,12-lead,negative,0.01,896.0,450,0.0337573214639751,insufficient_evidence_for_automation
+fixed12-s42,subcode,ASMI,2-lead,12-lead,positive,0.05,176.0,36,0.5526195491597307,insufficient_evidence_for_automation
+fixed12-s42,subcode,ASMI,2-lead,reduced,negative,0.01,896.0,485,0.1490364023659733,insufficient_evidence_for_automation
+fixed12-s42,subcode,ASMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,CLBBB,2-lead,12-lead,negative,0.02,446.0,480,0.0252579993785805,insufficient_evidence_for_automation
+fixed12-s42,subcode,CLBBB,2-lead,12-lead,positive,0.1,86.0,6,0.9765943480215278,insufficient_evidence_for_automation
+fixed12-s42,subcode,CLBBB,2-lead,reduced,negative,0.02,446.0,482,0.0336311496481143,insufficient_evidence_for_automation
+fixed12-s42,subcode,CLBBB,2-lead,reduced,positive,0.1,86.0,3,0.9935632370689146,insufficient_evidence_for_automation
+fixed12-s42,subcode,CRBBB,2-lead,12-lead,negative,0.02,446.0,485,0.0201497611956484,insufficient_evidence_for_automation
+fixed12-s42,subcode,CRBBB,2-lead,12-lead,positive,0.1,86.0,1,0.9998762376237624,insufficient_evidence_for_automation
+fixed12-s42,subcode,CRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0640024419597727,insufficient_evidence_for_automation
+fixed12-s42,subcode,CRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ILMI,2-lead,12-lead,negative,0.01,896.0,486,0.0239593760047088,insufficient_evidence_for_automation
+fixed12-s42,subcode,ILMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ILMI,2-lead,reduced,negative,0.01,896.0,485,0.0429337939803929,insufficient_evidence_for_automation
+fixed12-s42,subcode,ILMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,IMI,2-lead,12-lead,negative,0.01,896.0,456,0.090184078929554,insufficient_evidence_for_automation
+fixed12-s42,subcode,IMI,2-lead,12-lead,positive,0.05,176.0,30,0.7766354092193215,insufficient_evidence_for_automation
+fixed12-s42,subcode,IMI,2-lead,reduced,negative,0.01,896.0,485,0.1008363590717803,insufficient_evidence_for_automation
+fixed12-s42,subcode,IMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,IRBBB,2-lead,12-lead,negative,0.02,446.0,481,0.0539100634111312,insufficient_evidence_for_automation
+fixed12-s42,subcode,IRBBB,2-lead,12-lead,positive,0.1,86.0,5,0.996469559273266,insufficient_evidence_for_automation
+fixed12-s42,subcode,IRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0929943607465725,insufficient_evidence_for_automation
+fixed12-s42,subcode,IRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISCAL,2-lead,12-lead,negative,0.01,896.0,486,0.0258154311315329,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISCAL,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISCAL,2-lead,reduced,negative,0.01,896.0,485,0.0394283413336178,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISCAL,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISC_,2-lead,12-lead,negative,0.01,896.0,470,0.0237694909858126,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISC_,2-lead,12-lead,positive,0.05,176.0,16,0.6648072133590669,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISC_,2-lead,reduced,negative,0.01,896.0,482,0.0770668387242688,insufficient_evidence_for_automation
+fixed12-s42,subcode,ISC_,2-lead,reduced,positive,0.05,176.0,3,1.0,insufficient_evidence_for_automation
+fixed12-s42,subcode,IVCD,2-lead,12-lead,negative,0.02,446.0,486,0.0572602564625368,insufficient_evidence_for_automation
+fixed12-s42,subcode,IVCD,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,IVCD,2-lead,reduced,negative,0.02,446.0,485,0.0505291834388205,insufficient_evidence_for_automation
+fixed12-s42,subcode,IVCD,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAFB,2-lead,12-lead,negative,0.02,446.0,469,0.0321661080156711,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAFB,2-lead,12-lead,positive,0.1,86.0,17,0.9831841230512656,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAFB,2-lead,reduced,negative,0.02,446.0,485,0.1272638345344164,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAFB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAO/LAE,2-lead,12-lead,negative,0.02,446.0,486,0.0348247280626261,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAO/LAE,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAO/LAE,2-lead,reduced,negative,0.02,446.0,485,0.0632065339592489,insufficient_evidence_for_automation
+fixed12-s42,subcode,LAO/LAE,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,LVH,2-lead,12-lead,negative,0.02,446.0,453,0.035538176036463,insufficient_evidence_for_automation
+fixed12-s42,subcode,LVH,2-lead,12-lead,positive,0.1,86.0,33,0.5725149045478275,insufficient_evidence_for_automation
+fixed12-s42,subcode,LVH,2-lead,reduced,negative,0.02,446.0,480,0.1153242712636209,insufficient_evidence_for_automation
+fixed12-s42,subcode,LVH,2-lead,reduced,positive,0.1,86.0,5,0.9888751460127528,insufficient_evidence_for_automation
+fixed12-s42,subcode,NDT,2-lead,12-lead,negative,0.02,446.0,480,0.0494796928972568,insufficient_evidence_for_automation
+fixed12-s42,subcode,NDT,2-lead,12-lead,positive,0.1,86.0,6,0.9813810845696004,insufficient_evidence_for_automation
+fixed12-s42,subcode,NDT,2-lead,reduced,negative,0.02,446.0,485,0.085143773509081,insufficient_evidence_for_automation
+fixed12-s42,subcode,NDT,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,NORM,2-lead,12-lead,negative,,,265,0.0977595130139829,direction_disabled
+fixed12-s42,subcode,NORM,2-lead,12-lead,positive,0.02,446.0,221,0.159020804680571,insufficient_evidence_for_automation
+fixed12-s42,subcode,NORM,2-lead,reduced,negative,,,311,0.262332806697919,direction_disabled
+fixed12-s42,subcode,NORM,2-lead,reduced,positive,0.02,446.0,174,0.5552208894117909,insufficient_evidence_for_automation
+fixed12-s42,subcode,NST_,2-lead,12-lead,negative,0.02,446.0,486,0.0415608458451577,insufficient_evidence_for_automation
+fixed12-s42,subcode,NST_,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,subcode,NST_,2-lead,reduced,negative,0.02,446.0,485,0.053585780099031,insufficient_evidence_for_automation
+fixed12-s42,subcode,NST_,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB,2-lead,12-lead,negative,0.02,446.0,473,0.0340676047090581,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB,2-lead,12-lead,positive,0.1,86.0,13,0.8850659000098688,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB,2-lead,reduced,negative,0.02,446.0,485,0.0608752184571979,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,rhythm,PACE,2-lead,12-lead,negative,0.02,446.0,481,0.0241467298471095,insufficient_evidence_for_automation
+fixed12-s42,rhythm,PACE,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+fixed12-s42,rhythm,PACE,2-lead,reduced,negative,0.02,446.0,485,0.024348394841934,insufficient_evidence_for_automation
+fixed12-s42,rhythm,PACE,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SARRH,2-lead,12-lead,negative,0.02,446.0,486,0.0781103219209012,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SARRH,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SARRH,2-lead,reduced,negative,0.02,446.0,485,0.0646641789323527,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SARRH,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SBRAD,2-lead,12-lead,negative,0.02,446.0,481,0.0230391226322364,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SBRAD,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SBRAD,2-lead,reduced,negative,0.02,446.0,484,0.0273038524584863,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SBRAD,2-lead,reduced,positive,0.1,86.0,1,1.0,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SR,2-lead,12-lead,negative,,,62,0.3356600144792411,direction_disabled
+fixed12-s42,rhythm,SR,2-lead,12-lead,positive,0.02,446.0,424,0.1152830959658867,insufficient_evidence_for_automation
+fixed12-s42,rhythm,SR,2-lead,reduced,negative,,,8,0.8820010367425867,direction_disabled
+fixed12-s42,rhythm,SR,2-lead,reduced,positive,0.02,446.0,477,0.2127001124097375,insufficient_evidence_for_automation
+fixed12-s42,rhythm,STACH,2-lead,12-lead,negative,0.02,446.0,468,0.0216530027704579,insufficient_evidence_for_automation
+fixed12-s42,rhythm,STACH,2-lead,12-lead,positive,0.1,86.0,18,0.8750943029982433,insufficient_evidence_for_automation
+fixed12-s42,rhythm,STACH,2-lead,reduced,negative,0.02,446.0,478,0.0326633146388771,insufficient_evidence_for_automation
+fixed12-s42,rhythm,STACH,2-lead,reduced,positive,0.1,86.0,7,0.9554410884431234,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,negative,0.02,446.0,471,0.0334739637591684,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,positive,0.1,86.0,15,0.88031466905254,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,negative,0.02,446.0,485,0.0608752184571979,insufficient_evidence_for_automation
+fixed12-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,superclass,NORM,2-lead,12-lead,negative,,,263,0.1013530861479562,direction_disabled
+fixed2-s42,superclass,NORM,2-lead,12-lead,positive,0.02,446.0,223,0.1572835751791993,insufficient_evidence_for_automation
+fixed2-s42,superclass,NORM,2-lead,reduced,negative,,,249,0.0550146281590667,direction_disabled
+fixed2-s42,superclass,NORM,2-lead,reduced,positive,0.02,446.0,236,0.179680878180463,insufficient_evidence_for_automation
+fixed2-s42,superclass,MI,2-lead,12-lead,negative,0.01,896.0,383,0.1030132908453111,insufficient_evidence_for_automation
+fixed2-s42,superclass,MI,2-lead,12-lead,positive,0.05,176.0,103,0.286265601288595,insufficient_evidence_for_automation
+fixed2-s42,superclass,MI,2-lead,reduced,negative,0.01,896.0,408,0.0907917033169261,insufficient_evidence_for_automation
+fixed2-s42,superclass,MI,2-lead,reduced,positive,0.05,176.0,77,0.3666988507289803,insufficient_evidence_for_automation
+fixed2-s42,superclass,STTC,2-lead,12-lead,negative,0.01,896.0,393,0.0596160157995068,insufficient_evidence_for_automation
+fixed2-s42,superclass,STTC,2-lead,12-lead,positive,0.05,176.0,93,0.3853358384734455,insufficient_evidence_for_automation
+fixed2-s42,superclass,STTC,2-lead,reduced,negative,0.01,896.0,375,0.0742472661761527,insufficient_evidence_for_automation
+fixed2-s42,superclass,STTC,2-lead,reduced,positive,0.05,176.0,110,0.4492768784979324,insufficient_evidence_for_automation
+fixed2-s42,superclass,CD,2-lead,12-lead,negative,0.02,446.0,403,0.0969666569851691,insufficient_evidence_for_automation
+fixed2-s42,superclass,CD,2-lead,12-lead,positive,0.1,86.0,83,0.3026141280010817,insufficient_evidence_for_automation
+fixed2-s42,superclass,CD,2-lead,reduced,negative,0.02,446.0,411,0.1014800428684959,insufficient_evidence_for_automation
+fixed2-s42,superclass,CD,2-lead,reduced,positive,0.1,86.0,74,0.3148449605628455,insufficient_evidence_for_automation
+fixed2-s42,superclass,HYP,2-lead,12-lead,negative,0.02,446.0,450,0.0558606224806053,insufficient_evidence_for_automation
+fixed2-s42,superclass,HYP,2-lead,12-lead,positive,0.1,86.0,36,0.5356184015214125,insufficient_evidence_for_automation
+fixed2-s42,superclass,HYP,2-lead,reduced,negative,0.02,446.0,467,0.0846508401180143,insufficient_evidence_for_automation
+fixed2-s42,superclass,HYP,2-lead,reduced,positive,0.1,86.0,18,0.7160823246066625,insufficient_evidence_for_automation
+fixed2-s42,subcode,1AVB,2-lead,12-lead,negative,0.02,446.0,486,0.0513797509462986,insufficient_evidence_for_automation
+fixed2-s42,subcode,1AVB,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,1AVB,2-lead,reduced,negative,0.02,446.0,485,0.0476718976858175,insufficient_evidence_for_automation
+fixed2-s42,subcode,1AVB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,AMI,2-lead,12-lead,negative,0.01,896.0,486,0.0419836572381999,insufficient_evidence_for_automation
+fixed2-s42,subcode,AMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,AMI,2-lead,reduced,negative,0.01,896.0,485,0.0457229104947593,insufficient_evidence_for_automation
+fixed2-s42,subcode,AMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,ASMI,2-lead,12-lead,negative,0.01,896.0,450,0.0337573214639751,insufficient_evidence_for_automation
+fixed2-s42,subcode,ASMI,2-lead,12-lead,positive,0.05,176.0,36,0.5526195491597307,insufficient_evidence_for_automation
+fixed2-s42,subcode,ASMI,2-lead,reduced,negative,0.01,896.0,474,0.0556955646519203,insufficient_evidence_for_automation
+fixed2-s42,subcode,ASMI,2-lead,reduced,positive,0.05,176.0,11,0.9489282268893152,insufficient_evidence_for_automation
+fixed2-s42,subcode,CLBBB,2-lead,12-lead,negative,0.02,446.0,480,0.0252579993785805,insufficient_evidence_for_automation
+fixed2-s42,subcode,CLBBB,2-lead,12-lead,positive,0.1,86.0,6,0.9765943480215278,insufficient_evidence_for_automation
+fixed2-s42,subcode,CLBBB,2-lead,reduced,negative,0.02,446.0,475,0.0209472515783599,insufficient_evidence_for_automation
+fixed2-s42,subcode,CLBBB,2-lead,reduced,positive,0.1,86.0,10,0.7051416037874423,insufficient_evidence_for_automation
+fixed2-s42,subcode,CRBBB,2-lead,12-lead,negative,0.02,446.0,485,0.0201497611956484,insufficient_evidence_for_automation
+fixed2-s42,subcode,CRBBB,2-lead,12-lead,positive,0.1,86.0,1,0.9998762376237624,insufficient_evidence_for_automation
+fixed2-s42,subcode,CRBBB,2-lead,reduced,negative,0.02,446.0,484,0.0210945839259141,insufficient_evidence_for_automation
+fixed2-s42,subcode,CRBBB,2-lead,reduced,positive,0.1,86.0,1,0.9998762376237624,insufficient_evidence_for_automation
+fixed2-s42,subcode,ILMI,2-lead,12-lead,negative,0.01,896.0,486,0.0239593760047088,insufficient_evidence_for_automation
+fixed2-s42,subcode,ILMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,ILMI,2-lead,reduced,negative,0.01,896.0,485,0.0286482304851062,insufficient_evidence_for_automation
+fixed2-s42,subcode,ILMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,IMI,2-lead,12-lead,negative,0.01,896.0,456,0.090184078929554,insufficient_evidence_for_automation
+fixed2-s42,subcode,IMI,2-lead,12-lead,positive,0.05,176.0,30,0.7766354092193215,insufficient_evidence_for_automation
+fixed2-s42,subcode,IMI,2-lead,reduced,negative,0.01,896.0,468,0.08534442535157,insufficient_evidence_for_automation
+fixed2-s42,subcode,IMI,2-lead,reduced,positive,0.05,176.0,17,0.8296883567920579,insufficient_evidence_for_automation
+fixed2-s42,subcode,IRBBB,2-lead,12-lead,negative,0.02,446.0,481,0.0539100634111312,insufficient_evidence_for_automation
+fixed2-s42,subcode,IRBBB,2-lead,12-lead,positive,0.1,86.0,5,0.996469559273266,insufficient_evidence_for_automation
+fixed2-s42,subcode,IRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0631361856585045,insufficient_evidence_for_automation
+fixed2-s42,subcode,IRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISCAL,2-lead,12-lead,negative,0.01,896.0,486,0.0258154311315329,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISCAL,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISCAL,2-lead,reduced,negative,0.01,896.0,485,0.0247502541837408,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISCAL,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISC_,2-lead,12-lead,negative,0.01,896.0,470,0.0237694909858126,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISC_,2-lead,12-lead,positive,0.05,176.0,16,0.6648072133590669,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISC_,2-lead,reduced,negative,0.01,896.0,474,0.0326547401286595,insufficient_evidence_for_automation
+fixed2-s42,subcode,ISC_,2-lead,reduced,positive,0.05,176.0,11,0.8519060038900987,insufficient_evidence_for_automation
+fixed2-s42,subcode,IVCD,2-lead,12-lead,negative,0.02,446.0,486,0.0572602564625368,insufficient_evidence_for_automation
+fixed2-s42,subcode,IVCD,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,IVCD,2-lead,reduced,negative,0.02,446.0,485,0.0456244913997785,insufficient_evidence_for_automation
+fixed2-s42,subcode,IVCD,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAFB,2-lead,12-lead,negative,0.02,446.0,469,0.0321661080156711,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAFB,2-lead,12-lead,positive,0.1,86.0,17,0.9831841230512656,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAFB,2-lead,reduced,negative,0.02,446.0,454,0.0447908362198309,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAFB,2-lead,reduced,positive,0.1,86.0,31,0.7611333232841713,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAO/LAE,2-lead,12-lead,negative,0.02,446.0,486,0.0348247280626261,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAO/LAE,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAO/LAE,2-lead,reduced,negative,0.02,446.0,485,0.0547506930643512,insufficient_evidence_for_automation
+fixed2-s42,subcode,LAO/LAE,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,LVH,2-lead,12-lead,negative,0.02,446.0,453,0.035538176036463,insufficient_evidence_for_automation
+fixed2-s42,subcode,LVH,2-lead,12-lead,positive,0.1,86.0,33,0.5725149045478275,insufficient_evidence_for_automation
+fixed2-s42,subcode,LVH,2-lead,reduced,negative,0.02,446.0,467,0.0635601844991956,insufficient_evidence_for_automation
+fixed2-s42,subcode,LVH,2-lead,reduced,positive,0.1,86.0,18,0.7448428974009488,insufficient_evidence_for_automation
+fixed2-s42,subcode,NDT,2-lead,12-lead,negative,0.02,446.0,480,0.0494796928972568,insufficient_evidence_for_automation
+fixed2-s42,subcode,NDT,2-lead,12-lead,positive,0.1,86.0,6,0.9813810845696004,insufficient_evidence_for_automation
+fixed2-s42,subcode,NDT,2-lead,reduced,negative,0.02,446.0,484,0.0421351163255908,insufficient_evidence_for_automation
+fixed2-s42,subcode,NDT,2-lead,reduced,positive,0.1,86.0,1,1.0,insufficient_evidence_for_automation
+fixed2-s42,subcode,NORM,2-lead,12-lead,negative,,,265,0.0977595130139829,direction_disabled
+fixed2-s42,subcode,NORM,2-lead,12-lead,positive,0.02,446.0,221,0.159020804680571,insufficient_evidence_for_automation
+fixed2-s42,subcode,NORM,2-lead,reduced,negative,,,250,0.0527570594037748,direction_disabled
+fixed2-s42,subcode,NORM,2-lead,reduced,positive,0.02,446.0,235,0.1985143840055996,insufficient_evidence_for_automation
+fixed2-s42,subcode,NST_,2-lead,12-lead,negative,0.02,446.0,486,0.0415608458451577,insufficient_evidence_for_automation
+fixed2-s42,subcode,NST_,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,subcode,NST_,2-lead,reduced,negative,0.02,446.0,485,0.0396999457958648,insufficient_evidence_for_automation
+fixed2-s42,subcode,NST_,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB,2-lead,12-lead,negative,0.02,446.0,473,0.0340676047090581,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB,2-lead,12-lead,positive,0.1,86.0,13,0.8850659000098688,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB,2-lead,reduced,negative,0.02,446.0,464,0.02588971199597,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB,2-lead,reduced,positive,0.1,86.0,21,0.5737067517966478,insufficient_evidence_for_automation
+fixed2-s42,rhythm,PACE,2-lead,12-lead,negative,0.02,446.0,31,0.3356600144792411,insufficient_evidence_for_automation
+fixed2-s42,rhythm,PACE,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+fixed2-s42,rhythm,PACE,2-lead,reduced,negative,0.02,446.0,479,0.0198387594198197,feasible
+fixed2-s42,rhythm,PACE,2-lead,reduced,positive,0.1,86.0,6,0.7767637218688246,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SARRH,2-lead,12-lead,negative,0.02,446.0,486,0.0781103219209012,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SARRH,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SARRH,2-lead,reduced,negative,0.02,446.0,485,0.0529519848431284,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SARRH,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SBRAD,2-lead,12-lead,negative,0.02,446.0,481,0.0230391226322364,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SBRAD,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SBRAD,2-lead,reduced,negative,0.02,446.0,481,0.0325292359113353,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SBRAD,2-lead,reduced,positive,0.1,86.0,4,0.99544446474453,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SR,2-lead,12-lead,negative,,,62,0.3356600144792411,direction_disabled
+fixed2-s42,rhythm,SR,2-lead,12-lead,positive,0.02,446.0,424,0.1152830959658867,insufficient_evidence_for_automation
+fixed2-s42,rhythm,SR,2-lead,reduced,negative,,,69,0.3237417917047868,direction_disabled
+fixed2-s42,rhythm,SR,2-lead,reduced,positive,0.02,446.0,416,0.112946424922252,insufficient_evidence_for_automation
+fixed2-s42,rhythm,STACH,2-lead,12-lead,negative,0.02,446.0,468,0.0216530027704579,insufficient_evidence_for_automation
+fixed2-s42,rhythm,STACH,2-lead,12-lead,positive,0.1,86.0,18,0.8750943029982433,insufficient_evidence_for_automation
+fixed2-s42,rhythm,STACH,2-lead,reduced,negative,0.02,446.0,475,0.0218104670526186,insufficient_evidence_for_automation
+fixed2-s42,rhythm,STACH,2-lead,reduced,positive,0.1,86.0,10,0.8519060038900987,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,negative,0.02,446.0,471,0.0334739637591684,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,positive,0.1,86.0,15,0.88031466905254,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,negative,0.02,446.0,463,0.0259644215377864,insufficient_evidence_for_automation
+fixed2-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,positive,0.1,86.0,22,0.5933143355492347,insufficient_evidence_for_automation
+random2-s42,superclass,NORM,2-lead,12-lead,negative,,,263,0.1013530861479562,direction_disabled
+random2-s42,superclass,NORM,2-lead,12-lead,positive,0.02,446.0,223,0.1572835751791993,insufficient_evidence_for_automation
+random2-s42,superclass,NORM,2-lead,reduced,negative,,,253,0.0839136130486259,direction_disabled
+random2-s42,superclass,NORM,2-lead,reduced,positive,0.02,446.0,232,0.2735064654815324,insufficient_evidence_for_automation
+random2-s42,superclass,MI,2-lead,12-lead,negative,0.01,896.0,383,0.1030132908453111,insufficient_evidence_for_automation
+random2-s42,superclass,MI,2-lead,12-lead,positive,0.05,176.0,103,0.286265601288595,insufficient_evidence_for_automation
+random2-s42,superclass,MI,2-lead,reduced,negative,0.01,896.0,415,0.1091227673035734,insufficient_evidence_for_automation
+random2-s42,superclass,MI,2-lead,reduced,positive,0.05,176.0,70,0.5218725578690792,insufficient_evidence_for_automation
+random2-s42,superclass,STTC,2-lead,12-lead,negative,0.01,896.0,393,0.0596160157995068,insufficient_evidence_for_automation
+random2-s42,superclass,STTC,2-lead,12-lead,positive,0.05,176.0,93,0.3853358384734455,insufficient_evidence_for_automation
+random2-s42,superclass,STTC,2-lead,reduced,negative,0.01,896.0,378,0.0765814741571557,insufficient_evidence_for_automation
+random2-s42,superclass,STTC,2-lead,reduced,positive,0.05,176.0,107,0.4789795011580638,insufficient_evidence_for_automation
+random2-s42,superclass,CD,2-lead,12-lead,negative,0.02,446.0,403,0.0969666569851691,insufficient_evidence_for_automation
+random2-s42,superclass,CD,2-lead,12-lead,positive,0.1,86.0,83,0.3026141280010817,insufficient_evidence_for_automation
+random2-s42,superclass,CD,2-lead,reduced,negative,0.02,446.0,411,0.1079847246935718,insufficient_evidence_for_automation
+random2-s42,superclass,CD,2-lead,reduced,positive,0.1,86.0,74,0.3829846981290795,insufficient_evidence_for_automation
+random2-s42,superclass,HYP,2-lead,12-lead,negative,0.02,446.0,450,0.0558606224806053,insufficient_evidence_for_automation
+random2-s42,superclass,HYP,2-lead,12-lead,positive,0.1,86.0,36,0.5356184015214125,insufficient_evidence_for_automation
+random2-s42,superclass,HYP,2-lead,reduced,negative,0.02,446.0,466,0.110415275187737,insufficient_evidence_for_automation
+random2-s42,superclass,HYP,2-lead,reduced,positive,0.1,86.0,19,0.6952203938745206,insufficient_evidence_for_automation
+random2-s42,subcode,1AVB,2-lead,12-lead,negative,0.02,446.0,486,0.0513797509462986,insufficient_evidence_for_automation
+random2-s42,subcode,1AVB,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,1AVB,2-lead,reduced,negative,0.02,446.0,485,0.0453180658029634,insufficient_evidence_for_automation
+random2-s42,subcode,1AVB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,AMI,2-lead,12-lead,negative,0.01,896.0,486,0.0419836572381999,insufficient_evidence_for_automation
+random2-s42,subcode,AMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,AMI,2-lead,reduced,negative,0.01,896.0,485,0.0459770086066973,insufficient_evidence_for_automation
+random2-s42,subcode,AMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ASMI,2-lead,12-lead,negative,0.01,896.0,450,0.0337573214639751,insufficient_evidence_for_automation
+random2-s42,subcode,ASMI,2-lead,12-lead,positive,0.05,176.0,36,0.5526195491597307,insufficient_evidence_for_automation
+random2-s42,subcode,ASMI,2-lead,reduced,negative,0.01,896.0,467,0.0482328595318299,insufficient_evidence_for_automation
+random2-s42,subcode,ASMI,2-lead,reduced,positive,0.05,176.0,18,0.913592562400256,insufficient_evidence_for_automation
+random2-s42,subcode,CLBBB,2-lead,12-lead,negative,0.02,446.0,480,0.0252579993785805,insufficient_evidence_for_automation
+random2-s42,subcode,CLBBB,2-lead,12-lead,positive,0.1,86.0,6,0.9765943480215278,insufficient_evidence_for_automation
+random2-s42,subcode,CLBBB,2-lead,reduced,negative,0.02,446.0,474,0.0208501680310183,insufficient_evidence_for_automation
+random2-s42,subcode,CLBBB,2-lead,reduced,positive,0.1,86.0,11,0.8519060038900987,insufficient_evidence_for_automation
+random2-s42,subcode,CRBBB,2-lead,12-lead,negative,0.02,446.0,485,0.0201497611956484,insufficient_evidence_for_automation
+random2-s42,subcode,CRBBB,2-lead,12-lead,positive,0.1,86.0,1,0.9998762376237624,insufficient_evidence_for_automation
+random2-s42,subcode,CRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0258154311315329,insufficient_evidence_for_automation
+random2-s42,subcode,CRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ILMI,2-lead,12-lead,negative,0.01,896.0,486,0.0239593760047088,insufficient_evidence_for_automation
+random2-s42,subcode,ILMI,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ILMI,2-lead,reduced,negative,0.01,896.0,485,0.0359819467635638,insufficient_evidence_for_automation
+random2-s42,subcode,ILMI,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,IMI,2-lead,12-lead,negative,0.01,896.0,456,0.090184078929554,insufficient_evidence_for_automation
+random2-s42,subcode,IMI,2-lead,12-lead,positive,0.05,176.0,30,0.7766354092193215,insufficient_evidence_for_automation
+random2-s42,subcode,IMI,2-lead,reduced,negative,0.01,896.0,480,0.1008094747372995,insufficient_evidence_for_automation
+random2-s42,subcode,IMI,2-lead,reduced,positive,0.05,176.0,5,0.9888751460127528,insufficient_evidence_for_automation
+random2-s42,subcode,IRBBB,2-lead,12-lead,negative,0.02,446.0,481,0.0539100634111312,insufficient_evidence_for_automation
+random2-s42,subcode,IRBBB,2-lead,12-lead,positive,0.1,86.0,5,0.996469559273266,insufficient_evidence_for_automation
+random2-s42,subcode,IRBBB,2-lead,reduced,negative,0.02,446.0,485,0.0596600381937214,insufficient_evidence_for_automation
+random2-s42,subcode,IRBBB,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ISCAL,2-lead,12-lead,negative,0.01,896.0,486,0.0258154311315329,insufficient_evidence_for_automation
+random2-s42,subcode,ISCAL,2-lead,12-lead,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ISCAL,2-lead,reduced,negative,0.01,896.0,485,0.0221323673671604,insufficient_evidence_for_automation
+random2-s42,subcode,ISCAL,2-lead,reduced,positive,0.05,176.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,ISC_,2-lead,12-lead,negative,0.01,896.0,470,0.0237694909858126,insufficient_evidence_for_automation
+random2-s42,subcode,ISC_,2-lead,12-lead,positive,0.05,176.0,16,0.6648072133590669,insufficient_evidence_for_automation
+random2-s42,subcode,ISC_,2-lead,reduced,negative,0.01,896.0,472,0.0417039065621858,insufficient_evidence_for_automation
+random2-s42,subcode,ISC_,2-lead,reduced,positive,0.05,176.0,13,0.8554365455220587,insufficient_evidence_for_automation
+random2-s42,subcode,IVCD,2-lead,12-lead,negative,0.02,446.0,486,0.0572602564625368,insufficient_evidence_for_automation
+random2-s42,subcode,IVCD,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,IVCD,2-lead,reduced,negative,0.02,446.0,485,0.0459292936382052,insufficient_evidence_for_automation
+random2-s42,subcode,IVCD,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,LAFB,2-lead,12-lead,negative,0.02,446.0,469,0.0321661080156711,insufficient_evidence_for_automation
+random2-s42,subcode,LAFB,2-lead,12-lead,positive,0.1,86.0,17,0.9831841230512656,insufficient_evidence_for_automation
+random2-s42,subcode,LAFB,2-lead,reduced,negative,0.02,446.0,463,0.0715845212597734,insufficient_evidence_for_automation
+random2-s42,subcode,LAFB,2-lead,reduced,positive,0.1,86.0,22,0.8771051728723583,insufficient_evidence_for_automation
+random2-s42,subcode,LAO/LAE,2-lead,12-lead,negative,0.02,446.0,486,0.0348247280626261,insufficient_evidence_for_automation
+random2-s42,subcode,LAO/LAE,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,LAO/LAE,2-lead,reduced,negative,0.02,446.0,485,0.0451416595797647,insufficient_evidence_for_automation
+random2-s42,subcode,LAO/LAE,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,LVH,2-lead,12-lead,negative,0.02,446.0,453,0.035538176036463,insufficient_evidence_for_automation
+random2-s42,subcode,LVH,2-lead,12-lead,positive,0.1,86.0,33,0.5725149045478275,insufficient_evidence_for_automation
+random2-s42,subcode,LVH,2-lead,reduced,negative,0.02,446.0,466,0.0861939308106209,insufficient_evidence_for_automation
+random2-s42,subcode,LVH,2-lead,reduced,positive,0.1,86.0,19,0.7209603997520875,insufficient_evidence_for_automation
+random2-s42,subcode,NDT,2-lead,12-lead,negative,0.02,446.0,480,0.0494796928972568,insufficient_evidence_for_automation
+random2-s42,subcode,NDT,2-lead,12-lead,positive,0.1,86.0,6,0.9813810845696004,insufficient_evidence_for_automation
+random2-s42,subcode,NDT,2-lead,reduced,negative,0.02,446.0,483,0.0482328595318299,insufficient_evidence_for_automation
+random2-s42,subcode,NDT,2-lead,reduced,positive,0.1,86.0,2,1.0,insufficient_evidence_for_automation
+random2-s42,subcode,NORM,2-lead,12-lead,negative,,,265,0.0977595130139829,direction_disabled
+random2-s42,subcode,NORM,2-lead,12-lead,positive,0.02,446.0,221,0.159020804680571,insufficient_evidence_for_automation
+random2-s42,subcode,NORM,2-lead,reduced,negative,,,250,0.0839136130486259,direction_disabled
+random2-s42,subcode,NORM,2-lead,reduced,positive,0.02,446.0,235,0.2695170466939586,insufficient_evidence_for_automation
+random2-s42,subcode,NST_,2-lead,12-lead,negative,0.02,446.0,486,0.0415608458451577,insufficient_evidence_for_automation
+random2-s42,subcode,NST_,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,subcode,NST_,2-lead,reduced,negative,0.02,446.0,485,0.0349986204476082,insufficient_evidence_for_automation
+random2-s42,subcode,NST_,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB,2-lead,12-lead,negative,0.02,446.0,473,0.0340676047090581,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB,2-lead,12-lead,positive,0.1,86.0,13,0.8850659000098688,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB,2-lead,reduced,negative,0.02,446.0,464,0.0242826835112643,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB,2-lead,reduced,positive,0.1,86.0,21,0.4967250586681915,insufficient_evidence_for_automation
+random2-s42,rhythm,PACE,2-lead,12-lead,negative,0.02,446.0,17,0.558652383638278,insufficient_evidence_for_automation
+random2-s42,rhythm,PACE,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+random2-s42,rhythm,PACE,2-lead,reduced,negative,0.02,446.0,481,0.0190008468077212,feasible
+random2-s42,rhythm,PACE,2-lead,reduced,positive,0.1,86.0,4,0.9683538963069148,insufficient_evidence_for_automation
+random2-s42,rhythm,SARRH,2-lead,12-lead,negative,0.02,446.0,486,0.0781103219209012,insufficient_evidence_for_automation
+random2-s42,rhythm,SARRH,2-lead,12-lead,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,rhythm,SARRH,2-lead,reduced,negative,0.02,446.0,485,0.0555440991870857,insufficient_evidence_for_automation
+random2-s42,rhythm,SARRH,2-lead,reduced,positive,0.1,86.0,0,,insufficient_evidence_for_automation
+random2-s42,rhythm,SBRAD,2-lead,12-lead,negative,0.02,446.0,481,0.0230391226322364,insufficient_evidence_for_automation
+random2-s42,rhythm,SBRAD,2-lead,12-lead,positive,0.1,86.0,5,0.9284174156138096,insufficient_evidence_for_automation
+random2-s42,rhythm,SBRAD,2-lead,reduced,negative,0.02,446.0,479,0.0264218924704543,insufficient_evidence_for_automation
+random2-s42,rhythm,SBRAD,2-lead,reduced,positive,0.1,86.0,6,0.9765943480215278,insufficient_evidence_for_automation
+random2-s42,rhythm,SR,2-lead,12-lead,negative,,,62,0.3356600144792411,direction_disabled
+random2-s42,rhythm,SR,2-lead,12-lead,positive,0.02,446.0,424,0.1152830959658867,insufficient_evidence_for_automation
+random2-s42,rhythm,SR,2-lead,reduced,negative,,,77,0.4148994107503044,direction_disabled
+random2-s42,rhythm,SR,2-lead,reduced,positive,0.02,446.0,408,0.0956287998732837,insufficient_evidence_for_automation
+random2-s42,rhythm,STACH,2-lead,12-lead,negative,0.02,446.0,468,0.0216530027704579,insufficient_evidence_for_automation
+random2-s42,rhythm,STACH,2-lead,12-lead,positive,0.1,86.0,18,0.8750943029982433,insufficient_evidence_for_automation
+random2-s42,rhythm,STACH,2-lead,reduced,negative,0.02,446.0,471,0.0221869434485285,insufficient_evidence_for_automation
+random2-s42,rhythm,STACH,2-lead,reduced,positive,0.1,86.0,14,0.8554365455220587,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,negative,0.02,446.0,471,0.0334739637591684,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB-or-AFLT,2-lead,12-lead,positive,0.1,86.0,15,0.88031466905254,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,negative,0.02,446.0,464,0.0240233469622286,insufficient_evidence_for_automation
+random2-s42,rhythm,AFIB-or-AFLT,2-lead,reduced,positive,0.1,86.0,21,0.4967250586681915,insufficient_evidence_for_automation

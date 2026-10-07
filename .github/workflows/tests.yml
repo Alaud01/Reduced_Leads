@@ -1,0 +1,53 @@
+name: tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "ruff>=0.6"
+      - run: ruff check src tests scripts
+
+  test:
+    name: test (Python ${{ matrix.python-version }}, ${{ matrix.deps }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Exact pinned environment (see requirements-lock.txt).
+          - python-version: "3.12"
+            deps: locked
+          # Documented minimum Python with the newest compatible releases.
+          - python-version: "3.10"
+            deps: ranges
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install locked dependencies
+        if: matrix.deps == 'locked'
+        run: pip install -r requirements-lock.txt --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Install dependency ranges
+        if: matrix.deps == 'ranges'
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - name: Run unit tests
+        # The PTB-XL split-integrity test is skipped when the dataset is absent.
+        run: python -m unittest discover -s tests -v

@@ -1,0 +1,35 @@
+{
+  "status": "posthoc_exploratory_no_confirmatory_claims",
+  "models": [
+    "fixed2-s42",
+    "random2-s42",
+    "fixed12-s42"
+  ],
+  "scenarios": [
+    [
+      "neg02-pos40",
+      0.02,
+      0.4
+    ],
+    [
+      "neg025-pos10",
+      0.025,
+      0.1
+    ],
+    [
+      "neg03-pos10",
+      0.03,
+      0.1
+    ],
+    [
+      "neg03-pos40",
+      0.03,
+      0.4
+    ]
+  ],
+  "scope": "AFIB-or-AFLT only; all other diagnosis limits unchanged",
+  "selection": "All scenarios defined before this sensitivity audit; report all, select no winner.",
+  "cohort": "Previously inspected PTB-XL fold 10; no untouched validation claim.",
+  "uncertainty": "Exact patient-binomial test error intervals retained; bootstrap disabled for this sensitivity.",
+  "crc": "Unchanged at 2%; not the conditional risk endpoint."
+}

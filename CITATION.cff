@@ -1,0 +1,68 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software or its results, please cite it using the metadata
+  below, and also cite the PTB-XL dataset (Wagner et al., 2020) on which all
+  models and results are based.
+type: software
+title: "Reduced Leads: Diagnosis-Specific Selective Prediction for Safe Reduced-Lead ECG AI"
+abstract: >-
+  A research framework that trains lead-aware transformer models on PTB-XL,
+  evaluates them under reduced-lead inputs, and converts calibrated scores into
+  diagnosis-specific trust / acquire-12-lead / expert-review actions with
+  patient-level risk control and locked test audits.
+authors:
+  - family-names: Laud
+    given-names: Atharva
+    affiliation: The University of British Columbia
+version: 0.1.0
+date-released: "2026-10-07"
+license: MIT
+repository-code: "https://github.com/Alaud01/Reduced_Leads"
+keywords:
+  - electrocardiography
+  - ECG
+  - PTB-XL
+  - reduced-lead ECG
+  - selective prediction
+  - conformal risk control
+references:
+  - type: article
+    title: "PTB-XL, a large publicly available electrocardiography dataset"
+    authors:
+      - family-names: Wagner
+        given-names: Patrick
+      - family-names: Strodthoff
+        given-names: Nils
+      - family-names: Bousseljot
+        given-names: Ralf-Dieter
+      - family-names: Kreiseler
+        given-names: Dieter
+      - family-names: Lunze
+        given-names: Fatima I.
+      - family-names: Samek
+        given-names: Wojciech
+      - family-names: Schaeffter
+        given-names: Tobias
+    journal: Scientific Data
+    volume: 7
+    start: 154
+    year: 2020
+    doi: 10.1038/s41597-020-0495-6
+  - type: data
+    title: "PTB-XL, a large publicly available electrocardiography dataset (version 1.0.3)"
+    authors:
+      - family-names: Wagner
+        given-names: Patrick
+      - family-names: Strodthoff
+        given-names: Nils
+      - family-names: Bousseljot
+        given-names: Ralf-Dieter
+      - family-names: Samek
+        given-names: Wojciech
+      - family-names: Schaeffter
+        given-names: Tobias
+    publisher:
+      name: PhysioNet
+    year: 2022
+    doi: 10.13026/kfzx-aw45
+    license: CC-BY-4.0

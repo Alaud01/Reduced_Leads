@@ -1,0 +1,11 @@
+COMPARISON READY
+                        approach    auroc  average_precision    brier
+Previous model, patient analysis 0.958232           0.668953 0.037793
+                      Fixed I+II 0.928697           0.586996 0.043036
+            Random lead training 0.948317           0.679941 0.037665
+Twelve-lead model masked to I+II 0.759887           0.217356 0.099369
+                        approach  automated_coverage  trusted_negative_records  trusted_negative_errors  trusted_negative_error_exact95_upper
+Previous model, patient analysis                 0.0                         0                        0                                   NaN
+                      Fixed I+II                 0.0                         0                        0                                   NaN
+            Random lead training                 0.0                         0                        0                                   NaN
+Twelve-lead model masked to I+II                 0.0                         0                        0                                   NaN

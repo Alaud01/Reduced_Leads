@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reduced-leads"
+version = "0.1.0"
+description = "Lead-aware selective prediction for reduced-lead ECG diagnosis on PTB-XL"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Atharva Laud" }]
+keywords = ["ECG", "PTB-XL", "selective prediction", "reduced leads", "risk control"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Intended Audience :: Science/Research",
+]
+# Keep in sync with requirements.txt.
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "wfdb>=4.1",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "tqdm>=4.60",
+    "torch>=2.4",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.6"]
+
+[project.urls]
+Repository = "https://github.com/Alaud01/Reduced_Leads"
+
+# The commands are run from the repository root as `python -m src.<module>`;
+# installing the package is optional.
+[tool.setuptools]
+packages = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["results", "docs/visuals"]
+
+[tool.ruff.lint]
+# Pyflakes only: unused imports/variables and undefined names.
+select = ["F"]

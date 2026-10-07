@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "results": [
+    {
+      "split": "test",
+      "lead_set": "12-lead",
+      "n_records": 516,
+      "groups": {
+        "superclass": {
+          "n_classes": 2,
+          "n_evaluable_classes": 2,
+          "macro_auroc": 0.977303088859771,
+          "macro_average_precision": 0.9293240705171721,
+          "classes": [
+            {
+              "diagnosis": "NORM",
+              "n": 516,
+              "positives": 234,
+              "negatives": 282,
+              "prevalence": 0.45348837209302323,
+              "auroc": 0.9816709098623992,
+              "average_precision": 0.9820781043279664
+            },
+            {
+              "diagnosis": "MI",
+              "n": 516,
+              "positives": 68,
+              "negatives": 448,
+              "prevalence": 0.13178294573643412,
+              "auroc": 0.9729352678571428,
+              "average_precision": 0.8765700367063779
+            }
+          ]
+        },
+        "subcode": {
+          "n_classes": 0,
+          "n_evaluable_classes": 0,
+          "macro_auroc": null,
+          "macro_average_precision": null,
+          "classes": []
+        },
+        "rhythm": {
+          "n_classes": 3,
+          "n_evaluable_classes": 3,
+          "macro_auroc": 0.9793731033948516,
+          "macro_average_precision": 0.9066166946761688,
+          "classes": [
+            {
+              "diagnosis": "AFIB",
+              "n": 516,
+              "positives": 61,
+              "negatives": 455,
+              "prevalence": 0.1182170542635659,
+              "auroc": 0.9810124301927581,
+              "average_precision": 0.89285923407384
+            },
+            {
+              "diagnosis": "AFLT",
+              "n": 516,
+              "positives": 11,
+              "negatives": 505,
+              "prevalence": 0.02131782945736434,
+              "auroc": 0.9814581458145815,
+              "average_precision": 0.8433886375062847
+            },
+            {
+              "diagnosis": "SR",
+              "n": 516,
+              "positives": 316,
+              "negatives": 200,
+              "prevalence": 0.6124031007751938,
+              "auroc": 0.9756487341772152,
+              "average_precision": 0.9836022124483819
+            }
+          ]
+        }
+      }
+    },
+    {
+      "split": "test",
+      "lead_set": "2-lead",
+      "n_records": 516,
+      "groups": {
+        "superclass": {
+          "n_classes": 2,
+          "n_evaluable_classes": 2,
+          "macro_auroc": 0.9319479277776759,
+          "macro_average_precision": 0.8308576585358465,
+          "classes": [
+            {
+              "diagnosis": "NORM",
+              "n": 516,
+              "positives": 234,
+              "negatives": 282,
+              "prevalence": 0.45348837209302323,
+              "auroc": 0.9365718009335031,
+              "average_precision": 0.9231984401969432
+            },
+            {
+              "diagnosis": "MI",
+              "n": 516,
+              "positives": 68,
+              "negatives": 448,
+              "prevalence": 0.13178294573643412,
+              "auroc": 0.9273240546218487,
+              "average_precision": 0.7385168768747498
+            }
+          ]
+        },
+        "subcode": {
+          "n_classes": 0,
+          "n_evaluable_classes": 0,
+          "macro_auroc": null,
+          "macro_average_precision": null,
+          "classes": []
+        },
+        "rhythm": {
+          "n_classes": 3,
+          "n_evaluable_classes": 3,
+          "macro_auroc": 0.9101650706813645,
+          "macro_average_precision": 0.6465042998834389,
+          "classes": [
+            {
+              "diagnosis": "AFIB",
+              "n": 516,
+              "positives": 61,
+              "negatives": 455,
+              "prevalence": 0.1182170542635659,
+              "auroc": 0.9203206629436137,
+              "average_precision": 0.6540487566189142
+            },
+            {
+              "diagnosis": "AFLT",
+              "n": 516,
+              "positives": 11,
+              "negatives": 505,
+              "prevalence": 0.02131782945736434,
+              "auroc": 0.8973897389738974,
+              "average_precision": 0.3450123938222703
+            },
+            {
+              "diagnosis": "SR",
+              "n": 516,
+              "positives": 316,
+              "negatives": 200,
+              "prevalence": 0.6124031007751938,
+              "auroc": 0.9127848101265823,
+              "average_precision": 0.9404517492091324
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

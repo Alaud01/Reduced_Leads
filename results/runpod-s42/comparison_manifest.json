@@ -1,0 +1,49 @@
+{
+  "status": "complete",
+  "training_seed": 42,
+  "analysis_plan_sha256": "8ecf99254be86905d2fe363b93ad81c2d6f608717dd5e8fd074acc134d721897",
+  "sources": {
+    "Previous model, patient analysis": {
+      "path": "artifacts/audit-all/patient-v2-final-audit",
+      "manifest_sha256": "8c2b3f32458cf20ba49097787a50ed110df92bfaf1b9bd04be567428fba435d6"
+    },
+    "Fixed I+II": {
+      "path": "artifacts/comparison/runpod-s42/audits/fixed2-s42",
+      "manifest_sha256": "f4bd33c13f07b265660eef9af76971f16980601eb4434c6d0744a2842a21a8d5"
+    },
+    "Random lead training": {
+      "path": "artifacts/comparison/runpod-s42/audits/random2-s42",
+      "manifest_sha256": "73a479cc1b1c87cffbf74b8f2123bcb4f260a86613cf98301239981d362b3ba6"
+    },
+    "Twelve-lead model masked to I+II": {
+      "path": "artifacts/comparison/runpod-s42/audits/fixed12-s42",
+      "manifest_sha256": "50f32b739c996355b647de91f3202232e075f4d961be4650ea47fadae912a878"
+    }
+  },
+  "outputs": {
+    "training_verification.json": "3f5a964503d5eee6a727bc84e41f95411d70d729fcd5b499bdfa5c5b3f294a0a",
+    "repeat_ecg_comparison.csv": "43dbb5a70dd4ef2e0ad8c36376e3d42aa0aeabb3f3ac8d3d2a07d4431a3b055d",
+    "verify_training.py": "e5b287b655efb1c89465bafb934ed05841c5700fff84ca4fc415a37e7346a4d3",
+    "historical_record_level_policy.csv": "cf3496daca4c41a8ecb85682c050bf47a4e9cbbca35a7a32171f017ec235993c",
+    "report.md": "add3e7b517c8cd47e553d9676a3ee831f04dbc27df1dfac851a12c82ff63c60c",
+    "all_model_metrics.csv": "f2fdd13e005e622a5c8c1144f33f7868d426492d37758dad987c17db97766f23",
+    "all_policy_metrics.csv": "ce9529d889a6b13b936f0f7e2927c7fbffb48931c95fa38dd8848121caba7f6b",
+    "subgroup_comparison.csv": "bbe26aa5dc175761dceaf4e2acef29cc939c3be3bfd389a9ce300c6a6b6c109c",
+    "comparison.png": "3f092eaaf6fe0cc6bb33b9df563c6793da90af00a89bf62dbbc2ffcf8f19d90d",
+    "comparison.pdf": "00ab6daf3244aa7864f834d339a632d4b30df95a70ac956d09de66b7367e0cfd",
+    "pipeline.log": "ef8e2d56f80af03dfd52889939beaa69d3e5467a5d65f5b8811a0f0761a89e3e",
+    "build_report.py": "fb2ea09ed6378e0d62d1a0c425f63fc4dedaccde44a4fb8a903bffdc16a9d018",
+    "feasibility_comparison.csv": "e2f16610452c5701d4455cd4b0d9cf86631513b438d949745067f662bd33dae9",
+    "run_pipeline.py": "847d7691c8b898f47bce93d7ec8d120743aed3618dda9084a3eeabbe69a6d789",
+    "training_verification.log": "18c041dff0f071d502b36e6ebe9c6409bf533dc300b061dea13311cd57ade1d5",
+    "comparison.log": "5b930e75be38f76b0220864df8054b3d2db996e455f7440577e0cb4558507eae",
+    "primary_calibration.csv": "b6b33d98543d817d68eaac1ef502808e58586969cbef55d2992c9621757bdcca",
+    "analysis_plan.json": "8ecf99254be86905d2fe363b93ad81c2d6f608717dd5e8fd074acc134d721897",
+    "plot_comparison.py": "f27419144a069513b2c0cbc3eb88d9e34a92cbbe9280f864a41c682b4b6948a9",
+    "primary_paired_auroc.csv": "56ea100da6e55b665f58c4505817e61c781fe7eab8f39ddc1174b29ff688122e",
+    "crc_comparison.csv": "6c17dc0d0667ca1588967270d7a7d121e7ee866f9ee3cbfcea4273a1f6b98e54",
+    "compare.py": "7cba44ab08d94e7cadfff2c852346c0ccb746d482c313069fa7b1dae1d277fdf",
+    "per_target_changes.csv": "f97b779c822b8b80e64c88c624124198bfffcc695078c180f42d95707085f2c1"
+  },
+  "verified_policy_and_audit_artifacts": 54
+}

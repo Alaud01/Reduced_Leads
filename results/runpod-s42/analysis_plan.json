@@ -1,0 +1,11 @@
+{
+  "primary": "Two-lead-starting AFIB-or-AFLT trusted-negative error and automated coverage",
+  "comparisons": ["fixed2-s42 plus fixed12-s42 rescue", "random2-s42 plus fixed12-s42 rescue", "fixed12-s42 masked to I+II plus its full-input rescue"],
+  "historical_reference": "artifacts/audit-all/patient-v2-final-audit",
+  "historical_context_only": "artifacts/audit-all/use-contract-routed-v2-audit",
+  "protocol": "protocol/use_contract_v2.json",
+  "risk_limits_changed": false,
+  "new_test_access": "Only after all three validation policy bundles are complete",
+  "uncertainty": "Existing 2000 patient bootstrap audit intervals; primary AUROC paired bootstrap on one outcome-blind ECG per patient, seed 42, 2000 replicates, descriptive 95% intervals",
+  "limitations": ["Only training seed 42", "Historical model selected on fold 9, new models selected on fold 8", "Historical model trained on folds 1-8, new models trained on folds 1-7", "PTB-XL test has previously been inspected; exploratory comparisons", "Conformal sensitivity uses a different unconditional endpoint and cannot replace the primary conditional error limit"]
+}
